@@ -22,6 +22,7 @@ class PlaylistTableViewCell: UITableViewCell {
         if let url = URL(string: playlistItem.placeholder) {
             placeholder.load(url: url)
         }
+        placeholder.layer.cornerRadius = 8
         
         nameLabel.text = playlistItem.name
     }

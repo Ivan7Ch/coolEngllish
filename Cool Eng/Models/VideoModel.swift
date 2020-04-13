@@ -10,7 +10,9 @@ import UIKit
 
 
 struct VideoModel {
+    var id: String
     var name: String
+    var playlist: String
     var placeholder: String
     var subtitles: [String]
     var url: String

@@ -23,6 +23,8 @@ class VideosListViewController: UIViewController {
     
     var videos: [VideoModel] = []
     
+    var playlistId: String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,13 @@ class VideosListViewController: UIViewController {
         
         title = "Videos"
         navigationController?.navigationBar.prefersLargeTitles = false
+        VideoFirebaseHelper.shared.fetchVideos(playlistId: playlistId, callback: { videos in
+            self.videos = videos
+            self.videos.append(videos[0])
+            self.videos.append(videos[0])
+            self.videos.append(videos[0])
+            self.tableView.reloadData()
+        })
     }
     
     func configTable() {

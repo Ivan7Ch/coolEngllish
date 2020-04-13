@@ -8,15 +8,17 @@
 
 import UIKit
 
-class PlaylistsViewController: UIViewController {
+class PlaylistsViewController: UIViewController, PlaylistDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel = PlaylistViewModel()
+    var viewModel: PlaylistViewModel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel = PlaylistViewModel(delegate: self)
         
         setupViews()
         
@@ -42,6 +44,11 @@ class PlaylistsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
+    
+    
+    func reloadData() {
+        tableView.reloadData()
+    }
 }
 
 
@@ -62,6 +69,13 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
+        vc.playlistId = viewModel.playlists[indexPath.row].id
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

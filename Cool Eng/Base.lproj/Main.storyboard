@@ -101,7 +101,7 @@
         <!--Videos List View Controller-->
         <scene sceneID="Xt0-ew-Keo">
             <objects>
-                <viewController id="ZvZ-8A-TQ4" customClass="VideosListViewController" customModule="Cool_Eng" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideosListViewController" id="ZvZ-8A-TQ4" customClass="VideosListViewController" customModule="Cool_Eng" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BhB-Bl-PQM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,27 +129,28 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simpsons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zd0-eW-sBP">
-                                                    <rect key="frame" x="20" y="249" width="106" height="22"/>
+                                                    <rect key="frame" x="20" y="253" width="374" height="14"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration: 00:54" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek4-1Z-OQD">
-                                                    <rect key="frame" x="296" y="251.5" width="102" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <rect key="frame" x="316.5" y="237" width="89.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zd0-eW-sBP" firstAttribute="top" secondItem="afD-c4-nF7" secondAttribute="bottom" constant="16" id="8Hg-OI-tGW"/>
+                                                <constraint firstItem="ek4-1Z-OQD" firstAttribute="top" secondItem="afD-c4-nF7" secondAttribute="bottom" constant="4" id="4Zv-Ay-jMq"/>
                                                 <constraint firstItem="afD-c4-nF7" firstAttribute="leading" secondItem="TEh-mf-DzP" secondAttribute="leading" id="96n-VA-ggx"/>
-                                                <constraint firstItem="ek4-1Z-OQD" firstAttribute="centerY" secondItem="zd0-eW-sBP" secondAttribute="centerY" id="bQ8-KA-duO"/>
-                                                <constraint firstAttribute="trailing" secondItem="ek4-1Z-OQD" secondAttribute="trailing" constant="16" id="bci-Ek-GEy"/>
+                                                <constraint firstAttribute="trailing" secondItem="zd0-eW-sBP" secondAttribute="trailing" constant="20" id="aUP-HF-dMd"/>
+                                                <constraint firstAttribute="trailing" secondItem="ek4-1Z-OQD" secondAttribute="trailing" constant="8" id="bci-Ek-GEy"/>
                                                 <constraint firstItem="zd0-eW-sBP" firstAttribute="leading" secondItem="TEh-mf-DzP" secondAttribute="leadingMargin" id="fCI-oQ-W4h"/>
                                                 <constraint firstItem="afD-c4-nF7" firstAttribute="top" secondItem="TEh-mf-DzP" secondAttribute="top" id="ghZ-Dq-9i3"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="zd0-eW-sBP" secondAttribute="bottom" constant="16" id="kAn-0Z-7Ew"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="zd0-eW-sBP" secondAttribute="bottom" constant="20" id="kAn-0Z-7Ew"/>
                                                 <constraint firstAttribute="trailing" secondItem="afD-c4-nF7" secondAttribute="trailing" id="l62-21-1bX"/>
+                                                <constraint firstItem="zd0-eW-sBP" firstAttribute="top" secondItem="afD-c4-nF7" secondAttribute="bottom" constant="20" id="uuj-xU-VDu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -176,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qGw-VF-z6E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957" y="113"/>
+            <point key="canvasLocation" x="1956.521739130435" y="112.5"/>
         </scene>
     </scenes>
     <resources>

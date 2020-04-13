@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>544250044471-4caooe92kqjdsa7cds8bob6ga5itve4p.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.544250044471-4caooe92kqjdsa7cds8bob6ga5itve4p</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBJ44k2b5d1GGGtEFvMNwunLwVLv25h4aw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>544250044471</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.deserteam.cool-eng</string>
+	<key>PROJECT_ID</key>
+	<string>cool-english</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cool-english.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:544250044471:ios:7e19b4c2ac1d6958d81fb2</string>
+	<key>DATABASE_URL</key>
+	<string>https://cool-english.firebaseio.com</string>
+</dict>
+</plist>

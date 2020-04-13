@@ -10,7 +10,7 @@ import Foundation
 
 
 struct PlaylistModel {
+    var id: String
     var name: String
     var placeholder: String
-    var videos: [VideoModel]
 }
