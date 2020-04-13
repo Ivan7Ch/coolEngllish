@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F5B46A732444B4F40007E8E4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A722444B4F40007E8E4 /* Video.swift */; };
+		F5B46A762444B67E0007E8E4 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A752444B67E0007E8E4 /* VideoModel.swift */; };
+		F5B46A782444B69E0007E8E4 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */; };
 		F5CE9EB62444958B009EB618 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9EB52444958B009EB618 /* AppDelegate.swift */; };
 		F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9EB72444958B009EB618 /* SceneDelegate.swift */; };
 		F5CE9EBA2444958B009EB618 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9EB92444958B009EB618 /* ViewController.swift */; };
@@ -14,9 +17,16 @@
 		F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9EBE2444958B009EB618 /* Cool_Eng.xcdatamodeld */; };
 		F5CE9EC22444958C009EB618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5CE9EC12444958C009EB618 /* Assets.xcassets */; };
 		F5CE9EC52444958C009EB618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CE9EC32444958C009EB618 /* LaunchScreen.storyboard */; };
+		F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9ECD2444997C009EB618 /* PlaylistsViewController.swift */; };
+		F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9ECF24449D70009EB618 /* PlaylistViewModel.swift */; };
+		F5FDA6F82444AFA000AC6A9D /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */; };
+		F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FDA6FB2444B04C00AC6A9D /* VideosListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F5B46A722444B4F40007E8E4 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		F5B46A752444B67E0007E8E4 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
 		F5CE9EB22444958B009EB618 /* Cool Eng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cool Eng.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5CE9EB52444958B009EB618 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5CE9EB72444958B009EB618 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +36,10 @@
 		F5CE9EC12444958C009EB618 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5CE9EC42444958C009EB618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5CE9EC62444958C009EB618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5CE9ECD2444997C009EB618 /* PlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
+		F5CE9ECF24449D70009EB618 /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
+		F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
+		F5FDA6FB2444B04C00AC6A9D /* VideosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F5B46A742444B66E0007E8E4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5B46A752444B67E0007E8E4 /* VideoModel.swift */,
+				F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F5CE9EA92444958B009EB618 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +81,9 @@
 		F5CE9EB42444958B009EB618 /* Cool Eng */ = {
 			isa = PBXGroup;
 			children = (
+				F5B46A742444B66E0007E8E4 /* Models */,
+				F5FDA6F92444B01C00AC6A9D /* VideosList */,
+				F5CE9ECC24449957009EB618 /* Playlists */,
 				F5CE9EB52444958B009EB618 /* AppDelegate.swift */,
 				F5CE9EB72444958B009EB618 /* SceneDelegate.swift */,
 				F5CE9EB92444958B009EB618 /* ViewController.swift */,
@@ -68,6 +94,25 @@
 				F5CE9EBE2444958B009EB618 /* Cool_Eng.xcdatamodeld */,
 			);
 			path = "Cool Eng";
+			sourceTree = "<group>";
+		};
+		F5CE9ECC24449957009EB618 /* Playlists */ = {
+			isa = PBXGroup;
+			children = (
+				F5CE9ECD2444997C009EB618 /* PlaylistsViewController.swift */,
+				F5CE9ECF24449D70009EB618 /* PlaylistViewModel.swift */,
+				F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */,
+			);
+			path = Playlists;
+			sourceTree = "<group>";
+		};
+		F5FDA6F92444B01C00AC6A9D /* VideosList */ = {
+			isa = PBXGroup;
+			children = (
+				F5FDA6FB2444B04C00AC6A9D /* VideosListViewController.swift */,
+				F5B46A722444B4F40007E8E4 /* Video.swift */,
+			);
+			path = VideosList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +186,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */,
+				F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */,
+				F5FDA6F82444AFA000AC6A9D /* PlaylistTableViewCell.swift in Sources */,
+				F5B46A782444B69E0007E8E4 /* PlaylistModel.swift in Sources */,
+				F5B46A762444B67E0007E8E4 /* VideoModel.swift in Sources */,
 				F5CE9EBA2444958B009EB618 /* ViewController.swift in Sources */,
+				F5B46A732444B4F40007E8E4 /* Video.swift in Sources */,
 				F5CE9EB62444958B009EB618 /* AppDelegate.swift in Sources */,
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
+				F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */,
 				F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,7 +347,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.deserteam.Cool-Eng";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deserteam.cool-eng";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -313,7 +365,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.deserteam.Cool-Eng";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deserteam.cool-eng";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
