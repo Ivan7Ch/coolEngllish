@@ -71,9 +71,9 @@ extension VideosListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = storyboard?.instantiateViewController(identifier: "ViewController") as! ViewController
-//        vc.video = videos[indexPath.row]
-//        navigationController?.pushViewController(vc, animated: true)
+        let vc = storyboard?.instantiateViewController(identifier: "VideoPlayerViewController") as! VideoPlayerViewController
+        vc.video = videos[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

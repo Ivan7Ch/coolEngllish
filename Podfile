@@ -6,6 +6,7 @@ target 'Cool Eng' do
   use_frameworks!
 	pod 'Firebase'
   pod 'Firebase/Firestore'
+  pod 'YouTubePlayer'
   # Pods for Cool Eng
 
 end
