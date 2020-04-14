@@ -41,10 +41,27 @@ class VideoFirebaseHelper {
             let name = dict["name"] as? String,
             let placeholder = dict["placeholder"] as? String,
             let playlist = dict["playlist"] as? String,
-            let url = dict["url"] as? String else { return nil }
+            let url = dict["url"] as? String,
+            let subtitlesDict = dict["subtitles"] as? [[String:Any]]
+        else { return nil }
         
+        var subtitles = [SubtitleModel]()
+        for i in subtitlesDict {
+            if let sub = parseSubtitleData(dict: i) {
+                subtitles.append(sub)
+            }
+        }
         
-        return VideoModel(id: id, name: name, playlist: playlist, placeholder: placeholder, subtitles: [], url: url)
+        return VideoModel(id: id, name: name, playlist: playlist, placeholder: placeholder, subtitles: subtitles, url: url)
     }
     
+    
+    private func parseSubtitleData(dict: [String: Any]) -> SubtitleModel? {
+        guard let start = dict["start"] as? Double,
+            let eng = dict["eng"] as? String,
+            let ru = dict["ru"] as? String
+        else { return nil }
+        
+        return SubtitleModel(start: start, eng: eng, ru: ru)
+    }
 }

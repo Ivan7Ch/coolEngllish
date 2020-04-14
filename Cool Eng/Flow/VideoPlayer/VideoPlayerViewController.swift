@@ -17,12 +17,23 @@ class VideoPlayerViewController: UIViewController {
     @IBOutlet weak var playerHeightConstraint: NSLayoutConstraint!
     
     var video: VideoModel!
+    
+    var startTimes = [Double]()
+    
     private var player: AVPlayer!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = video.name
+        setupPlayer()
+        setupSubtitles()
+        configTable()
+    }
+    
+    
+    private func setupPlayer() {
         let playerVars: [String: Any] = [
             "controls": 1,
             "modestbranding": 1,
@@ -30,16 +41,9 @@ class VideoPlayerViewController: UIViewController {
             "origin": "https://youtube.com"
         ]
         videoPlayer.delegate = self
-        videoPlayer.loadWithVideoId("x-MBR13sVqs", with: playerVars)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
-            self.videoPlayer.play()
-        })
-        
-        
-        configTable()
-        
+        videoPlayer.loadWithVideoId(video.url, with: playerVars)
     }
+    
     
     private func configTable() {
         tableView.dataSource = self
@@ -49,37 +53,59 @@ class VideoPlayerViewController: UIViewController {
         tableView.estimatedRowHeight = 80
         tableView.reloadData()
     }
+    
+    
+    private func setupSubtitles() {
+        startTimes = []
+        for i in video.subtitles {
+            startTimes.append(i.start)
+        }
+    }
 }
 
 
 extension VideoPlayerViewController: YoutubePlayerViewDelegate {
     func playerView(_ playerView: YoutubePlayerView, didPlayTime time: Float) {
-        print(time)
+        for (index, value) in startTimes.enumerated() {
+            if time > Float(value) {
+                setSelectedCell(index: index)
+            } else {
+                break
+            }
+        }
     }
 }
 
 
 extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return video.subtitles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SubtitlesTableViewCell") as! SubtitlesTableViewCell
         
-        cell.originalText.text = "sjdn s,djcn, ,dsmcn ,sn dscnsj sjdbc "
-        cell.translatedText.text = "іьтвис ьтвіис виср ві ьівс иьів си"
+        let sub = video.subtitles[indexPath.row]
+        
+        cell.originalText.text = sub.eng
+        cell.translatedText.text = sub.ru
+        cell.indicator.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         
         return cell
     }
     
+    func setSelectedCell(index: Int) {
+        let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! SubtitlesTableViewCell
+        cell.indicator.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+    }
 }
 
 
 class SubtitlesTableViewCell: UITableViewCell {
     @IBOutlet weak var originalText: UILabel!
     @IBOutlet weak var translatedText: UILabel!
+    @IBOutlet weak var indicator: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

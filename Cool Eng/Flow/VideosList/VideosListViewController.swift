@@ -35,9 +35,6 @@ class VideosListViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         VideoFirebaseHelper.shared.fetchVideos(playlistId: playlistId, callback: { videos in
             self.videos = videos
-            self.videos.append(videos[0])
-            self.videos.append(videos[0])
-            self.videos.append(videos[0])
             self.tableView.reloadData()
         })
     }
