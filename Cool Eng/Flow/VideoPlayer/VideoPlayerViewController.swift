@@ -97,7 +97,7 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
     
     func setSelectedCell(index: Int) {
         let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! SubtitlesTableViewCell
-        cell.indicator.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        cell.indicator.backgroundColor = UIColor(named: "indicator")
     }
 }
 

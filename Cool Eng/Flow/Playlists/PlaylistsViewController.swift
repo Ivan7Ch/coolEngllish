@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class PlaylistsViewController: UIViewController, PlaylistDelegate {
+
+class PlaylistsViewController: UIViewController, PlaylistDelegate, GADRewardedAdDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: PlaylistViewModel!
+    
+    var rewardedAd: GADRewardedAd?
+    
+    var canShowAd = false
+    
+    var selectedCell: PlaylistTableViewCell?
+    
+    var selectedPlaylistId: String = ""
+    
+    var showAdvert = false
     
     
     override func viewDidLoad() {
@@ -21,6 +33,7 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
         viewModel = PlaylistViewModel(delegate: self)
         
         setupViews()
+        setupAd()
         
         tableView.reloadData()
     }
@@ -29,6 +42,7 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.reloadData()
     }
     
     
@@ -37,17 +51,66 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
         self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         title = "Playlists"
         
-        let search = UISearchController(searchResultsController: nil)
-        search.searchResultsUpdater = self
-        self.navigationItem.searchController = search
+//        let search = UISearchController(searchResultsController: nil)
+//        search.searchResultsUpdater = self
+//        self.navigationItem.searchController = search
         
         tableView.dataSource = self
         tableView.delegate = self
     }
     
+    private func setupAd() {
+        rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-9391157593798156/5256111514")
+        rewardedAd?.load(GADRequest()) { error in
+            if let error = error {
+                print(error)
+            } else {
+                if self.showAdvert {
+                    self.showAd()
+                }
+                self.canShowAd = true
+            }
+        }
+    }
+    
     
     func reloadData() {
         tableView.reloadData()
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Did you bring your towel?", message: "It's recommended you bring your towel before continuing.", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            self.showAd()
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+
+        self.present(alert, animated: true)
+    }
+    
+    
+    @IBAction func showAd() {
+        showAdvert = true
+        if !canShowAd {
+            selectedCell?.activitiIndicator.startAnimating()
+        } else {
+            selectedCell?.activitiIndicator.stopAnimating()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7, execute: {
+            self.selectedCell?.activitiIndicator.stopAnimating()
+            self.showAdvert = false
+        })
+        
+        rewardedAd?.present(fromRootViewController: self, delegate: self)
+    }
+    
+    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
+        print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+        let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
+        vc.playlistId = selectedPlaylistId
+        navigationController?.pushViewController(vc, animated: true)
+        PlaylistsCacheHelper.shared.addNewPlaylist(playlist: selectedPlaylistId)
     }
 }
 
@@ -73,9 +136,16 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
-        vc.playlistId = viewModel.playlists[indexPath.row].id
-        navigationController?.pushViewController(vc, animated: true)
+        selectedCell = tableView.cellForRow(at: indexPath) as! PlaylistTableViewCell
+        selectedPlaylistId = viewModel.playlists[indexPath.row].id
+        let id = viewModel.playlists[indexPath.row].id
+        if !PlaylistsCacheHelper.shared.getPlaylistsId().contains(id) {
+            showAlert()
+        } else {
+            let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
+            vc.playlistId = selectedPlaylistId
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

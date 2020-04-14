@@ -25,6 +25,7 @@
 		F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E42F2445A9C400C79D4C /* YoutubePlayerExtras.swift */; };
 		F5E8E4322445A9C500C79D4C /* YoutubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E4302445A9C500C79D4C /* YoutubePlayerView.swift */; };
 		F5E8E4342445B8FF00C79D4C /* SubtitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E4332445B8FF00C79D4C /* SubtitleModel.swift */; };
+		F5E8E4362445F5BD00C79D4C /* PlaylistsCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E4352445F5BD00C79D4C /* PlaylistsCacheHelper.swift */; };
 		F5FDA6F82444AFA000AC6A9D /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */; };
 		F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FDA6FB2444B04C00AC6A9D /* VideosListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		F5E8E42F2445A9C400C79D4C /* YoutubePlayerExtras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubePlayerExtras.swift; sourceTree = "<group>"; };
 		F5E8E4302445A9C500C79D4C /* YoutubePlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubePlayerView.swift; sourceTree = "<group>"; };
 		F5E8E4332445B8FF00C79D4C /* SubtitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleModel.swift; sourceTree = "<group>"; };
+		F5E8E4352445F5BD00C79D4C /* PlaylistsCacheHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsCacheHelper.swift; sourceTree = "<group>"; };
 		F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		F5FDA6FB2444B04C00AC6A9D /* VideosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +121,7 @@
 				F5E8E42E2445A99900C79D4C /* VideoPlayer */,
 				F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */,
 				F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */,
+				F5E8E4352445F5BD00C79D4C /* PlaylistsCacheHelper.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
 				F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */,
 				F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */,
+				F5E8E4362445F5BD00C79D4C /* PlaylistsCacheHelper.swift in Sources */,
 				F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

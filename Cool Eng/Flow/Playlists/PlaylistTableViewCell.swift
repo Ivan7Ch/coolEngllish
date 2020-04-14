@@ -16,8 +16,13 @@ class PlaylistTableViewCell: UITableViewCell {
     
     @IBOutlet weak var placeholder: UIImageView!
     
+    @IBOutlet weak var activitiIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var lock: UIImageView!
+    
     
     func configure(with playlistItem: PlaylistModel) {
+        activitiIndicator.stopAnimating()
         placeholder.image = UIImage(named: "default")
         if let url = URL(string: playlistItem.placeholder) {
             placeholder.load(url: url)
@@ -25,5 +30,11 @@ class PlaylistTableViewCell: UITableViewCell {
         placeholder.layer.cornerRadius = 8
         
         nameLabel.text = playlistItem.name
+        
+        if PlaylistsCacheHelper.shared.getPlaylistsId().contains(playlistItem.id) {
+            lock.alpha = 0
+        } else {
+            lock.alpha = 1
+        }
     }
 }
