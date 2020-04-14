@@ -23,6 +23,8 @@
 		F5CE9EC52444958C009EB618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CE9EC32444958C009EB618 /* LaunchScreen.storyboard */; };
 		F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9ECD2444997C009EB618 /* PlaylistsViewController.swift */; };
 		F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9ECF24449D70009EB618 /* PlaylistViewModel.swift */; };
+		F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E42F2445A9C400C79D4C /* YoutubePlayerExtras.swift */; };
+		F5E8E4322445A9C500C79D4C /* YoutubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E4302445A9C500C79D4C /* YoutubePlayerView.swift */; };
 		F5FDA6F82444AFA000AC6A9D /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */; };
 		F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FDA6FB2444B04C00AC6A9D /* VideosListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,8 @@
 		F5CE9EC62444958C009EB618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5CE9ECD2444997C009EB618 /* PlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
 		F5CE9ECF24449D70009EB618 /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
+		F5E8E42F2445A9C400C79D4C /* YoutubePlayerExtras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubePlayerExtras.swift; sourceTree = "<group>"; };
+		F5E8E4302445A9C500C79D4C /* YoutubePlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubePlayerView.swift; sourceTree = "<group>"; };
 		F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		F5FDA6FB2444B04C00AC6A9D /* VideosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +115,7 @@
 		F5C6A8752444BC6800716E96 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F5E8E42E2445A99900C79D4C /* VideoPlayer */,
 				F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */,
 				F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */,
 			);
@@ -161,6 +166,15 @@
 				F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */,
 			);
 			path = Playlists;
+			sourceTree = "<group>";
+		};
+		F5E8E42E2445A99900C79D4C /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				F5E8E42F2445A9C400C79D4C /* YoutubePlayerExtras.swift */,
+				F5E8E4302445A9C500C79D4C /* YoutubePlayerView.swift */,
+			);
+			path = VideoPlayer;
 			sourceTree = "<group>";
 		};
 		F5FDA6F92444B01C00AC6A9D /* VideosList */ = {
@@ -289,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */,
+				F5E8E4322445A9C500C79D4C /* YoutubePlayerView.swift in Sources */,
 				F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */,
 				F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */,
 				F5FDA6F82444AFA000AC6A9D /* PlaylistTableViewCell.swift in Sources */,
@@ -299,6 +314,7 @@
 				F5B46A732444B4F40007E8E4 /* Video.swift in Sources */,
 				F5CE9EB62444958B009EB618 /* AppDelegate.swift in Sources */,
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
+				F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */,
 				F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */,
 				F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */,
 			);

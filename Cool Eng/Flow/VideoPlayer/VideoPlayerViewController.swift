@@ -8,12 +8,11 @@
 
 import UIKit
 import AVFoundation
-import YouTubePlayer
 
 
 class VideoPlayerViewController: UIViewController {
 
-    @IBOutlet weak var videoPlayer: YouTubePlayerView!
+    @IBOutlet weak var videoPlayer: YoutubePlayerView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var playerHeightConstraint: NSLayoutConstraint!
     
@@ -24,12 +23,17 @@ class VideoPlayerViewController: UIViewController {
         super.viewDidLoad()
         
         title = video.name
-        videoPlayer.loadVideoID("9Pkn117amFw")
+        let playerVars: [String: Any] = [
+            "controls": 1,
+            "modestbranding": 1,
+            "playsinline": 1,
+            "origin": "https://youtube.com"
+        ]
         videoPlayer.delegate = self
+        videoPlayer.loadWithVideoId("x-MBR13sVqs", with: playerVars)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
             self.videoPlayer.play()
-            self.videoPlayer.seekTo(15, seekAhead: true)
         })
         
         
@@ -45,13 +49,13 @@ class VideoPlayerViewController: UIViewController {
         tableView.estimatedRowHeight = 80
         tableView.reloadData()
     }
-    
-    
 }
 
 
-extension VideoPlayerViewController: YouTubePlayerDelegate {
-    
+extension VideoPlayerViewController: YoutubePlayerViewDelegate {
+    func playerView(_ playerView: YoutubePlayerView, didPlayTime time: Float) {
+        print(time)
+    }
 }
 
 
