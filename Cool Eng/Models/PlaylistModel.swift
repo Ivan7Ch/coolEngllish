@@ -13,4 +13,5 @@ struct PlaylistModel {
     var id: String
     var name: String
     var placeholder: String
+    var views: Int = 0
 }

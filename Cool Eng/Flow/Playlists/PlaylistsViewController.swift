@@ -107,10 +107,11 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate, GADRewardedAd
     
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
         print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+        PlaylistsCacheHelper.shared.addNewPlaylist(playlist: selectedPlaylistId)
+        PlaylistFirebaseHelper.shared.increaseViews(playlist: selectedPlaylistId)
         let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
         vc.playlistId = selectedPlaylistId
         navigationController?.pushViewController(vc, animated: true)
-        PlaylistsCacheHelper.shared.addNewPlaylist(playlist: selectedPlaylistId)
     }
 }
 

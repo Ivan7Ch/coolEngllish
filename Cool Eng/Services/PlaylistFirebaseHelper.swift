@@ -36,6 +36,33 @@ class PlaylistFirebaseHelper {
     }
     
     
+    func fetchPlaylist(id: String, callback: @escaping (PlaylistModel?) -> Void) {
+        let docRef = db.collection("playlists").whereField("id", isEqualTo: id)
+        
+        docRef.getDocuments { (querySnapshot, err) in
+            if err != nil { return }
+            
+            var playlists: [PlaylistModel] = []
+            for document in querySnapshot!.documents {
+                if let playlist = self.parsePlaylistData(dict: document.data()) {
+                    playlists.append(playlist)
+                }
+            }
+            if let playlist = playlists.first {
+                callback(playlist)
+            } else {
+                callback(nil)
+            }
+        }
+    }
+    
+    
+    func increaseViews(playlist id: String) {
+        let docRef = db.collection("playlists").document(id)
+        docRef.updateData(["views":FieldValue.increment(Int64(1))])
+    }
+    
+    
     private func parsePlaylistData(dict: [String: Any]) -> PlaylistModel? {
         guard let id = dict["id"] as? String,
             let name = dict["name"] as? String,
