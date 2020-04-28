@@ -23,7 +23,7 @@ class VideosListViewController: UIViewController {
     
     var videos: [VideoModel] = []
     
-    var playlistId: String = ""
+    var playlistId: Int = 0
     
     
     override func viewDidLoad() {

@@ -57,20 +57,21 @@ class PlaylistFirebaseHelper {
     }
     
     
-    func increaseViews(playlist id: String) {
-        let docRef = db.collection("playlists").document(id)
+    func increaseViews(playlist id: Int) {
+        let docRef = db.collection("playlists").document("\(id)")
         docRef.updateData(["views":FieldValue.increment(Int64(1))])
     }
     
     
     private func parsePlaylistData(dict: [String: Any]) -> PlaylistModel? {
-        guard let id = dict["id"] as? String,
+        guard let id = dict["id"] as? Double,
             let name = dict["name"] as? String,
             let placeholder = dict["placeholder"] as? String else { return nil }
         
-        return PlaylistModel(id: id, name: name, placeholder: placeholder)
+        let views = (dict["views"] as? Double) ?? 0
+        
+        return PlaylistModel(id: Int(id), name: name, placeholder: placeholder, views: Int(views))
     }
-    
 }
 
 

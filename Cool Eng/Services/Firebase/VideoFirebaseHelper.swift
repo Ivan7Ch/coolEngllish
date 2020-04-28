@@ -18,7 +18,7 @@ class VideoFirebaseHelper {
     let db = Firestore.firestore()
     
     
-    func fetchVideos(playlistId: String, callback: @escaping ([VideoModel]) -> Void) {
+    func fetchVideos(playlistId: Int, callback: @escaping ([VideoModel]) -> Void) {
         
         let docRef = db.collection("videos").whereField("playlist", isEqualTo: playlistId)
         
@@ -37,22 +37,22 @@ class VideoFirebaseHelper {
     
     
     private func parseVideoData(dict: [String: Any]) -> VideoModel? {
-        guard let id = dict["id"] as? String,
+        guard let id = dict["id"] as? Double,
             let name = dict["name"] as? String,
             let placeholder = dict["placeholder"] as? String,
-            let playlist = dict["playlist"] as? String,
+            let playlist = dict["playlist"] as? Double,
             let url = dict["url"] as? String,
-            let subtitlesDict = dict["subtitles"] as? [[String:Any]]
+            let subtitlesId = dict["subtitles"] as? Double
         else { return nil }
         
-        var subtitles = [SubtitleModel]()
-        for i in subtitlesDict {
-            if let sub = parseSubtitleData(dict: i) {
-                subtitles.append(sub)
-            }
-        }
+//        var subtitles = [SubtitleModel]()
+//        for i in subtitlesDict {
+//            if let sub = parseSubtitleData(dict: i) {
+//                subtitles.append(sub)
+//            }
+//        }
         
-        return VideoModel(id: id, name: name, playlist: playlist, placeholder: placeholder, subtitles: subtitles, url: url)
+        return VideoModel(id: Int(id), name: name, playlist: Int(playlist), placeholder: placeholder, subtitlesId: Int(subtitlesId), url: url)
     }
     
     

@@ -15,9 +15,9 @@ class PlaylistsCacheHelper {
     
     func getPlaylistsId() -> [String] {
         let defaults = UserDefaults.standard
-        let playlists = defaults.stringArray(forKey: "playlists") ?? [String]()
+        let stringPlaylists = defaults.stringArray(forKey: "playlists") ?? [String]()
         
-        return playlists
+        return stringPlaylists
     }
     
     func addNewPlaylist(playlist: String) {

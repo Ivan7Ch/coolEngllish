@@ -20,6 +20,10 @@ class PlaylistTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lock: UIImageView!
     
+    @IBOutlet weak var lockWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var viewsCountLabel: UILabel!
+    
     
     func configure(with playlistItem: PlaylistModel) {
         activitiIndicator.stopAnimating()
@@ -31,10 +35,14 @@ class PlaylistTableViewCell: UITableViewCell {
         
         nameLabel.text = playlistItem.name
         
-        if PlaylistsCacheHelper.shared.getPlaylistsId().contains(playlistItem.id) {
+        if PlaylistsCacheHelper.shared.getPlaylistsId().contains("\(playlistItem.id)") {
             lock.alpha = 0
+            lockWidth.constant = 0
         } else {
             lock.alpha = 1
+            lockWidth.constant = 46
         }
+        
+        viewsCountLabel.text = "\(playlistItem.views) views"
     }
 }

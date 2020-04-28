@@ -30,6 +30,12 @@ class VideoPlayerViewController: UIViewController {
         setupPlayer()
         setupSubtitles()
         configTable()
+        
+        SubtitlesFirebaseHelper.shared.fetchSubtitles(subtitlesId: video.subtitlesId, callback: { sub in
+            self.video.subtitles = sub
+            self.setupSubtitles()
+            self.tableView.reloadData()
+        })
     }
     
     
@@ -56,6 +62,25 @@ class VideoPlayerViewController: UIViewController {
     
     
     private func setupSubtitles() {
+        
+        var newSubs = [SubtitleModel]()
+        for sub in video.subtitles {
+            var engStr = sub.eng
+            var ruStr = sub.ru
+            
+            if sub.eng.last?.isNewline ?? false {
+                engStr = String(sub.eng.dropLast())
+            }
+            
+            if sub.ru.last?.isNewline ?? false {
+                ruStr = String(sub.ru.dropLast())
+            }
+            
+            let newSub = SubtitleModel(start: sub.start, eng: engStr, ru: ruStr)
+            newSubs.append(newSub)
+        }
+        video.subtitles = newSubs
+        
         startTimes = []
         for i in video.subtitles {
             startTimes.append(i.start)
@@ -92,12 +117,24 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
         cell.translatedText.text = sub.ru
         cell.indicator.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         
+        if sub.isWatched {
+            cell.indicator.backgroundColor = UIColor(named: "indicator")
+        }
+        
         return cell
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sub = video.subtitles[indexPath.row]
+        let startTime = sub.start
+        videoPlayer.seek(to: Float(startTime), allowSeekAhead: true)
+    }
+    
+    
     func setSelectedCell(index: Int) {
-        let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! SubtitlesTableViewCell
-        cell.indicator.backgroundColor = UIColor(named: "indicator")
+        video.subtitles[index].isWatched = true
+        tableView.reloadData()
     }
 }
 

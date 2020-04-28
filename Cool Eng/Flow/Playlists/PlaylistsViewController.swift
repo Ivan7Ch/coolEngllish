@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMobileAds
+import Firebase
 
 
 class PlaylistsViewController: UIViewController, PlaylistDelegate, GADRewardedAdDelegate {
@@ -22,7 +23,7 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate, GADRewardedAd
     
     var selectedCell: PlaylistTableViewCell?
     
-    var selectedPlaylistId: String = ""
+    var selectedPlaylistId: Int = 0
     
     var showAdvert = false
     
@@ -59,10 +60,17 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate, GADRewardedAd
         tableView.delegate = self
     }
     
+    private func upload(error: String) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("errors").document("error")
+        docRef.updateData(["\(Int.random(in: 0...1000000))":"\(error)"])
+    }
+    
     private func setupAd() {
         rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-9391157593798156/5256111514")
         rewardedAd?.load(GADRequest()) { error in
             if let error = error {
+                self.upload(error: error.localizedDescription)
                 print(error)
             } else {
                 if self.showAdvert {
@@ -79,7 +87,7 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate, GADRewardedAd
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: "Did you bring your towel?", message: "It's recommended you bring your towel before continuing.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "To allow education to remain free, we have to show you ads.", message: "", preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
             self.showAd()
@@ -107,7 +115,7 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate, GADRewardedAd
     
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
         print("Reward received with currency: \(reward.type), amount \(reward.amount).")
-        PlaylistsCacheHelper.shared.addNewPlaylist(playlist: selectedPlaylistId)
+        PlaylistsCacheHelper.shared.addNewPlaylist(playlist: "\(selectedPlaylistId)")
         PlaylistFirebaseHelper.shared.increaseViews(playlist: selectedPlaylistId)
         let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
         vc.playlistId = selectedPlaylistId
@@ -140,7 +148,7 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
         selectedCell = tableView.cellForRow(at: indexPath) as! PlaylistTableViewCell
         selectedPlaylistId = viewModel.playlists[indexPath.row].id
         let id = viewModel.playlists[indexPath.row].id
-        if !PlaylistsCacheHelper.shared.getPlaylistsId().contains(id) {
+        if !PlaylistsCacheHelper.shared.getPlaylistsId().contains("\(id)") {
             showAlert()
         } else {
             let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
@@ -153,7 +161,7 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension PlaylistsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print(searchController.searchBar.text)
+        print(searchController.searchBar.text!)
     }
 }
 

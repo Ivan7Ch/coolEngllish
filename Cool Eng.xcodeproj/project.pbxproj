@@ -15,6 +15,7 @@
 		F5B46A782444B69E0007E8E4 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */; };
 		F5C6A8742444BBF800716E96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5C6A8732444BBF800716E96 /* GoogleService-Info.plist */; };
 		F5C6A8772444BC8300716E96 /* PlaylistFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */; };
+		F5C8161C24580D4900900412 /* SubtitlesFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C8161B24580D4900900412 /* SubtitlesFirebaseHelper.swift */; };
 		F5CE9EB62444958B009EB618 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9EB52444958B009EB618 /* AppDelegate.swift */; };
 		F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9EB72444958B009EB618 /* SceneDelegate.swift */; };
 		F5CE9EBD2444958B009EB618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CE9EBB2444958B009EB618 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
 		F5C6A8732444BBF800716E96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistFirebaseHelper.swift; sourceTree = "<group>"; };
+		F5C8161B24580D4900900412 /* SubtitlesFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitlesFirebaseHelper.swift; sourceTree = "<group>"; };
 		F5CE9EB22444958B009EB618 /* Cool Eng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cool Eng.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5CE9EB52444958B009EB618 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5CE9EB72444958B009EB618 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		F5E8E4302445A9C500C79D4C /* YoutubePlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubePlayerView.swift; sourceTree = "<group>"; };
 		F5E8E4332445B8FF00C79D4C /* SubtitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleModel.swift; sourceTree = "<group>"; };
 		F5E8E4352445F5BD00C79D4C /* PlaylistsCacheHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsCacheHelper.swift; sourceTree = "<group>"; };
+		F5F8C050244B5B22002F9123 /* Cool Eng.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cool Eng.entitlements"; sourceTree = "<group>"; };
 		F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		F5FDA6FB2444B04C00AC6A9D /* VideosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,13 +123,22 @@
 		F5C6A8752444BC6800716E96 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F5C8161D24580D4E00900412 /* Firebase */,
 				F55CEBE024462B770052A77E /* DataProvider.swift */,
 				F5E8E42E2445A99900C79D4C /* VideoPlayer */,
-				F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */,
-				F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */,
 				F5E8E4352445F5BD00C79D4C /* PlaylistsCacheHelper.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		F5C8161D24580D4E00900412 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */,
+				F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */,
+				F5C8161B24580D4900900412 /* SubtitlesFirebaseHelper.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		F5CE9EA92444958B009EB618 = {
@@ -150,6 +162,7 @@
 		F5CE9EB42444958B009EB618 /* Cool Eng */ = {
 			isa = PBXGroup;
 			children = (
+				F5F8C050244B5B22002F9123 /* Cool Eng.entitlements */,
 				F5C6A8752444BC6800716E96 /* Services */,
 				F5B46A742444B66E0007E8E4 /* Models */,
 				F548BBDD2444DBC900AE060C /* Flow */,
@@ -318,6 +331,7 @@
 				F5B46A762444B67E0007E8E4 /* VideoModel.swift in Sources */,
 				F5C6A8772444BC8300716E96 /* PlaylistFirebaseHelper.swift in Sources */,
 				F5CE9EB62444958B009EB618 /* AppDelegate.swift in Sources */,
+				F5C8161C24580D4900900412 /* SubtitlesFirebaseHelper.swift in Sources */,
 				F5E8E4342445B8FF00C79D4C /* SubtitleModel.swift in Sources */,
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
 				F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */,
@@ -469,14 +483,18 @@
 			baseConfigurationReference = 954F9B72E6749571AD310654 /* Pods-Cool Eng.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Cool Eng/Cool Eng.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = Z6SVM5W336;
 				INFOPLIST_FILE = "Cool Eng/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.deserteam.cool-eng";
+				MARKETING_VERSION = 1.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.inch70798.cool-eng";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -488,14 +506,18 @@
 			baseConfigurationReference = C9DC0C9F6A69511812593570 /* Pods-Cool Eng.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Cool Eng/Cool Eng.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = Z6SVM5W336;
 				INFOPLIST_FILE = "Cool Eng/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.deserteam.cool-eng";
+				MARKETING_VERSION = 1.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.inch70798.cool-eng";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

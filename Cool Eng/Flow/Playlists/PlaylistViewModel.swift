@@ -28,22 +28,6 @@ class PlaylistViewModel {
     func fetchPlaylists() {
         PlaylistFirebaseHelper.shared.fetchPlaylists(callback: { playlists in
             self.playlists = playlists
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
-            self.playlists.append(playlists[0])
             self.delegate.reloadData()
         })
     }

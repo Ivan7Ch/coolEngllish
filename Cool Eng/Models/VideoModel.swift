@@ -10,10 +10,11 @@ import UIKit
 
 
 struct VideoModel {
-    var id: String
+    var id: Int
     var name: String
-    var playlist: String
+    var playlist: Int
     var placeholder: String
-    var subtitles: [SubtitleModel]
+    var subtitlesId: Int
+    var subtitles: [SubtitleModel] = []
     var url: String
 }

@@ -13,4 +13,5 @@ struct SubtitleModel {
     var start: Double
     var eng: String
     var ru: String
+    var isWatched: Bool = false
 }

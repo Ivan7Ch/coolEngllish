@@ -10,8 +10,8 @@ import Foundation
 
 
 struct PlaylistModel {
-    var id: String
+    var id: Int
     var name: String
     var placeholder: String
-    var views: Int = 0
+    var views: Int = 2
 }
