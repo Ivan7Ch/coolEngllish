@@ -38,7 +38,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="5pL-t0-r83">
-                                                    <rect key="frame" x="12" y="58.5" width="155.5" height="100"/>
+                                                    <rect key="frame" x="12" y="58.5" width="155.50000000000011" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="BlM-VZ-QQM"/>
                                                         <constraint firstAttribute="width" secondItem="5pL-t0-r83" secondAttribute="height" multiplier="14:9" id="Zb8-WY-N9q"/>

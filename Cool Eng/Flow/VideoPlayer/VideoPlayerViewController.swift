@@ -31,7 +31,7 @@ class VideoPlayerViewController: UIViewController {
         setupSubtitles()
         configTable()
         
-        SubtitlesFirebaseHelper.shared.fetchSubtitles(subtitlesId: video.subtitlesId, callback: { sub in
+        SubtitlesFirebaseHelper.shared.fetchSubtitles(videoId: video.id, callback: { sub in
             self.video.subtitles = sub
             self.setupSubtitles()
             self.tableView.reloadData()

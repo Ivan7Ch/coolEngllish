@@ -14,7 +14,7 @@ struct VideoModel {
     var name: String
     var playlist: Int
     var placeholder: String
-    var subtitlesId: Int
+    var subtitlesId: Int = 0
     var subtitles: [SubtitleModel] = []
     var url: String
 }

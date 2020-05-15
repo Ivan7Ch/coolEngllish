@@ -43,6 +43,9 @@ class PlaylistTableViewCell: UITableViewCell {
             lockWidth.constant = 46
         }
         
+        lock.alpha = 0
+        lockWidth.constant = 0
+        
         viewsCountLabel.text = "\(playlistItem.views) views"
     }
 }

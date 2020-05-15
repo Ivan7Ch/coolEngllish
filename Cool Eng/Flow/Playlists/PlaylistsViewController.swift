@@ -148,13 +148,16 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
         selectedCell = tableView.cellForRow(at: indexPath) as! PlaylistTableViewCell
         selectedPlaylistId = viewModel.playlists[indexPath.row].id
         let id = viewModel.playlists[indexPath.row].id
-        if !PlaylistsCacheHelper.shared.getPlaylistsId().contains("\(id)") {
-            showAlert()
-        } else {
-            let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
-            vc.playlistId = selectedPlaylistId
-            navigationController?.pushViewController(vc, animated: true)
-        }
+//        if !PlaylistsCacheHelper.shared.getPlaylistsId().contains("\(id)") {
+//            showAlert()
+//        } else {
+//            let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
+//            vc.playlistId = selectedPlaylistId
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
+        let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
+        vc.playlistId = selectedPlaylistId
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

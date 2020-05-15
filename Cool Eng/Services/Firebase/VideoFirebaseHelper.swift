@@ -41,8 +41,7 @@ class VideoFirebaseHelper {
             let name = dict["name"] as? String,
             let placeholder = dict["placeholder"] as? String,
             let playlist = dict["playlist"] as? Double,
-            let url = dict["url"] as? String,
-            let subtitlesId = dict["subtitles"] as? Double
+            let url = dict["url"] as? String
         else { return nil }
         
 //        var subtitles = [SubtitleModel]()
@@ -52,7 +51,7 @@ class VideoFirebaseHelper {
 //            }
 //        }
         
-        return VideoModel(id: Int(id), name: name, playlist: Int(playlist), placeholder: placeholder, subtitlesId: Int(subtitlesId), url: url)
+        return VideoModel(id: Int(id), name: name, playlist: Int(playlist), placeholder: placeholder, url: url)
     }
     
     
