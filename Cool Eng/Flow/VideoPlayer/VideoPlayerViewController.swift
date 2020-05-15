@@ -128,6 +128,13 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
             cell.indicator.backgroundColor = UIColor(named: "indicator")
         }
         
+        cell.index = indexPath.row
+        cell.cellTapHandler = { ind in
+            let sub = self.video.subtitles[ind]
+            let startTime = sub.start
+            self.videoPlayer.seek(to: Float(startTime), allowSeekAhead: true)
+        }
+        
         return cell
     }
     
@@ -156,6 +163,8 @@ class SubtitlesTableViewCell: UITableViewCell {
     @IBOutlet weak var indicator: UIView!
     
     var wordTapHandler: (String) -> () = {_ in }
+    var cellTapHandler: (Int) -> () = {_ in }
+    var index: Int = 0
     
     
     override func awakeFromNib() {
@@ -171,5 +180,10 @@ class SubtitlesTableViewCell: UITableViewCell {
         originalText.handleHashtagTap {
             self.wordTapHandler($0)
         }
+    }
+    
+    @IBAction func seekVideoPositionButtonAction() {
+        cellTapHandler(index)
+        print(index)
     }
 }
