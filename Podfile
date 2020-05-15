@@ -6,6 +6,7 @@ target 'Cool Eng' do
   use_frameworks!
   pod 'Firebase/Firestore'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'ActiveLabel'
   # Pods for Cool Eng
 
 end

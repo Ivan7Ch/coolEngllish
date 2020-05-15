@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import ActiveLabel
 
 
 class VideoPlayerViewController: UIViewController {
@@ -25,6 +26,9 @@ class VideoPlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let subtitles = SubtitleModel(start: 0.0, eng: " pespes, kitkit #konoplia and some others animals", ru: "рускі тваринки не вщот")
+//        video = VideoModel(id: 0, name: "Sobaka", playlist: 1, placeholder: "", subtitlesId: 1, subtitles: [subtitles], url: "")
         
         title = video.name
         setupPlayer()
@@ -140,12 +144,24 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
 
 
 class SubtitlesTableViewCell: UITableViewCell {
-    @IBOutlet weak var originalText: UILabel!
+    @IBOutlet weak var originalText: ActiveLabel!
     @IBOutlet weak var translatedText: UILabel!
     @IBOutlet weak var indicator: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        setupActiveLabel()
+    }
+    
+    
+    private func setupActiveLabel() {
+        originalText.numberOfLines = 0
+//        originalText.text = " Over time, philosophers like Plato, Aristotle, Socrates and Kant, among others, questioned the meaning of art."
+        
+        originalText.hashtagColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        originalText.handleHashtagTap {
+            print($0)
+        }
     }
 }

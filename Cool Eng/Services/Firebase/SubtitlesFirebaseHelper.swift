@@ -56,7 +56,7 @@ class SubtitlesFirebaseHelper {
             let eng = dict["text"] as? String
         else { return nil }
         
-        return SubtitleModel(start: Double(start) ?? 0, eng: eng, ru: "")
+        return SubtitleModel(start: Double(start) ?? 0, eng: " " + eng, ru: "")
     }
 }
 
