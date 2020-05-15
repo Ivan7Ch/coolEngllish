@@ -120,6 +120,9 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
         cell.originalText.text = sub.eng
         cell.translatedText.text = sub.ru
         cell.indicator.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        cell.wordTapHandler = { word in
+            self.wordTapHandler(word: word)
+        }
         
         if sub.isWatched {
             cell.indicator.backgroundColor = UIColor(named: "indicator")
@@ -140,6 +143,10 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
         video.subtitles[index].isWatched = true
         tableView.reloadData()
     }
+    
+    func wordTapHandler(word: String) {
+        self.showToast(message: "\(word)", submessage: "винаходити")
+    }
 }
 
 
@@ -147,6 +154,9 @@ class SubtitlesTableViewCell: UITableViewCell {
     @IBOutlet weak var originalText: ActiveLabel!
     @IBOutlet weak var translatedText: UILabel!
     @IBOutlet weak var indicator: UIView!
+    
+    var wordTapHandler: (String) -> () = {_ in }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -157,11 +167,9 @@ class SubtitlesTableViewCell: UITableViewCell {
     
     private func setupActiveLabel() {
         originalText.numberOfLines = 0
-//        originalText.text = " Over time, philosophers like Plato, Aristotle, Socrates and Kant, among others, questioned the meaning of art."
-        
         originalText.hashtagColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         originalText.handleHashtagTap {
-            print($0)
+            self.wordTapHandler($0)
         }
     }
 }
