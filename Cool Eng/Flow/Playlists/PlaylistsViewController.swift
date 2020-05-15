@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMobileAds
 import Firebase
+import Kingfisher
 
 
 class PlaylistsViewController: UIViewController, PlaylistDelegate, GADRewardedAdDelegate {
@@ -165,14 +166,5 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
 extension PlaylistsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         print(searchController.searchBar.text!)
-    }
-}
-
-
-extension UIImageView {
-    func load(url: URL) {
-        DataProvider().downloadImage(url: url, completion: { image in
-            self.image = image
-        })
     }
 }

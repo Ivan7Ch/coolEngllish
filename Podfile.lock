@@ -241,6 +241,9 @@ PODS:
     - gRPC-Core/Interface (= 1.21.0)
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
+  - Kingfisher (5.13.4):
+    - Kingfisher/Core (= 5.13.4)
+  - Kingfisher/Core (5.13.4)
   - leveldb-library (1.22)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -253,6 +256,7 @@ DEPENDENCIES:
   - ActiveLabel
   - Firebase/Firestore
   - Google-Mobile-Ads-SDK
+  - Kingfisher
 
 SPEC REPOS:
   trunk:
@@ -272,6 +276,7 @@ SPEC REPOS:
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
+    - Kingfisher
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -293,10 +298,11 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
+  Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
 
-PODFILE CHECKSUM: f2f8091c4c93e1f0bf4755c02d238617337f433e
+PODFILE CHECKSUM: bc476bb891655a8583c63972491b7b0aef4bf589
 
 COCOAPODS: 1.9.0

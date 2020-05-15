@@ -29,7 +29,8 @@ class PlaylistTableViewCell: UITableViewCell {
         activitiIndicator.stopAnimating()
         placeholder.image = UIImage(named: "default")
         if let url = URL(string: playlistItem.placeholder) {
-            placeholder.load(url: url)
+            let image = UIImage(named: "default")
+            placeholder.kf.setImage(with: url, placeholder: image)
         }
         placeholder.layer.cornerRadius = 8
         

@@ -60,7 +60,8 @@ extension VideosListViewController: UITableViewDataSource, UITableViewDelegate {
         let video = videos[indexPath.row]
         
         if let url = URL(string: video.placeholder) {
-            cell.thumbnail.load(url: url)
+            let image = UIImage(named: "default")
+            cell.thumbnail.kf.setImage(with: url, placeholder: image)
         }
         cell.title.text = video.name
         

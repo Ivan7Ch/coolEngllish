@@ -7,6 +7,7 @@ target 'Cool Eng' do
   pod 'Firebase/Firestore'
   pod 'Google-Mobile-Ads-SDK'
   pod 'ActiveLabel'
+  pod 'Kingfisher'
   # Pods for Cool Eng
 
 end
