@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import Kingfisher
-import AVFoundation
 
 
 class PlaylistsViewController: UIViewController, PlaylistDelegate {
@@ -21,10 +20,6 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
     var selectedCell: PlaylistTableViewCell?
     
     var selectedPlaylistId: Int = 0
-    
-    var player: AVPlayer?
-    var playerItem:AVPlayerItem?
-    
 
     
     override func viewDidLoad() {
@@ -38,11 +33,6 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.reloadData()
-        
-        let url = URL(string: "http://packs.shtooka.net/eng-balm-emmanuel/mp3/eng-f715dbc3.mp3")
-        let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
-        player = AVPlayer(playerItem: playerItem)
-        player!.play()
     }
     
     

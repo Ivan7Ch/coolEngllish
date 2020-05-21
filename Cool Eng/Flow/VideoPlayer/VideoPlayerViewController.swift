@@ -9,10 +9,11 @@
 import UIKit
 import AVFoundation
 import ActiveLabel
+import GoogleMobileAds
 
 
 class VideoPlayerViewController: UIViewController {
-
+    
     @IBOutlet weak var videoPlayer: YoutubePlayerView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var playerHeightConstraint: NSLayoutConstraint!
@@ -23,12 +24,13 @@ class VideoPlayerViewController: UIViewController {
     
     private var player: AVPlayer!
     
+    var videoLastSubtitleTime: Double = 0
+    
+    var interstitial: GADInterstitial!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let subtitles = SubtitleModel(start: 0.0, eng: " pespes, kitkit #konoplia and some others animals", ru: "рускі тваринки не вщот")
-//        video = VideoModel(id: 0, name: "Sobaka", playlist: 1, placeholder: "", subtitlesId: 1, subtitles: [subtitles], url: "")
         
         title = video.name
         setupPlayer()
@@ -40,6 +42,10 @@ class VideoPlayerViewController: UIViewController {
             self.setupSubtitles()
             self.tableView.reloadData()
         })
+        
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-9391157593798156/8400807389")
+        let request = GADRequest()
+        interstitial.load(request)
     }
     
     
@@ -89,6 +95,8 @@ class VideoPlayerViewController: UIViewController {
         for i in video.subtitles {
             startTimes.append(i.start)
         }
+        
+        videoLastSubtitleTime = startTimes.last ?? 0
     }
 }
 
@@ -100,6 +108,12 @@ extension VideoPlayerViewController: YoutubePlayerViewDelegate {
                 setSelectedCell(index: index)
             } else {
                 break
+            }
+        }
+        
+        if time > Float(videoLastSubtitleTime + 3.0) {
+            if interstitial.isReady {
+                interstitial.present(fromRootViewController: self)
             }
         }
     }
