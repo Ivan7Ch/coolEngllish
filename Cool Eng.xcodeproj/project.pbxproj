@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		F41E68F9C744D95FC53B34DD /* Pods_Cool_Eng.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76774B42A233CFA1A3671E34 /* Pods_Cool_Eng.framework */; };
+		F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5360F14246F087100550559 /* GoogleService-Info.plist */; };
+		F5360F17246F0C2C00550559 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5360F16246F0C2C00550559 /* Dictionary.swift */; };
 		F548BBDC2444CA8900AE060C /* VideoFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */; };
 		F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */; };
 		F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55666B8246EA96E002C3821 /* ToastMessage.swift */; };
-		F55CEBE124462B770052A77E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55CEBE024462B770052A77E /* DataProvider.swift */; };
 		F5B46A762444B67E0007E8E4 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A752444B67E0007E8E4 /* VideoModel.swift */; };
 		F5B46A782444B69E0007E8E4 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */; };
-		F5C6A8742444BBF800716E96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5C6A8732444BBF800716E96 /* GoogleService-Info.plist */; };
 		F5C6A8772444BC8300716E96 /* PlaylistFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */; };
 		F5C8161C24580D4900900412 /* SubtitlesFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C8161B24580D4900900412 /* SubtitlesFirebaseHelper.swift */; };
 		F5CE9EB62444958B009EB618 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9EB52444958B009EB618 /* AppDelegate.swift */; };
@@ -37,13 +37,13 @@
 		76774B42A233CFA1A3671E34 /* Pods_Cool_Eng.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cool_Eng.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		954F9B72E6749571AD310654 /* Pods-Cool Eng.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cool Eng.debug.xcconfig"; path = "Target Support Files/Pods-Cool Eng/Pods-Cool Eng.debug.xcconfig"; sourceTree = "<group>"; };
 		C9DC0C9F6A69511812593570 /* Pods-Cool Eng.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cool Eng.release.xcconfig"; path = "Target Support Files/Pods-Cool Eng/Pods-Cool Eng.release.xcconfig"; sourceTree = "<group>"; };
+		F5360F14246F087100550559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F5360F16246F0C2C00550559 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFirebaseHelper.swift; sourceTree = "<group>"; };
 		F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		F55666B8246EA96E002C3821 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
-		F55CEBE024462B770052A77E /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		F5B46A752444B67E0007E8E4 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
-		F5C6A8732444BBF800716E96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistFirebaseHelper.swift; sourceTree = "<group>"; };
 		F5C8161B24580D4900900412 /* SubtitlesFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitlesFirebaseHelper.swift; sourceTree = "<group>"; };
 		F5CE9EB22444958B009EB618 /* Cool Eng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cool Eng.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,9 +135,9 @@
 			children = (
 				F55666B7246EA95A002C3821 /* Extensions */,
 				F5C8161D24580D4E00900412 /* Firebase */,
-				F55CEBE024462B770052A77E /* DataProvider.swift */,
 				F5E8E42E2445A99900C79D4C /* VideoPlayer */,
 				F5E8E4352445F5BD00C79D4C /* PlaylistsCacheHelper.swift */,
+				F5360F16246F0C2C00550559 /* Dictionary.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -182,7 +182,7 @@
 				F5CE9EBB2444958B009EB618 /* Main.storyboard */,
 				F5CE9EC12444958C009EB618 /* Assets.xcassets */,
 				F5CE9EC32444958C009EB618 /* LaunchScreen.storyboard */,
-				F5C6A8732444BBF800716E96 /* GoogleService-Info.plist */,
+				F5360F14246F087100550559 /* GoogleService-Info.plist */,
 				F5CE9EC62444958C009EB618 /* Info.plist */,
 				F5CE9EBE2444958B009EB618 /* Cool_Eng.xcdatamodeld */,
 			);
@@ -277,9 +277,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5CE9EC52444958C009EB618 /* LaunchScreen.storyboard in Resources */,
+				F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */,
 				F5CE9EC22444958C009EB618 /* Assets.xcassets in Resources */,
 				F5CE9EBD2444958B009EB618 /* Main.storyboard in Resources */,
-				F5C6A8742444BBF800716E96 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +334,7 @@
 			files = (
 				F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */,
 				F5E8E4322445A9C500C79D4C /* YoutubePlayerView.swift in Sources */,
+				F5360F17246F0C2C00550559 /* Dictionary.swift in Sources */,
 				F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */,
 				F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */,
 				F5FDA6F82444AFA000AC6A9D /* PlaylistTableViewCell.swift in Sources */,
@@ -347,7 +348,6 @@
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
 				F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */,
 				F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */,
-				F55CEBE124462B770052A77E /* DataProvider.swift in Sources */,
 				F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */,
 				F5E8E4362445F5BD00C79D4C /* PlaylistsCacheHelper.swift in Sources */,
 				F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */,

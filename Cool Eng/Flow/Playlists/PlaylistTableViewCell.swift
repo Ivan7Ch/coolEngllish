@@ -24,6 +24,8 @@ class PlaylistTableViewCell: UITableViewCell {
     
     @IBOutlet weak var viewsCountLabel: UILabel!
     
+    @IBOutlet weak var videosCountLabel: UILabel!
+    
     
     func configure(with playlistItem: PlaylistModel) {
         activitiIndicator.stopAnimating()
@@ -48,5 +50,7 @@ class PlaylistTableViewCell: UITableViewCell {
         lockWidth.constant = 0
         
         viewsCountLabel.text = "\(playlistItem.views) views"
+        
+        videosCountLabel.text = "\(playlistItem.videosCount) videos"
     }
 }

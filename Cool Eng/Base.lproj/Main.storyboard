@@ -38,7 +38,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="5pL-t0-r83">
-                                                    <rect key="frame" x="12" y="58.5" width="155.50000000000011" height="100"/>
+                                                    <rect key="frame" x="12" y="58.5" width="155.5" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="BlM-VZ-QQM"/>
                                                         <constraint firstAttribute="width" secondItem="5pL-t0-r83" secondAttribute="height" multiplier="14:9" id="Zb8-WY-N9q"/>
@@ -89,6 +89,7 @@
                                             <outlet property="lockWidth" destination="Aca-36-Cfb" id="igQ-DN-bxP"/>
                                             <outlet property="nameLabel" destination="IS1-ZY-9YR" id="mqj-Xr-b37"/>
                                             <outlet property="placeholder" destination="5pL-t0-r83" id="4fW-jw-iS8"/>
+                                            <outlet property="videosCountLabel" destination="kAq-dz-0rm" id="rdB-DX-Gbw"/>
                                             <outlet property="viewsCountLabel" destination="o2f-8U-ztu" id="C6d-om-fhQ"/>
                                         </connections>
                                     </tableViewCell>
@@ -156,7 +157,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="afD-c4-nF7">
-                                                    <rect key="frame" x="0.0" y="1" width="414.00000000000011" height="233"/>
+                                                    <rect key="frame" x="0.0" y="1" width="414" height="233"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="afD-c4-nF7" secondAttribute="height" multiplier="16:9" id="tFz-uA-U3i"/>
                                                     </constraints>

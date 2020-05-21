@@ -10,6 +10,7 @@ import UIKit
 import GoogleMobileAds
 import Firebase
 import Kingfisher
+import AVFoundation
 
 
 class PlaylistsViewController: UIViewController, PlaylistDelegate, GADRewardedAdDelegate {
@@ -28,6 +29,10 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate, GADRewardedAd
     
     var showAdvert = false
     
+    var player: AVPlayer?
+    var playerItem:AVPlayerItem?
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +50,11 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate, GADRewardedAd
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.reloadData()
+        
+        let url = URL(string: "http://packs.shtooka.net/eng-balm-emmanuel/mp3/eng-f715dbc3.mp3")
+        let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
+        player = AVPlayer(playerItem: playerItem)
+        player!.play()
     }
     
     

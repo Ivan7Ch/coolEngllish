@@ -69,8 +69,12 @@ class PlaylistFirebaseHelper {
             let placeholder = dict["placeholder"] as? String else { return nil }
         
         let views = (dict["views"] as? Double) ?? 0
+        var videosCount = 0
+        if let v = dict["videosCount"] as? Double {
+            videosCount = Int(v)
+        }
         
-        return PlaylistModel(id: Int(id), name: name, placeholder: placeholder, views: Int(views))
+        return PlaylistModel(id: Int(id), name: name, placeholder: placeholder, views: Int(views), videosCount: videosCount)
     }
 }
 
