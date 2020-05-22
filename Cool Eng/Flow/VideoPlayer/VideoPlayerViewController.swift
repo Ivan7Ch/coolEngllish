@@ -48,6 +48,47 @@ class VideoPlayerViewController: UIViewController {
         interstitial.load(request)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        showAdvert()
+    }
+    
+    
+    private func showAdvert() {
+        if lastAdvertPresentation() < -15 { return }
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+            UserDefaults.standard.set(Date(), forKey: "lasdAdvert")
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+                if self.interstitial.isReady {
+                    self.interstitial.present(fromRootViewController: self)
+                    UserDefaults.standard.set(Date(), forKey: "lasdAdvert")
+                }
+            })
+        }
+    }
+    
+    
+    private func lastAdvertPresentation() -> Int {
+        guard let date = UserDefaults.standard.object(forKey: "lasdAdvert") as? Date else {
+            UserDefaults.standard.set(Date(), forKey: "lasdAdvert")
+            return Int.max
+        }
+        let df = DateFormatter()
+        df.dateFormat = "dd/MM/yyyy HH:mm"
+        
+        let timeDate = date
+        let calendar = Calendar.current
+        let timeComponents = calendar.dateComponents([.hour, .minute], from: timeDate)
+        let nowComponents = calendar.dateComponents([.hour, .minute], from: Date())
+        
+        let difference = calendar.dateComponents([.minute], from: timeComponents, to: nowComponents).minute!
+        
+        return difference
+    }
+    
     
     private func setupPlayer() {
         let playerVars: [String: Any] = [
@@ -111,10 +152,8 @@ extension VideoPlayerViewController: YoutubePlayerViewDelegate {
             }
         }
         
-        if time > Float(videoLastSubtitleTime + 3.0) {
-            if interstitial.isReady {
-                interstitial.present(fromRootViewController: self)
-            }
+        if time > Float(1.0) {
+            showAdvert()
         }
     }
 }

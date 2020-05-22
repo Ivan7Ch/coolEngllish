@@ -19,6 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+        let time = "12:05"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let timeDate = dateFormatter.date(from: time)!
+        let calendar = Calendar.current
+        let timeComponents = calendar.dateComponents([.hour, .minute], from: timeDate)
+        let nowComponents = calendar.dateComponents([.hour, .minute], from: Date())
+
+        let difference = calendar.dateComponents([.minute], from: timeComponents, to: nowComponents).minute!
+        
+        print(difference)
+        
         return true
     }
 
