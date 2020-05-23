@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F41E68F9C744D95FC53B34DD /* Pods_Cool_Eng.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76774B42A233CFA1A3671E34 /* Pods_Cool_Eng.framework */; };
+		F52F4A0A24784297000BE9E6 /* dict_ua.txt in Resources */ = {isa = PBXBuildFile; fileRef = F52F4A0924784297000BE9E6 /* dict_ua.txt */; };
+		F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */; };
 		F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5360F14246F087100550559 /* GoogleService-Info.plist */; };
 		F5360F17246F0C2C00550559 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5360F16246F0C2C00550559 /* Dictionary.swift */; };
 		F548BBDC2444CA8900AE060C /* VideoFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */; };
@@ -37,6 +39,8 @@
 		76774B42A233CFA1A3671E34 /* Pods_Cool_Eng.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cool_Eng.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		954F9B72E6749571AD310654 /* Pods-Cool Eng.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cool Eng.debug.xcconfig"; path = "Target Support Files/Pods-Cool Eng/Pods-Cool Eng.debug.xcconfig"; sourceTree = "<group>"; };
 		C9DC0C9F6A69511812593570 /* Pods-Cool Eng.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cool Eng.release.xcconfig"; path = "Target Support Files/Pods-Cool Eng/Pods-Cool Eng.release.xcconfig"; sourceTree = "<group>"; };
+		F52F4A0924784297000BE9E6 /* dict_ua.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dict_ua.txt; sourceTree = "<group>"; };
+		F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryManager.swift; sourceTree = "<group>"; };
 		F5360F14246F087100550559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F5360F16246F0C2C00550559 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFirebaseHelper.swift; sourceTree = "<group>"; };
@@ -92,6 +96,15 @@
 				76774B42A233CFA1A3671E34 /* Pods_Cool_Eng.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F52F4A082478421F000BE9E6 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				F52F4A0924784297000BE9E6 /* dict_ua.txt */,
+				F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */,
+			);
+			path = Dictionary;
 			sourceTree = "<group>";
 		};
 		F548BBDD2444DBC900AE060C /* Flow */ = {
@@ -173,6 +186,7 @@
 		F5CE9EB42444958B009EB618 /* Cool Eng */ = {
 			isa = PBXGroup;
 			children = (
+				F52F4A082478421F000BE9E6 /* Dictionary */,
 				F5F8C050244B5B22002F9123 /* Cool Eng.entitlements */,
 				F5C6A8752444BC6800716E96 /* Services */,
 				F5B46A742444B66E0007E8E4 /* Models */,
@@ -280,6 +294,7 @@
 				F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */,
 				F5CE9EC22444958C009EB618 /* Assets.xcassets in Resources */,
 				F5CE9EBD2444958B009EB618 /* Main.storyboard in Resources */,
+				F52F4A0A24784297000BE9E6 /* dict_ua.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +362,7 @@
 				F5E8E4342445B8FF00C79D4C /* SubtitleModel.swift in Sources */,
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
 				F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */,
+				F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */,
 				F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */,
 				F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */,
 				F5E8E4362445F5BD00C79D4C /* PlaylistsCacheHelper.swift in Sources */,

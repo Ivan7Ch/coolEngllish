@@ -10,6 +10,7 @@ target 'Cool Eng' do
   pod 'ActiveLabel'
   pod 'Kingfisher'
   pod 'SwiftyJSON'
+  pod 'RealmSwift'
   # Pods for Cool Eng
 
 end

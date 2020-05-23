@@ -27,12 +27,3 @@ class DictionaryHelper {
     }
 }
 
-
-struct Word: Codable {
-    var id: Int
-    var original: String
-    var translated: String = ""
-    var transcription: String = ""
-    var audioPath: String = ""
-    var sentence: String = ""
-}

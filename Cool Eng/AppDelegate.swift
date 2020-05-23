@@ -20,17 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
-        let time = "12:05"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        let timeDate = dateFormatter.date(from: time)!
-        let calendar = Calendar.current
-        let timeComponents = calendar.dateComponents([.hour, .minute], from: timeDate)
-        let nowComponents = calendar.dateComponents([.hour, .minute], from: Date())
-
-        let difference = calendar.dateComponents([.minute], from: timeComponents, to: nowComponents).minute!
-        
-        print(difference)
+        if !UserDefaults.standard.bool(forKey: "isDictionarySettuped") {
+            DictionaryManager.shared.setup()
+        }
         
         return true
     }
