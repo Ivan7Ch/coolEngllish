@@ -56,6 +56,7 @@ class VideoPlayerViewController: UIViewController {
     
     
     private func showAdvert() {
+        return
         if lastAdvertPresentation() < -15 { return }
         if interstitial.isReady {
             interstitial.present(fromRootViewController: self)
@@ -205,7 +206,8 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func wordTapHandler(word: String) {
-        self.showToast(message: "\(word)", submessage: "винаходити")
+        guard let w = DictionaryManager.shared.getSimpleWord(word.lowercased()) else { return }
+        self.showToast(message: "\(word)", submessage: w.translation)
     }
 }
 
