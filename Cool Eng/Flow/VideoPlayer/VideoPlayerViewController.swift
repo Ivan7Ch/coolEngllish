@@ -140,6 +140,31 @@ class VideoPlayerViewController: UIViewController {
         
         videoLastSubtitleTime = startTimes.last ?? 0
     }
+    
+    private func convertText(_ text: String) -> String {
+        var res = ""
+        let div = "​"
+        
+        let words = text.split { $0.isWhitespace }
+        let rWords = DictionaryManager.shared.getAllWords()
+        var dict = [String: String]()
+        
+        for i in rWords {
+            dict[i.original] = i.translation
+        }
+        
+        for i in words {
+            let w = i.replacingOccurrences(of: ".", with: "")
+                .replacingOccurrences(of: ",", with: "").lowercased()
+            if let _ = dict[String(w)] {
+                res = res + " \(i)"
+            } else {
+                res = res + " \(div)\(i)"
+            }
+        }
+        
+        return res
+    }
 }
 
 
@@ -171,7 +196,7 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
         
         let sub = video.subtitles[indexPath.row]
         
-        cell.originalText.text = sub.eng
+        cell.originalText.text = convertText(sub.eng)
         cell.translatedText.text = sub.ru
         cell.indicator.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         cell.wordTapHandler = { word in
@@ -213,6 +238,7 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
 
 
 class SubtitlesTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var originalText: ActiveLabel!
     @IBOutlet weak var translatedText: UILabel!
     @IBOutlet weak var indicator: UIView!
@@ -231,14 +257,40 @@ class SubtitlesTableViewCell: UITableViewCell {
     
     private func setupActiveLabel() {
         originalText.numberOfLines = 0
-        originalText.hashtagColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        originalText.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        originalText.hashtagColor = #colorLiteral(red: 0.1411764706, green: 0.4470588235, blue: 0.6705882353, alpha: 1)
         originalText.handleHashtagTap {
             self.wordTapHandler($0)
         }
     }
     
+    
     @IBAction func seekVideoPositionButtonAction() {
         cellTapHandler(index)
         print(index)
+    }
+}
+
+
+extension UILabel{
+    
+    func underline() {
+        if let textString = text {
+            let attributedString = NSMutableAttributedString(string: textString)
+            print(attributedText?.length)
+            if attributedString.length < -5 {
+                attributedString.addAttribute(   NSAttributedString.Key.underlineStyle,
+                value: NSUnderlineStyle.single.rawValue,
+                range: NSRange(location: 2,
+                               length: 5))
+            } else {
+                attributedString.addAttribute(   NSAttributedString.Key.underlineStyle,
+                value: NSUnderlineStyle.single.rawValue,
+                range: NSRange(location: 10,
+                               length: attributedString.length - 5))
+            }
+            
+            attributedText = attributedString
+        }
     }
 }

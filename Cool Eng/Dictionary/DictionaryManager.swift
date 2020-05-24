@@ -59,6 +59,20 @@ class DictionaryManager {
         return Word(id: 0, original: word.original, translation: word.translation)
     }
     
+    func getAllWords() -> [Word] {
+        var res = [Word]()
+        
+        let realm = try! Realm()
+        
+        let words = realm.objects(RealmWord.self)
+        
+        for i in words {
+            res.append(Word(id: 0, original: i.original, translation: i.translation))
+        }
+        
+        return res
+    }
+    
     
     private func saveWordsToRealm(_ words: [Word]) {
         let realm = try! Realm()
