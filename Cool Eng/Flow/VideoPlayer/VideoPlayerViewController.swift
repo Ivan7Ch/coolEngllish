@@ -8,7 +8,6 @@
 
 import UIKit
 import AVFoundation
-import ActiveLabel
 import GoogleMobileAds
 
 
@@ -28,6 +27,8 @@ class VideoPlayerViewController: UIViewController {
     
     var interstitial: GADInterstitial!
     
+    var subsIndex = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,15 +44,24 @@ class VideoPlayerViewController: UIViewController {
             self.tableView.reloadData()
         })
         
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-9391157593798156/8400807389")
-        let request = GADRequest()
-        interstitial.load(request)
+        //        interstitial = GADInterstitial(adUnitID: "ca-app-pub-9391157593798156/8400807389")
+        //        let request = GADRequest()
+        //        interstitial.load(request)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         showAdvert()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        video.subtitles = []
+        video = nil
+        tableView = nil
+        videoPlayer = nil
     }
     
     
@@ -167,15 +177,24 @@ class VideoPlayerViewController: UIViewController {
     }
 }
 
-
+// MARK: - YoutubePlayerViewDelegate
 extension VideoPlayerViewController: YoutubePlayerViewDelegate {
     func playerView(_ playerView: YoutubePlayerView, didPlayTime time: Float) {
-        for (index, value) in startTimes.enumerated() {
-            if time > Float(value) {
-                setSelectedCell(index: index)
+        
+        var isUpdated = false
+        for i in startTimes {
+            if time > Float(i) {
+                setSelectedCell(index: subsIndex)
+                subsIndex += 1
+                startTimes.removeFirst()
+                isUpdated = true
             } else {
                 break
             }
+        }
+        
+        if isUpdated {
+            tableView.reloadData()
         }
         
         if time > Float(1.0) {
@@ -185,6 +204,7 @@ extension VideoPlayerViewController: YoutubePlayerViewDelegate {
 }
 
 
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return video.subtitles.count
@@ -233,64 +253,5 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
     func wordTapHandler(word: String) {
         guard let w = DictionaryManager.shared.getSimpleWord(word.lowercased()) else { return }
         self.showToast(message: "\(word)", submessage: w.translation)
-    }
-}
-
-
-class SubtitlesTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var originalText: ActiveLabel!
-    @IBOutlet weak var translatedText: UILabel!
-    @IBOutlet weak var indicator: UIView!
-    
-    var wordTapHandler: (String) -> () = {_ in }
-    var cellTapHandler: (Int) -> () = {_ in }
-    var index: Int = 0
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        setupActiveLabel()
-    }
-    
-    
-    private func setupActiveLabel() {
-        originalText.numberOfLines = 0
-        originalText.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        originalText.hashtagColor = #colorLiteral(red: 0.1411764706, green: 0.4470588235, blue: 0.6705882353, alpha: 1)
-        originalText.handleHashtagTap {
-            self.wordTapHandler($0)
-        }
-    }
-    
-    
-    @IBAction func seekVideoPositionButtonAction() {
-        cellTapHandler(index)
-        print(index)
-    }
-}
-
-
-extension UILabel{
-    
-    func underline() {
-        if let textString = text {
-            let attributedString = NSMutableAttributedString(string: textString)
-            print(attributedText?.length)
-            if attributedString.length < -5 {
-                attributedString.addAttribute(   NSAttributedString.Key.underlineStyle,
-                value: NSUnderlineStyle.single.rawValue,
-                range: NSRange(location: 2,
-                               length: 5))
-            } else {
-                attributedString.addAttribute(   NSAttributedString.Key.underlineStyle,
-                value: NSUnderlineStyle.single.rawValue,
-                range: NSRange(location: 10,
-                               length: attributedString.length - 5))
-            }
-            
-            attributedText = attributedString
-        }
     }
 }

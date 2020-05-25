@@ -15,6 +15,7 @@
 		F548BBDC2444CA8900AE060C /* VideoFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */; };
 		F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */; };
 		F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55666B8246EA96E002C3821 /* ToastMessage.swift */; };
+		F596FCB2247A824D00E140C4 /* SubtitlesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F596FCB1247A824D00E140C4 /* SubtitlesTableViewCell.swift */; };
 		F5B46A762444B67E0007E8E4 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A752444B67E0007E8E4 /* VideoModel.swift */; };
 		F5B46A782444B69E0007E8E4 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */; };
 		F5C6A8772444BC8300716E96 /* PlaylistFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */; };
@@ -46,6 +47,7 @@
 		F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFirebaseHelper.swift; sourceTree = "<group>"; };
 		F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		F55666B8246EA96E002C3821 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
+		F596FCB1247A824D00E140C4 /* SubtitlesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitlesTableViewCell.swift; sourceTree = "<group>"; };
 		F5B46A752444B67E0007E8E4 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
 		F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistFirebaseHelper.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */,
+				F596FCB1247A824D00E140C4 /* SubtitlesTableViewCell.swift */,
 			);
 			path = VideoPlayer;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */,
 				F5E8E4322445A9C500C79D4C /* YoutubePlayerView.swift in Sources */,
 				F5360F17246F0C2C00550559 /* Dictionary.swift in Sources */,
+				F596FCB2247A824D00E140C4 /* SubtitlesTableViewCell.swift in Sources */,
 				F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */,
 				F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */,
 				F5FDA6F82444AFA000AC6A9D /* PlaylistTableViewCell.swift in Sources */,
