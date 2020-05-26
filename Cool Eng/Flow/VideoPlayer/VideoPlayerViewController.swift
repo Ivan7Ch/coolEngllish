@@ -29,6 +29,8 @@ class VideoPlayerViewController: UIViewController {
     
     var subsIndex = 0
     
+    var realmWords = [Word]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +42,17 @@ class VideoPlayerViewController: UIViewController {
         
         SubtitlesFirebaseHelper.shared.fetchSubtitles(videoId: video.id, callback: { sub in
             self.video.subtitles = sub
-            self.setupSubtitles()
-            self.tableView.reloadData()
+            
+            DispatchQueue.global(qos: .default).async {
+                let start = CFAbsoluteTimeGetCurrent()
+                self.setupSubtitles()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                let diff = CFAbsoluteTimeGetCurrent() - start
+                print("Took \(diff) seconds")
+            }
+            self.wordsForLearning()
         })
         
         //        interstitial = GADInterstitial(adUnitID: "ca-app-pub-9391157593798156/8400807389")
@@ -53,6 +64,7 @@ class VideoPlayerViewController: UIViewController {
         super.viewWillAppear(animated)
         
         showAdvert()
+        realmWords = DictionaryManager.shared.getAllWords()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -132,6 +144,7 @@ class VideoPlayerViewController: UIViewController {
             
             if sub.eng.last?.isNewline ?? false {
                 engStr = String(sub.eng.dropLast())
+                engStr = convertText(engStr)
             }
             
             if sub.ru.last?.isNewline ?? false {
@@ -156,10 +169,9 @@ class VideoPlayerViewController: UIViewController {
         let div = "​"
         
         let words = text.split { $0.isWhitespace }
-        let rWords = DictionaryManager.shared.getAllWords()
         var dict = [String: String]()
         
-        for i in rWords {
+        for i in realmWords {
             dict[i.original] = i.translation
         }
         
@@ -174,6 +186,52 @@ class VideoPlayerViewController: UIViewController {
         }
         
         return res
+    }
+    
+    
+    func wordsForLearning() {
+        DispatchQueue.global(qos: .default).async {
+            var res = [Word]()
+            var subs = ""
+            
+            for i in self.video.subtitles {
+                subs += i.eng + " "
+            }
+            
+            let words = subs.split{ $0.isWhitespace }
+            
+            var dict = [String: Int]()
+            for i in words {
+                let key = String(i)
+                if let val = dict[key] {
+                    dict[key] = val + 1
+                } else {
+                    dict[key] = 1
+                }
+            }
+            
+
+            for i in dict.sorted(by: { $0.1 < $1.1 }) {
+                if let rw = self.realmWords.first(where: { $0.original == i.key }) {
+                    if !top400.contains(String(i.key)) {
+                        res.append(rw)
+
+                        if res.count >= 25 {
+                            break
+                        }
+                    }
+                }
+            }
+            
+            print(res)
+            
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
+                vc.words = res
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
     }
 }
 
@@ -215,8 +273,8 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
         let cell = tableView.dequeueReusableCell(withIdentifier: "SubtitlesTableViewCell") as! SubtitlesTableViewCell
         
         let sub = video.subtitles[indexPath.row]
-        
-        cell.originalText.text = convertText(sub.eng)
+
+        cell.originalText.text = sub.eng
         cell.translatedText.text = sub.ru
         cell.indicator.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         cell.wordTapHandler = { word in

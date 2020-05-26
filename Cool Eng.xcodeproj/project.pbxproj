@@ -15,6 +15,7 @@
 		F548BBDC2444CA8900AE060C /* VideoFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */; };
 		F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */; };
 		F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55666B8246EA96E002C3821 /* ToastMessage.swift */; };
+		F5871716247BC72900E4506D /* VocabularyBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5871715247BC72900E4506D /* VocabularyBoxViewController.swift */; };
 		F596FCB2247A824D00E140C4 /* SubtitlesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F596FCB1247A824D00E140C4 /* SubtitlesTableViewCell.swift */; };
 		F5B46A762444B67E0007E8E4 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A752444B67E0007E8E4 /* VideoModel.swift */; };
 		F5B46A782444B69E0007E8E4 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */; };
@@ -47,6 +48,7 @@
 		F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFirebaseHelper.swift; sourceTree = "<group>"; };
 		F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		F55666B8246EA96E002C3821 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
+		F5871715247BC72900E4506D /* VocabularyBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxViewController.swift; sourceTree = "<group>"; };
 		F596FCB1247A824D00E140C4 /* SubtitlesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitlesTableViewCell.swift; sourceTree = "<group>"; };
 		F5B46A752444B67E0007E8E4 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		F548BBDD2444DBC900AE060C /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				F5871714247BC70C00E4506D /* VocabularyBox */,
 				F5CE9ECC24449957009EB618 /* Playlists */,
 				F5FDA6F92444B01C00AC6A9D /* VideosList */,
 				F548BBDE2444DBE200AE060C /* VideoPlayer */,
@@ -134,6 +137,14 @@
 				F55666B8246EA96E002C3821 /* ToastMessage.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F5871714247BC70C00E4506D /* VocabularyBox */ = {
+			isa = PBXGroup;
+			children = (
+				F5871715247BC72900E4506D /* VocabularyBoxViewController.swift */,
+			);
+			path = VocabularyBox;
 			sourceTree = "<group>";
 		};
 		F5B46A742444B66E0007E8E4 /* Models */ = {
@@ -370,6 +381,7 @@
 				F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */,
 				F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */,
 				F5E8E4362445F5BD00C79D4C /* PlaylistsCacheHelper.swift in Sources */,
+				F5871716247BC72900E4506D /* VocabularyBoxViewController.swift in Sources */,
 				F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
