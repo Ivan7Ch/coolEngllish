@@ -105,6 +105,7 @@
 		F52F4A082478421F000BE9E6 /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
+				F5360F16246F0C2C00550559 /* Dictionary.swift */,
 				F52F4A0924784297000BE9E6 /* dict_ua.txt */,
 				F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */,
 			);
@@ -160,11 +161,11 @@
 		F5C6A8752444BC6800716E96 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F52F4A082478421F000BE9E6 /* Dictionary */,
 				F55666B7246EA95A002C3821 /* Extensions */,
 				F5C8161D24580D4E00900412 /* Firebase */,
 				F5E8E42E2445A99900C79D4C /* VideoPlayer */,
 				F5E8E4352445F5BD00C79D4C /* PlaylistsCacheHelper.swift */,
-				F5360F16246F0C2C00550559 /* Dictionary.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -200,7 +201,6 @@
 		F5CE9EB42444958B009EB618 /* Cool Eng */ = {
 			isa = PBXGroup;
 			children = (
-				F52F4A082478421F000BE9E6 /* Dictionary */,
 				F5F8C050244B5B22002F9123 /* Cool Eng.entitlements */,
 				F5C6A8752444BC6800716E96 /* Services */,
 				F5B46A742444B66E0007E8E4 /* Models */,

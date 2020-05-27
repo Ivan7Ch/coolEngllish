@@ -16,16 +16,26 @@ struct Word: Codable {
     var translation: String = ""
     var transcription: String = ""
     var sentence: String = ""
+    var remember: Int = 0
 }
+
 
 class RealmWord: Object {
+    @objc dynamic var id = 0
     @objc dynamic var original = ""
     @objc dynamic var translation = ""
-}
-
-struct SWord {
-    var original = ""
-    var translation = ""
+    @objc dynamic var transcription = ""
+    @objc dynamic var sentence = ""
+    @objc dynamic var remember = 0
+    
+    func setup(with word: Word) {
+        self.id = word.id
+        self.original = word.original
+        self.translation = word.translation
+        self.transcription = word.transcription
+        self.sentence = word.sentence
+        self.remember = word.remember
+    }
 }
 
 
@@ -79,8 +89,7 @@ class DictionaryManager {
         
         for w in words {
             let realmWord = RealmWord()
-            realmWord.original = w.original
-            realmWord.translation = w.translation
+            realmWord.setup(with: w)
             try! realm.write {
                 realm.add(realmWord)
             }

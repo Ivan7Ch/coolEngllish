@@ -67,15 +67,6 @@ class VideoPlayerViewController: UIViewController {
         realmWords = DictionaryManager.shared.getAllWords()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        video.subtitles = []
-        video = nil
-        tableView = nil
-        videoPlayer = nil
-    }
-    
     
     private func showAdvert() {
         return

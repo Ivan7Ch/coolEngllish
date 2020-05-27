@@ -22,7 +22,6 @@ class DictionaryHelper {
         fileRef.getData(maxSize: Int64.max, completion: { data, error in
             guard let data = data else { return }
             let obj = try? JSONDecoder().decode([Word].self, from: data)
-            print(obj)
         })
     }
 }
