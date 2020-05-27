@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 
 class VocabularyBoxViewController: UIViewController {
@@ -18,6 +19,7 @@ class VocabularyBoxViewController: UIViewController {
     @IBOutlet weak var buttonContainer: UIView!
     
     var words = [Word]()
+    var selectedIndixies = [Int]()
     
     
     override func viewDidLoad() {
@@ -43,10 +45,24 @@ extension VocabularyBoxViewController: UITableViewDelegate, UITableViewDataSourc
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "VocabularyBoxTableViewCell") as! VocabularyBoxTableViewCell
         
+        let ind = indexPath.row
+        cell.isSelectedCell = selectedIndixies.contains(ind)
+        
         let word = words[indexPath.row]
         cell.setup(word)
         
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let ind = indexPath.row
+        if !selectedIndixies.contains(ind) {
+            selectedIndixies.append(ind)
+        } else {
+            selectedIndixies.removeAll(where: { $0 == ind })
+        }
+        tableView.reloadData()
     }
     
     
@@ -60,10 +76,32 @@ class VocabularyBoxTableViewCell: UITableViewCell {
     
     @IBOutlet weak var originalWord: UILabel!
     @IBOutlet weak var translatedWord: UILabel!
+    @IBOutlet weak var speachButton: UIButton!
+    @IBOutlet weak var selectionIndicator: UIImageView!
     
+    private var wordText = ""
+    
+    var isSelectedCell: Bool = false {
+        didSet {
+            if isSelectedCell {
+                selectionIndicator.image = UIImage(named: "radiobutton")
+            } else {
+                selectionIndicator.image = UIImage(named: "rbempty")
+            }
+        }
+    }
     
     func setup(_ word: Word) {
         originalWord.text = word.original
         translatedWord.text = word.translation
+        wordText = word.original
+    }
+    
+    @IBAction func speachButtonAction() {
+        let speechSynthesizer = AVSpeechSynthesizer()
+        let speechUtterance: AVSpeechUtterance = AVSpeechUtterance(string: wordText)
+        speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
+        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        speechSynthesizer.speak(speechUtterance)
     }
 }
