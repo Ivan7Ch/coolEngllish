@@ -464,13 +464,13 @@
                                     <constraint firstAttribute="width" constant="24" id="uqg-0A-MYZ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="selected: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyO-Yp-MQe">
-                                <rect key="frame" x="16" y="124" width="74.5" height="23.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyO-Yp-MQe">
+                                <rect key="frame" x="16" y="136" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97C-yf-0zO">
-                                <rect key="frame" x="90.5" y="124" width="35" height="23.5"/>
+                                <rect key="frame" x="16" y="124" width="35" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.14117647059999999" green="0.44705882349999998" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -482,6 +482,9 @@
                                     <constraint firstAttribute="width" constant="187" id="mPS-gx-jpw"/>
                                     <constraint firstAttribute="height" constant="50" id="tLb-mw-SbF"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="radioButtonAction" destination="o5n-mb-Oci" eventType="touchUpInside" id="7SO-xO-fM2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -513,9 +516,12 @@
                         <viewLayoutGuide key="safeArea" id="MQX-7Z-FmP"/>
                     </view>
                     <connections>
+                        <outlet property="addToVocabularyButton" destination="YSh-Ov-N4h" id="GTz-XQ-w9j"/>
                         <outlet property="buttonContainer" destination="sOV-Fd-hTx" id="7IR-lN-jJx"/>
+                        <outlet property="radioButton" destination="Fnt-6z-7gQ" id="11i-T3-chH"/>
+                        <outlet property="selectAllLabel" destination="cov-x4-pxe" id="KGT-bQ-TZE"/>
+                        <outlet property="selectedCountLabel" destination="97C-yf-0zO" id="1Ir-Vx-bVA"/>
                         <outlet property="tableView" destination="BJY-e1-BVZ" id="k0E-8X-3At"/>
-                        <outlet property="watchButton" destination="YSh-Ov-N4h" id="GTz-XQ-w9j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BO6-7F-sKz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

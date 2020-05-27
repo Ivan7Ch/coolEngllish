@@ -14,9 +14,26 @@ class VocabularyBoxViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var watchButton: UIButton!
+    @IBOutlet weak var addToVocabularyButton: UIButton!
     
     @IBOutlet weak var buttonContainer: UIView!
+    
+    @IBOutlet weak var selectedCountLabel: UILabel!
+    
+    @IBOutlet weak var selectAllLabel: UILabel!
+    
+    @IBOutlet weak var radioButton: UIImageView!
+    
+    var isSelectedAll: Bool = false {
+        didSet {
+            if isSelectedAll {
+                radioButton.image = UIImage(named: "radiobutton")
+            } else {
+                radioButton.image = UIImage(named: "rbempty")
+            }
+        }
+    }
+    
     
     var words = [Word]()
     var selectedIndixies = [Int]()
@@ -31,6 +48,47 @@ class VocabularyBoxViewController: UIViewController {
         buttonContainer.layer.shadowColor = #colorLiteral(red: 0.1704200208, green: 0.5261289477, blue: 0.7275841832, alpha: 1)
         buttonContainer.layer.shadowRadius = 8
         buttonContainer.layer.shadowOpacity = 0.125
+        
+        addToVocabularyButton.setTitle("skip", for: .normal)
+        
+        addToVocabularyButton.addTarget(self, action: #selector(addToVocabularyButtonAction), for: .touchUpInside)
+    }
+    
+    
+    @IBAction func radioButtonAction() {
+        isSelectedAll.toggle()
+        selectedIndixies = []
+        
+        var selectAllLabelText = "select all"
+        if isSelectedAll {
+            for i in 0..<words.count {
+                selectedIndixies.append(i)
+            }
+            selectAllLabelText = "deselect all"
+        }
+        selectAllLabel.text = selectAllLabelText
+        tableView.reloadData()
+        reloadViews()
+    }
+    
+    
+    private func reloadViews() {
+        selectedCountLabel.text = "\(selectedIndixies.count)/\(words.count)"
+        if selectedIndixies.isEmpty {
+            addToVocabularyButton.setTitle("skip", for: .normal)
+        } else {
+            addToVocabularyButton.setTitle("Add To Vocabulary", for: .normal)
+        }
+    }
+    
+    
+    @IBAction func addToVocabularyButtonAction() {
+        addToVocabularyWords()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func addToVocabularyWords() {
+        
     }
 }
 
@@ -63,6 +121,7 @@ extension VocabularyBoxViewController: UITableViewDelegate, UITableViewDataSourc
             selectedIndixies.removeAll(where: { $0 == ind })
         }
         tableView.reloadData()
+        reloadViews()
     }
     
     
@@ -91,11 +150,13 @@ class VocabularyBoxTableViewCell: UITableViewCell {
         }
     }
     
+    
     func setup(_ word: Word) {
         originalWord.text = word.original
         translatedWord.text = word.translation
         wordText = word.original
     }
+    
     
     @IBAction func speachButtonAction() {
         let speechSynthesizer = AVSpeechSynthesizer()
