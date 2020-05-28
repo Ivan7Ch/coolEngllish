@@ -16,7 +16,7 @@ struct Word: Codable {
     var translation: String = ""
     var transcription: String = ""
     var sentence: String = ""
-    var remember: Int = 0
+    var progress: Int = 0
 }
 
 
@@ -26,7 +26,7 @@ class RealmWord: Object {
     @objc dynamic var translation = ""
     @objc dynamic var transcription = ""
     @objc dynamic var sentence = ""
-    @objc dynamic var remember = 0
+    @objc dynamic var progress = 0
     
     func setup(with word: Word) {
         self.id = word.id
@@ -34,7 +34,7 @@ class RealmWord: Object {
         self.translation = word.translation
         self.transcription = word.transcription
         self.sentence = word.sentence
-        self.remember = word.remember
+        self.progress = word.progress
     }
 }
 
@@ -69,12 +69,28 @@ class DictionaryManager {
         return Word(id: 0, original: word.original, translation: word.translation)
     }
     
+    
     func getAllWords() -> [Word] {
         var res = [Word]()
         
         let realm = try! Realm()
         
         let words = realm.objects(RealmWord.self)
+        
+        for i in words {
+            let w = Word(id: i.id, original: i.original, translation: i.translation, transcription: i.transcription, sentence: i.sentence, progress: i.progress)
+            res.append(w)
+        }
+        
+        return res
+    }
+    
+    
+    func getWordsForStudy() -> [Word] {
+        var res = [Word]()
+        let realm = try! Realm()
+        
+        let words = realm.objects(RealmWord.self).filter("progress == 0")
         
         for i in words {
             res.append(Word(id: 0, original: i.original, translation: i.translation))
@@ -84,12 +100,37 @@ class DictionaryManager {
     }
     
     
+    func addToDictionary(ids: [Int]) {
+        updateProgress(progress: 0, in: ids)
+    }
+    
+    
+    func markAsLearned(ids: [Int]) {
+        updateProgress(progress: 100, in: ids)
+    }
+    
+    
+    private func updateProgress(progress: Int, in ids: [Int]) {
+        let realm = try! Realm()
+        
+        for i in ids {
+            guard var word = realm.objects(RealmWord.self).filter("id == \(i)").first else { break }
+            
+            try! realm.write {
+                word.progress = progress
+            }
+        }
+    }
+    
+    
     private func saveWordsToRealm(_ words: [Word]) {
         let realm = try! Realm()
         
         for w in words {
+            var word = w
             let realmWord = RealmWord()
-            realmWord.setup(with: w)
+            word.progress = -1
+            realmWord.setup(with: word)
             try! realm.write {
                 realm.add(realmWord)
             }

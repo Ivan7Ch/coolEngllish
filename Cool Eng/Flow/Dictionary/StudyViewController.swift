@@ -74,12 +74,7 @@ class StudyViewController: UIViewController {
         
         addBackground()
 
-        let w = Word(id: 0, original: "one", translation: "1", transcription: "", sentence: "Just do it", remember: 0)
-        let w1 = Word(id: 0, original: "two", translation: "2", transcription: "", sentence: "Just do it", remember: 0)
-        let w2 = Word(id: 0, original: "three", translation: "3", transcription: "", sentence: "Just do it", remember: 0)
-        let w3 = Word(id: 0, original: "four", translation: "4", transcription: "", sentence: "Just do it", remember: 0)
-        
-        words = [w, w1, w2, w3, w, w1,]
+        words = DictionaryManager.shared.getWordsForStudy()
         
         setupViews()
     }

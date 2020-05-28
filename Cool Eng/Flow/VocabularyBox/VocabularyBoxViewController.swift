@@ -88,7 +88,19 @@ class VocabularyBoxViewController: UIViewController {
     }
     
     private func addToVocabularyWords() {
+        var dictIds = [Int]()
+        var learnedIds = [Int]()
         
+        for i in 0..<words.count {
+            if selectedIndixies.contains(i) {
+                dictIds.append(words[i].id)
+            } else {
+                learnedIds.append(words[i].id)
+            }
+        }
+        
+        DictionaryManager.shared.addToDictionary(ids: dictIds)
+        DictionaryManager.shared.markAsLearned(ids: dictIds)
     }
 }
 

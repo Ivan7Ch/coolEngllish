@@ -214,8 +214,6 @@ class VideoPlayerViewController: UIViewController {
                 }
             }
             
-            print(res)
-            
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
