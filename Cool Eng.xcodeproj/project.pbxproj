@@ -21,6 +21,11 @@
 		F5B46A782444B69E0007E8E4 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */; };
 		F5C6A8772444BC8300716E96 /* PlaylistFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */; };
 		F5C8161C24580D4900900412 /* SubtitlesFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C8161B24580D4900900412 /* SubtitlesFirebaseHelper.swift */; };
+		F5C9988C247EB9C4000D6716 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9988B247EB9C3000D6716 /* StudyViewController.swift */; };
+		F5C9988E247EC105000D6716 /* Level1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9988D247EC105000D6716 /* Level1ViewController.swift */; };
+		F5C99890247EC108000D6716 /* Level2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9988F247EC108000D6716 /* Level2ViewController.swift */; };
+		F5C99892247EC10A000D6716 /* Level3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C99891247EC10A000D6716 /* Level3ViewController.swift */; };
+		F5C99894247EC10C000D6716 /* Level4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C99893247EC10B000D6716 /* Level4ViewController.swift */; };
 		F5CE9EB62444958B009EB618 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9EB52444958B009EB618 /* AppDelegate.swift */; };
 		F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9EB72444958B009EB618 /* SceneDelegate.swift */; };
 		F5CE9EBD2444958B009EB618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CE9EBB2444958B009EB618 /* Main.storyboard */; };
@@ -54,6 +59,11 @@
 		F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
 		F5C6A8762444BC8300716E96 /* PlaylistFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistFirebaseHelper.swift; sourceTree = "<group>"; };
 		F5C8161B24580D4900900412 /* SubtitlesFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitlesFirebaseHelper.swift; sourceTree = "<group>"; };
+		F5C9988B247EB9C3000D6716 /* StudyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
+		F5C9988D247EC105000D6716 /* Level1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level1ViewController.swift; sourceTree = "<group>"; };
+		F5C9988F247EC108000D6716 /* Level2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level2ViewController.swift; sourceTree = "<group>"; };
+		F5C99891247EC10A000D6716 /* Level3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level3ViewController.swift; sourceTree = "<group>"; };
+		F5C99893247EC10B000D6716 /* Level4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level4ViewController.swift; sourceTree = "<group>"; };
 		F5CE9EB22444958B009EB618 /* Cool Eng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cool Eng.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5CE9EB52444958B009EB618 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5CE9EB72444958B009EB618 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +125,7 @@
 		F548BBDD2444DBC900AE060C /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				F5C99888247EB966000D6716 /* Dictionary */,
 				F5871714247BC70C00E4506D /* VocabularyBox */,
 				F5CE9ECC24449957009EB618 /* Playlists */,
 				F5FDA6F92444B01C00AC6A9D /* VideosList */,
@@ -178,6 +189,18 @@
 				F5C8161B24580D4900900412 /* SubtitlesFirebaseHelper.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		F5C99888247EB966000D6716 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				F5C9988B247EB9C3000D6716 /* StudyViewController.swift */,
+				F5C9988D247EC105000D6716 /* Level1ViewController.swift */,
+				F5C9988F247EC108000D6716 /* Level2ViewController.swift */,
+				F5C99891247EC10A000D6716 /* Level3ViewController.swift */,
+				F5C99893247EC10B000D6716 /* Level4ViewController.swift */,
+			);
+			path = Dictionary;
 			sourceTree = "<group>";
 		};
 		F5CE9EA92444958B009EB618 = {
@@ -369,18 +392,23 @@
 				F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */,
 				F5FDA6F82444AFA000AC6A9D /* PlaylistTableViewCell.swift in Sources */,
 				F5B46A782444B69E0007E8E4 /* PlaylistModel.swift in Sources */,
+				F5C99894247EC10C000D6716 /* Level4ViewController.swift in Sources */,
 				F548BBDC2444CA8900AE060C /* VideoFirebaseHelper.swift in Sources */,
 				F5B46A762444B67E0007E8E4 /* VideoModel.swift in Sources */,
 				F5C6A8772444BC8300716E96 /* PlaylistFirebaseHelper.swift in Sources */,
 				F5CE9EB62444958B009EB618 /* AppDelegate.swift in Sources */,
 				F5C8161C24580D4900900412 /* SubtitlesFirebaseHelper.swift in Sources */,
+				F5C9988C247EB9C4000D6716 /* StudyViewController.swift in Sources */,
+				F5C99890247EC108000D6716 /* Level2ViewController.swift in Sources */,
 				F5E8E4342445B8FF00C79D4C /* SubtitleModel.swift in Sources */,
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
+				F5C99892247EC10A000D6716 /* Level3ViewController.swift in Sources */,
 				F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */,
 				F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */,
 				F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */,
 				F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */,
 				F5E8E4362445F5BD00C79D4C /* PlaylistsCacheHelper.swift in Sources */,
+				F5C9988E247EC105000D6716 /* Level1ViewController.swift in Sources */,
 				F5871716247BC72900E4506D /* VocabularyBoxViewController.swift in Sources */,
 				F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */,
 			);

@@ -258,6 +258,7 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - Pastel (0.6.0)
   - PromisesObjC (1.2.8)
   - Realm (4.4.1):
     - Realm/Headers (= 4.4.1)
@@ -272,6 +273,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - Google-Mobile-Ads-SDK
   - Kingfisher
+  - Pastel
   - RealmSwift
   - SwiftyJSON
 
@@ -298,6 +300,7 @@ SPEC REPOS:
     - Kingfisher
     - leveldb-library
     - nanopb
+    - Pastel
     - PromisesObjC
     - Realm
     - RealmSwift
@@ -325,11 +328,12 @@ SPEC CHECKSUMS:
   Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  Pastel: 814f081efbe2859c37e65ee44f396e6e5be88619
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
   RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 7f941dd3043b9084ae1051779d1639fe8d0d5ff2
+PODFILE CHECKSUM: 439cce81ff06d3d593b5234d44161b3c55998c4c
 
 COCOAPODS: 1.9.0

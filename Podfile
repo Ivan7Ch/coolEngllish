@@ -11,6 +11,7 @@ target 'Cool Eng' do
   pod 'Kingfisher'
   pod 'SwiftyJSON'
   pod 'RealmSwift'
+  pod 'Pastel'
   # Pods for Cool Eng
 
 end
