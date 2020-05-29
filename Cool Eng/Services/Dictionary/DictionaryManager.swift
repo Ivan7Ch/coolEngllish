@@ -100,6 +100,20 @@ class DictionaryManager {
     }
     
     
+    func getLearnedWords() -> [Word] {
+        var res = [Word]()
+        let realm = try! Realm()
+        
+        let words = realm.objects(RealmWord.self).filter("progress > 0")
+        
+        for i in words {
+            res.append(Word(id: 0, original: i.original, translation: i.translation))
+        }
+        
+        return res
+    }
+    
+    
     func addToDictionary(ids: [Int]) {
         updateProgress(progress: 0, in: ids)
     }
@@ -114,8 +128,7 @@ class DictionaryManager {
         let realm = try! Realm()
         
         for i in ids {
-            guard var word = realm.objects(RealmWord.self).filter("id == \(i)").first else { break }
-            
+            guard let word = realm.objects(RealmWord.self).filter("id == \(i)").first else { break }
             try! realm.write {
                 word.progress = progress
             }

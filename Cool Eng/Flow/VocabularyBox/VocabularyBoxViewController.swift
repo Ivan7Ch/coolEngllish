@@ -100,7 +100,7 @@ class VocabularyBoxViewController: UIViewController {
         }
         
         DictionaryManager.shared.addToDictionary(ids: dictIds)
-        DictionaryManager.shared.markAsLearned(ids: dictIds)
+        DictionaryManager.shared.markAsLearned(ids: learnedIds)
     }
 }
 

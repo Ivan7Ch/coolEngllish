@@ -44,13 +44,10 @@ class VideoPlayerViewController: UIViewController {
             self.video.subtitles = sub
             
             DispatchQueue.global(qos: .default).async {
-                let start = CFAbsoluteTimeGetCurrent()
                 self.setupSubtitles()
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-                let diff = CFAbsoluteTimeGetCurrent() - start
-                print("Took \(diff) seconds")
             }
             self.wordsForLearning()
         })
@@ -182,6 +179,7 @@ class VideoPlayerViewController: UIViewController {
     
     func wordsForLearning() {
         DispatchQueue.global(qos: .default).async {
+            
             var res = [Word]()
             var subs = ""
             
@@ -201,18 +199,25 @@ class VideoPlayerViewController: UIViewController {
                 }
             }
             
-
+            var realmWordsDict = [String: Int]()
+            for (index, value) in self.realmWords.enumerated() {
+                realmWordsDict[value.original] = index
+            }
+            
             for i in dict.sorted(by: { $0.1 < $1.1 }) {
-                if let rw = self.realmWords.first(where: { $0.original == i.key }) {
+                if let ind = realmWordsDict[i.key] {
+                    let rw = self.realmWords[ind]
+                    if rw.progress != -1 { continue }
                     if !top400.contains(String(i.key)) {
                         res.append(rw)
 
-                        if res.count >= 25 {
+                        if res.count >= 15 {
                             break
                         }
                     }
                 }
             }
+            
             
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
