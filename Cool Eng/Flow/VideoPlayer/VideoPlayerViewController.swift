@@ -210,10 +210,6 @@ class VideoPlayerViewController: UIViewController {
                     if rw.progress != -1 { continue }
                     if !top400.contains(String(i.key)) {
                         res.append(rw)
-
-                        if res.count >= 15 {
-                            break
-                        }
                     }
                 }
             }

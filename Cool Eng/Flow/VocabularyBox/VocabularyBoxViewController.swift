@@ -35,7 +35,10 @@ class VocabularyBoxViewController: UIViewController {
     }
     
     
+    var allWords = [Word]()
+    
     var words = [Word]()
+    
     var selectedIndixies = [Int]()
     
     
@@ -49,7 +52,8 @@ class VocabularyBoxViewController: UIViewController {
         buttonContainer.layer.shadowRadius = 8
         buttonContainer.layer.shadowOpacity = 0.125
         
-        addToVocabularyButton.setTitle("skip", for: .normal)
+        reloadViews()
+        prepareWords()
         
         addToVocabularyButton.addTarget(self, action: #selector(addToVocabularyButtonAction), for: .touchUpInside)
     }
@@ -67,6 +71,40 @@ class VocabularyBoxViewController: UIViewController {
             selectAllLabelText = "deselect all"
         }
         selectAllLabel.text = selectAllLabelText
+        tableView.reloadData()
+        reloadViews()
+    }
+    
+    
+    @IBAction func loadMoreWords() {
+        var c = 0
+        for (i, word) in allWords.enumerated() {
+            words.append(allWords[i])
+            allWords.remove(at: i)
+            c += 1
+            if c == 15 { break }
+        }
+        
+        tableView.reloadData()
+        reloadViews()
+    }
+    
+    
+    private func prepareWords() {
+        allWords = words
+        words = []
+        
+        if allWords.count < 15 {
+            for i in allWords {
+                words.append(i)
+            }
+            return
+        }
+        
+        for i in 0..<15 {
+            words.append(allWords[i])
+            allWords.remove(at: i)
+        }
         tableView.reloadData()
         reloadViews()
     }
