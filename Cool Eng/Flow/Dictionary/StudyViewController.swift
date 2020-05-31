@@ -77,6 +77,7 @@ class StudyViewController: UIViewController {
         words = DictionaryManager.shared.getWordsForStudy()
         
         setupViews()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     
@@ -88,10 +89,12 @@ class StudyViewController: UIViewController {
         readyButton.addTarget(self, action: #selector(readyButtonAction), for: .touchUpInside)
         readyButton.setTitleColor(.white, for: .normal)
         readyButton.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
-        readyButton.layer.cornerRadius = 8
+        readyButton.layer.cornerRadius = 12
+        readyButton.layer.borderWidth = 0.2
+        readyButton.layer.borderColor = #colorLiteral(red: 0.1411764706, green: 0.4470588235, blue: 0.6705882353, alpha: 1)
         readyButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         readyButton.layer.shadowRadius = 8
-        readyButton.layer.shadowOpacity = 0.5
+        readyButton.layer.shadowOpacity = 0.3
         readyButton.layer.shadowOffset = CGSize(width: 0, height: 1)
     }
     
@@ -142,7 +145,7 @@ extension StudyViewController {
         var colors = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.8904744485, green: 0.8502347224, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.6813562978, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.6451833526, alpha: 1)]
         
         if self.traitCollection.userInterfaceStyle == .dark {
-            colors = [#colorLiteral(red: 0.2352941176, green: 0.2549019608, blue: 0.2823529412, alpha: 1), #colorLiteral(red: 0.1058823529, green: 0.1490196078, blue: 0.1725490196, alpha: 1), #colorLiteral(red: 0.05882352941, green: 0.2980392157, blue: 0.4588235294, alpha: 1)]
+            colors = [#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1), #colorLiteral(red: 0.1058823529, green: 0.1490196078, blue: 0.1725490196, alpha: 1), #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)]
         }
         
         pastelView.setColors(colors)
