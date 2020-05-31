@@ -101,7 +101,7 @@ class StudyViewController: UIViewController {
     
     @IBAction func readyButtonAction() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "Level2ViewController") as! Level2ViewController
+        let vc = storyboard.instantiateViewController(identifier: "Level1ViewController") as! Level1ViewController
         vc.words = self.words
         navigationController?.pushViewController(vc, animated: true)
     }

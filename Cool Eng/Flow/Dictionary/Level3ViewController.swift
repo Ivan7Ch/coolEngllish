@@ -33,19 +33,19 @@ class Level3ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupViews()
-        navigationController?.popToRootViewController(animated: true)
     }
     
     private func setupViews() {
         collectionView.delegate = self
         collectionView.dataSource = self
         reloadViews()
+        self.setPastelBackground()
     }
     
     private func nextStep() {
-        
+        // TODO: - set words progress
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func reloadViews() {
@@ -108,7 +108,6 @@ extension Level3ViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("\n")
         let cell = collectionView.cellForItem(at: indexPath) as! Level3CollectionViewCell
         
         let correctLetter = Array(words[currentIndex].original)[mainWord.count]
@@ -116,7 +115,9 @@ extension Level3ViewController: UICollectionViewDelegate, UICollectionViewDataSo
         if letters[indexPath.row] == "\(correctLetter)" {
             cell.letterLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             UIView.animate(withDuration: 0.5, animations: {
-                cell.containerView.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                cell.containerView.layer.borderWidth = 0.5
+                cell.containerView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                cell.containerView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
             })
             cell.isUserInteractionEnabled = false
             let character = letters[indexPath.row]
