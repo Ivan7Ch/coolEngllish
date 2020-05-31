@@ -72,7 +72,7 @@ class StudyViewController: UIViewController {
         
         UserDefaults.standard.set(false, forKey: "isPlaying")
         
-        addBackground()
+        self.setPastelBackground()
 
         words = DictionaryManager.shared.getWordsForStudy()
         
@@ -133,9 +133,8 @@ extension StudyViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
-extension StudyViewController {
-    
-    private func addBackground() {
+extension UIViewController {
+    func setPastelBackground() {
         let pastelView = PastelView(frame: view.bounds)
 
         pastelView.startPastelPoint = .top
