@@ -80,9 +80,12 @@ class VocabularyBoxViewController: UIViewController {
         var c = 0
         for (i, word) in allWords.enumerated() {
             words.append(allWords[i])
-            allWords.remove(at: i)
             c += 1
             if c == 15 { break }
+        }
+        
+        for _ in 0..<c {
+            allWords.remove(at: 0)
         }
         
         tableView.reloadData()
@@ -103,8 +106,12 @@ class VocabularyBoxViewController: UIViewController {
         
         for i in 0..<15 {
             words.append(allWords[i])
-            allWords.remove(at: i)
         }
+        
+        for i in 0..<15 {
+            allWords.remove(at: 0)
+        }
+        
         tableView.reloadData()
         reloadViews()
     }
