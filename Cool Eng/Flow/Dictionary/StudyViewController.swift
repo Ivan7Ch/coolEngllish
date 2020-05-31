@@ -25,19 +25,15 @@ class StudyCollectionViewCell: UICollectionViewCell {
         originalWordLabel.text = word.original
         
         translationWordLabel.text = word.translation
-        translationWordLabel.textColor = UIColor(named: "color4")
+        //translationWordLabel.textColor = UIColor(named: "color4")
         
         transcriptionWordLabel.text = word.transcription
-        transcriptionWordLabel.textColor = UIColor(named: "color4")
+        //transcriptionWordLabel.textColor = UIColor(named: "color4")
         
         sentenceLabel.text = word.sentence
         
-        containerView.layer.cornerRadius = 8
-        containerView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        containerView.layer.shadowRadius = 4
-        containerView.layer.shadowOpacity = 0.25
-        containerView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        containerView.backgroundColor = UIColor(named: "color2")
+        containerView.layer.cornerRadius = 12
+        containerView.backgroundColor = #colorLiteral(red: 0.09019607843, green: 0.08911801666, blue: 0.08911801666, alpha: 0.760354238)
         
         self.word = word
     }
@@ -101,7 +97,7 @@ class StudyViewController: UIViewController {
     
     @IBAction func readyButtonAction() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "Level1ViewController") as! Level1ViewController
+        let vc = storyboard.instantiateViewController(identifier: "Level2ViewController") as! Level2ViewController
         vc.words = self.words
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -93,7 +93,7 @@ class DictionaryManager {
         let words = realm.objects(RealmWord.self).filter("progress == 0")
         
         for i in words {
-            res.append(Word(id: 0, original: i.original, translation: i.translation))
+            res.append(Word(id: i.id, original: i.original, translation: i.translation, transcription: i.transcription, sentence: i.sentence, progress: i.progress))
         }
         
         return res
