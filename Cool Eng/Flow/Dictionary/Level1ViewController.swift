@@ -184,6 +184,5 @@ extension Level1ViewController: UITableViewDelegate, UITableViewDataSource {
             })
         }
         
-        
     }
 }

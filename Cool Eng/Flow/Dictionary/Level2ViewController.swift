@@ -73,6 +73,7 @@ class Level2ViewController: UIViewController {
         view.backgroundColor = UIColor(named: "color1")
         
         setupWords()
+        self.setPastelBackground()
     }
     
     private func setupWords() {
