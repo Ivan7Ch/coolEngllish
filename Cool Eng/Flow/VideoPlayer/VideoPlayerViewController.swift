@@ -33,6 +33,8 @@ class VideoPlayerViewController: UIViewController {
     
     var learnWordsIds = [Int]()
     
+    var foreignSubs = [SubtitleModel]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +44,7 @@ class VideoPlayerViewController: UIViewController {
         setupSubtitles()
         configTable()
         
-        SubtitlesFirebaseHelper.shared.fetchSubtitles(videoId: video.id, callback: { sub in
+        SubtitlesFirebaseHelper.shared.fetchSubtitles(videoId: video.id, lang: "en", callback: { sub in
             self.video.subtitles = sub
             
             DispatchQueue.global(qos: .default).async {
@@ -53,25 +55,8 @@ class VideoPlayerViewController: UIViewController {
             }
             self.wordsForLearning()
         })
-        
-        //        interstitial = GADInterstitial(adUnitID: "ca-app-pub-9391157593798156/8400807389")
-        //        let request = GADRequest()
-        //        interstitial.load(request)
     }
     
-    private func replaceSubtitles() {
-        let filepath = Bundle.main.path(forResource: "ep1", ofType: "txt")!
-        let contents = try! String(contentsOfFile: filepath)
-        
-        let subs = contents.split{ $0.isNewline }
-        
-        var subsArr = [SubtitleModel]()
-        for i in subs {
-            let sub = SubtitleModel(start: 123333, eng: " " + String(i), ru: "", isWatched: false)
-            subsArr.append(sub)
-        }
-        video.subtitles = subsArr
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -79,6 +64,13 @@ class VideoPlayerViewController: UIViewController {
         showAdvert()
         realmWords = DictionaryManager.shared.getAllWords()
         tabBarController?.tabBar.isHidden = true
+    }
+    
+    
+    private func setupAdvert() {
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-9391157593798156/8400807389")
+        let request = GADRequest()
+        interstitial.load(request)
     }
     
     
@@ -144,7 +136,7 @@ class VideoPlayerViewController: UIViewController {
         
         var newSubs = [SubtitleModel]()
         for sub in video.subtitles {
-            var engStr = sub.eng
+            var engStr = " " + sub.eng
             var ruStr = sub.ru
             
             if sub.eng.last?.isNewline ?? false {
@@ -168,6 +160,7 @@ class VideoPlayerViewController: UIViewController {
         
         videoLastSubtitleTime = startTimes.last ?? 0
     }
+    
     
     private func convertText(_ text: String) -> String {
         var res = ""
@@ -321,3 +314,22 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
         learnWordsIds.append(w.id) // for learn this words later
     }
 }
+
+
+
+
+/*
+ private func replaceSubtitles() {
+     let filepath = Bundle.main.path(forResource: "ep1", ofType: "txt")!
+     let contents = try! String(contentsOfFile: filepath)
+     
+     let subs = contents.split{ $0.isNewline }
+     
+     var subsArr = [SubtitleModel]()
+     for i in subs {
+         let sub = SubtitleModel(start: 123333, eng: " " + String(i), ru: "", isWatched: false)
+         subsArr.append(sub)
+     }
+     video.subtitles = subsArr
+ }
+ */

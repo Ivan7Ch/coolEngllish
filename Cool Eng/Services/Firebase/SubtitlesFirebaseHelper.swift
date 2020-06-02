@@ -18,9 +18,9 @@ class SubtitlesFirebaseHelper {
     let db = Firestore.firestore()
     
     
-    func fetchSubtitles(videoId: Int, callback: @escaping ([SubtitleModel]) -> Void) {
+    func fetchSubtitles(videoId: Int, lang: String, callback: @escaping ([SubtitleModel]) -> Void) {
         
-        let docRef = db.collection("subtitles").whereField("videoId", isEqualTo: videoId)
+        let docRef = db.collection("subtitles").whereField("video_id", isEqualTo: videoId).whereField("lang", isEqualTo: lang)
         
         docRef.getDocuments { (querySnapshot, err) in
             if err != nil { return }
@@ -52,11 +52,11 @@ class SubtitlesFirebaseHelper {
     
     
     private func parseSubtitleData(dict: [String: Any]) -> SubtitleModel? {
-        guard let start = dict["start"] as? String,
+        guard let start = dict["start"] as? Double,
             let eng = dict["text"] as? String
         else { return nil }
         
-        return SubtitleModel(start: Double(start) ?? 0, eng: " " + eng, ru: "")
+        return SubtitleModel(start: start, eng: eng, ru: "")
     }
 }
 
