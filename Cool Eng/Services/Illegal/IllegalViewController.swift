@@ -1,21 +1,20 @@
 //
-//  VideoPlayerViewController.swift
+//  IllegalViewController.swift
 //  Cool Eng
 //
-//  Created by Ivan Chernetskiy on 13.04.2020.
+//  Created by Ivan Chernetskiy on 31.05.2020.
 //  Copyright © 2020 Ivan Chernetskiy. All rights reserved.
 //
 
 import UIKit
 import AVFoundation
-import GoogleMobileAds
 
 
-class VideoPlayerViewController: UIViewController {
+class IllegalViewController: UIViewController {
     
-    @IBOutlet weak var videoPlayer: YoutubePlayerView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var playerHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var videoView: UIView!
     
     var video: VideoModel!
     
@@ -25,38 +24,62 @@ class VideoPlayerViewController: UIViewController {
     
     var videoLastSubtitleTime: Double = 0
     
-    var interstitial: GADInterstitial!
-    
     var subsIndex = 0
     
     var realmWords = [Word]()
     
-    var learnWordsIds = [Int]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        video = VideoModel(id: 0, name: "Pes", playlist: 0, placeholder: "", subtitlesId: 0, subtitles: [], url: getUrl(4))
+        replaceSubtitles()
         
         title = video.name
         setupPlayer()
         setupSubtitles()
         configTable()
         
-        SubtitlesFirebaseHelper.shared.fetchSubtitles(videoId: video.id, callback: { sub in
-            self.video.subtitles = sub
-            
-            DispatchQueue.global(qos: .default).async {
-                self.setupSubtitles()
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
-            self.wordsForLearning()
-        })
-        
-        //        interstitial = GADInterstitial(adUnitID: "ca-app-pub-9391157593798156/8400807389")
-        //        let request = GADRequest()
-        //        interstitial.load(request)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    func getUrl(_ episode: Int) -> String {
+        let urlString = "https://fenglish.ru/movie/the_end_of_the_fucking_world-s01e0\(episode)/"
+        guard let myURL = URL(string: urlString) else { return "" }
+
+        let htmlStr = try? String(contentsOf: myURL, encoding: .ascii)
+        let components = htmlStr?.components(separatedBy: "<source src=\"")
+        let videoUrls = components?[1].components(separatedBy: "\" type=")
+
+        return videoUrls?.first ?? ""
+    }
+    
+    
+    @IBAction func prev5sec() {
+        let time = player.currentTime()
+        player.seek(to: time.timeWithOffset(offset: -5))
+    }
+    
+    @IBAction func next5sec() {
+        let time = player.currentTime()
+        player.seek(to: time.timeWithOffset(offset: 5))
+    }
+    
+    
+    @IBAction func playerPause() {
+        player.pause()
+    }
+    
+    @IBAction func playerPlay() {
+        player.play()
+    }
+    
+    
+    func playVideo(){
+        let url = URL(string: video.url)!
+        player = AVPlayer(url: url)
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = videoView.bounds
+        videoView.layer.addSublayer(playerLayer)
     }
     
     private func replaceSubtitles() {
@@ -76,26 +99,8 @@ class VideoPlayerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        showAdvert()
         realmWords = DictionaryManager.shared.getAllWords()
-        tabBarController?.tabBar.isHidden = true
-    }
-    
-    
-    private func showAdvert() {
-        return
-        if lastAdvertPresentation() < -15 { return }
-        if interstitial.isReady {
-            interstitial.present(fromRootViewController: self)
-            UserDefaults.standard.set(Date(), forKey: "lasdAdvert")
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
-                if self.interstitial.isReady {
-                    self.interstitial.present(fromRootViewController: self)
-                    UserDefaults.standard.set(Date(), forKey: "lasdAdvert")
-                }
-            })
-        }
+        playVideo()
     }
     
     
@@ -119,14 +124,7 @@ class VideoPlayerViewController: UIViewController {
     
     
     private func setupPlayer() {
-        let playerVars: [String: Any] = [
-            "controls": 1,
-            "modestbranding": 1,
-            "playsinline": 1,
-            "origin": "https://youtube.com"
-        ]
-        videoPlayer.delegate = self
-        videoPlayer.loadWithVideoId(video.url, with: playerVars)
+        
     }
     
     
@@ -242,35 +240,8 @@ class VideoPlayerViewController: UIViewController {
     }
 }
 
-// MARK: - YoutubePlayerViewDelegate
-extension VideoPlayerViewController: YoutubePlayerViewDelegate {
-    func playerView(_ playerView: YoutubePlayerView, didPlayTime time: Float) {
-        
-        var isUpdated = false
-        for i in startTimes {
-            if time > Float(i) {
-                setSelectedCell(index: subsIndex)
-                subsIndex += 1
-                startTimes.removeFirst()
-                isUpdated = true
-            } else {
-                break
-            }
-        }
-        
-        if isUpdated {
-            tableView.reloadData()
-        }
-        
-        if time > Float(1.0) {
-            showAdvert()
-        }
-    }
-}
-
-
 // MARK: - UITableViewDataSource, UITableViewDelegate
-extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate {
+extension IllegalViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return video.subtitles.count
     }
@@ -296,7 +267,6 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
         cell.cellTapHandler = { ind in
             let sub = self.video.subtitles[ind]
             let startTime = sub.start
-            self.videoPlayer.seek(to: Float(startTime), allowSeekAhead: true)
         }
         
         return cell
@@ -306,7 +276,6 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sub = video.subtitles[indexPath.row]
         let startTime = sub.start
-        videoPlayer.seek(to: Float(startTime), allowSeekAhead: true)
     }
     
     
@@ -318,6 +287,18 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
     func wordTapHandler(word: String) {
         guard let w = DictionaryManager.shared.getWord(word.lowercased()) else { return }
         self.showToast(message: "\(word)", submessage: w.translation)
-        learnWordsIds.append(w.id) // for learn this words later
     }
+}
+
+private extension CMTime {
+
+    func timeWithOffset(offset: TimeInterval) -> CMTime {
+
+        let seconds = CMTimeGetSeconds(self)
+        let secondsWithOffset = seconds + offset
+
+        return CMTimeMakeWithSeconds(secondsWithOffset, preferredTimescale: timescale)
+
+    }
+
 }

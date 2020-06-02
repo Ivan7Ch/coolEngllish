@@ -37,7 +37,9 @@ class VideosListViewController: UIViewController {
             self.videos = videos
             self.tableView.reloadData()
         })
+        tabBarController?.tabBar.isHidden = true
     }
+    
     
     func configTable() {
         tableView.dataSource = self

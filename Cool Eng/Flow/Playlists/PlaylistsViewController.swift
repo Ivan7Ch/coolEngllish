@@ -33,6 +33,7 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.reloadData()
+        tabBarController?.tabBar.isHidden = false
     }
     
     

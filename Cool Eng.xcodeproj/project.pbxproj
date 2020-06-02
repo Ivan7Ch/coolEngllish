@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F41E68F9C744D95FC53B34DD /* Pods_Cool_Eng.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76774B42A233CFA1A3671E34 /* Pods_Cool_Eng.framework */; };
+		F505746524841ABB009E7112 /* ep1.txt in Resources */ = {isa = PBXBuildFile; fileRef = F505746424841ABB009E7112 /* ep1.txt */; };
+		F505746724841CB4009E7112 /* IllegalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F505746624841CB4009E7112 /* IllegalViewController.swift */; };
 		F52F4A0A24784297000BE9E6 /* dict_ua.txt in Resources */ = {isa = PBXBuildFile; fileRef = F52F4A0924784297000BE9E6 /* dict_ua.txt */; };
 		F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */; };
 		F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5360F14246F087100550559 /* GoogleService-Info.plist */; };
@@ -46,6 +48,8 @@
 		76774B42A233CFA1A3671E34 /* Pods_Cool_Eng.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cool_Eng.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		954F9B72E6749571AD310654 /* Pods-Cool Eng.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cool Eng.debug.xcconfig"; path = "Target Support Files/Pods-Cool Eng/Pods-Cool Eng.debug.xcconfig"; sourceTree = "<group>"; };
 		C9DC0C9F6A69511812593570 /* Pods-Cool Eng.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cool Eng.release.xcconfig"; path = "Target Support Files/Pods-Cool Eng/Pods-Cool Eng.release.xcconfig"; sourceTree = "<group>"; };
+		F505746424841ABB009E7112 /* ep1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ep1.txt; sourceTree = "<group>"; };
+		F505746624841CB4009E7112 /* IllegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllegalViewController.swift; sourceTree = "<group>"; };
 		F52F4A0924784297000BE9E6 /* dict_ua.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dict_ua.txt; sourceTree = "<group>"; };
 		F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryManager.swift; sourceTree = "<group>"; };
 		F5360F14246F087100550559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -112,6 +116,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F505746324841A9C009E7112 /* Illegal */ = {
+			isa = PBXGroup;
+			children = (
+				F505746424841ABB009E7112 /* ep1.txt */,
+				F505746624841CB4009E7112 /* IllegalViewController.swift */,
+			);
+			path = Illegal;
+			sourceTree = "<group>";
+		};
 		F52F4A082478421F000BE9E6 /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +185,7 @@
 		F5C6A8752444BC6800716E96 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F505746324841A9C009E7112 /* Illegal */,
 				F52F4A082478421F000BE9E6 /* Dictionary */,
 				F55666B7246EA95A002C3821 /* Extensions */,
 				F5C8161D24580D4E00900412 /* Firebase */,
@@ -330,6 +344,7 @@
 				F5CE9EC52444958C009EB618 /* LaunchScreen.storyboard in Resources */,
 				F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */,
 				F5CE9EC22444958C009EB618 /* Assets.xcassets in Resources */,
+				F505746524841ABB009E7112 /* ep1.txt in Resources */,
 				F5CE9EBD2444958B009EB618 /* Main.storyboard in Resources */,
 				F52F4A0A24784297000BE9E6 /* dict_ua.txt in Resources */,
 			);
@@ -403,6 +418,7 @@
 				F5E8E4342445B8FF00C79D4C /* SubtitleModel.swift in Sources */,
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
 				F5C99892247EC10A000D6716 /* Level3ViewController.swift in Sources */,
+				F505746724841CB4009E7112 /* IllegalViewController.swift in Sources */,
 				F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */,
 				F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */,
 				F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */,
@@ -557,7 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Cool Eng/Cool Eng.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = " 7";
 				DEVELOPMENT_TEAM = Z6SVM5W336;
 				INFOPLIST_FILE = "Cool Eng/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -565,7 +581,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.12;
+				MARKETING_VERSION = 1.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inch70798.cool-eng";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -580,7 +596,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Cool Eng/Cool Eng.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = " 7";
 				DEVELOPMENT_TEAM = Z6SVM5W336;
 				INFOPLIST_FILE = "Cool Eng/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -588,7 +604,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.12;
+				MARKETING_VERSION = 1.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inch70798.cool-eng";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

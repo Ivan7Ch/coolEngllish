@@ -61,12 +61,12 @@ class DictionaryManager {
     }
     
     
-    func getSimpleWord(_ original: String) -> Word? {
+    func getWord(_ original: String) -> Word? {
         let realm = try! Realm()
         
         guard let word = realm.objects(RealmWord.self).filter("original == '\(original)'").first else { return nil }
         
-        return Word(id: 0, original: word.original, translation: word.translation)
+        return Word(id: word.id, original: word.original, translation: word.translation)
     }
     
     
