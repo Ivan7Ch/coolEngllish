@@ -36,6 +36,11 @@
 		F5CE9EC52444958C009EB618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CE9EC32444958C009EB618 /* LaunchScreen.storyboard */; };
 		F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9ECD2444997C009EB618 /* PlaylistsViewController.swift */; };
 		F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9ECF24449D70009EB618 /* PlaylistViewModel.swift */; };
+		F5E86C1B2486C3AE0077E82E /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E86C1A2486C3AE0077E82E /* TableViewExtension.swift */; };
+		F5E86C1D2486C3DD0077E82E /* YoutubePlayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E86C1C2486C3DD0077E82E /* YoutubePlayerExtension.swift */; };
+		F5E86C202486C51E0077E82E /* AdvertHelperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E86C1F2486C51E0077E82E /* AdvertHelperExtension.swift */; };
+		F5E86C222486C57E0077E82E /* SubtitlesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E86C212486C57E0077E82E /* SubtitlesExtension.swift */; };
+		F5E86C242486C5F20077E82E /* VocabularyBoxExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E86C232486C5F20077E82E /* VocabularyBoxExtension.swift */; };
 		F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E42F2445A9C400C79D4C /* YoutubePlayerExtras.swift */; };
 		F5E8E4322445A9C500C79D4C /* YoutubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E4302445A9C500C79D4C /* YoutubePlayerView.swift */; };
 		F5E8E4342445B8FF00C79D4C /* SubtitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E4332445B8FF00C79D4C /* SubtitleModel.swift */; };
@@ -78,6 +83,11 @@
 		F5CE9EC62444958C009EB618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5CE9ECD2444997C009EB618 /* PlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
 		F5CE9ECF24449D70009EB618 /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
+		F5E86C1A2486C3AE0077E82E /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		F5E86C1C2486C3DD0077E82E /* YoutubePlayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayerExtension.swift; sourceTree = "<group>"; };
+		F5E86C1F2486C51E0077E82E /* AdvertHelperExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertHelperExtension.swift; sourceTree = "<group>"; };
+		F5E86C212486C57E0077E82E /* SubtitlesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitlesExtension.swift; sourceTree = "<group>"; };
+		F5E86C232486C5F20077E82E /* VocabularyBoxExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxExtension.swift; sourceTree = "<group>"; };
 		F5E8E42F2445A9C400C79D4C /* YoutubePlayerExtras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubePlayerExtras.swift; sourceTree = "<group>"; };
 		F5E8E4302445A9C500C79D4C /* YoutubePlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubePlayerView.swift; sourceTree = "<group>"; };
 		F5E8E4332445B8FF00C79D4C /* SubtitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleModel.swift; sourceTree = "<group>"; };
@@ -138,11 +148,9 @@
 		F548BBDD2444DBC900AE060C /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				F5E86C252486C6C90077E82E /* Videos part */,
 				F5C99888247EB966000D6716 /* Dictionary */,
 				F5871714247BC70C00E4506D /* VocabularyBox */,
-				F5CE9ECC24449957009EB618 /* Playlists */,
-				F5FDA6F92444B01C00AC6A9D /* VideosList */,
-				F548BBDE2444DBE200AE060C /* VideoPlayer */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -150,8 +158,9 @@
 		F548BBDE2444DBE200AE060C /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */,
 				F596FCB1247A824D00E140C4 /* SubtitlesTableViewCell.swift */,
+				F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */,
+				F5E86C1E2486C3ED0077E82E /* extensions */,
 			);
 			path = VideoPlayer;
 			sourceTree = "<group>";
@@ -262,6 +271,28 @@
 				F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */,
 			);
 			path = Playlists;
+			sourceTree = "<group>";
+		};
+		F5E86C1E2486C3ED0077E82E /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F5E86C1F2486C51E0077E82E /* AdvertHelperExtension.swift */,
+				F5E86C212486C57E0077E82E /* SubtitlesExtension.swift */,
+				F5E86C1A2486C3AE0077E82E /* TableViewExtension.swift */,
+				F5E86C232486C5F20077E82E /* VocabularyBoxExtension.swift */,
+				F5E86C1C2486C3DD0077E82E /* YoutubePlayerExtension.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		F5E86C252486C6C90077E82E /* Videos part */ = {
+			isa = PBXGroup;
+			children = (
+				F5CE9ECC24449957009EB618 /* Playlists */,
+				F5FDA6F92444B01C00AC6A9D /* VideosList */,
+				F548BBDE2444DBE200AE060C /* VideoPlayer */,
+			);
+			path = "Videos part";
 			sourceTree = "<group>";
 		};
 		F5E8E42E2445A99900C79D4C /* VideoPlayer */ = {
@@ -402,6 +433,7 @@
 				F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */,
 				F5E8E4322445A9C500C79D4C /* YoutubePlayerView.swift in Sources */,
 				F5360F17246F0C2C00550559 /* Dictionary.swift in Sources */,
+				F5E86C1B2486C3AE0077E82E /* TableViewExtension.swift in Sources */,
 				F596FCB2247A824D00E140C4 /* SubtitlesTableViewCell.swift in Sources */,
 				F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */,
 				F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */,
@@ -413,7 +445,9 @@
 				F5C6A8772444BC8300716E96 /* PlaylistFirebaseHelper.swift in Sources */,
 				F5CE9EB62444958B009EB618 /* AppDelegate.swift in Sources */,
 				F5C8161C24580D4900900412 /* SubtitlesFirebaseHelper.swift in Sources */,
+				F5E86C222486C57E0077E82E /* SubtitlesExtension.swift in Sources */,
 				F5C9988C247EB9C4000D6716 /* StudyViewController.swift in Sources */,
+				F5E86C1D2486C3DD0077E82E /* YoutubePlayerExtension.swift in Sources */,
 				F5C99890247EC108000D6716 /* Level2ViewController.swift in Sources */,
 				F5E8E4342445B8FF00C79D4C /* SubtitleModel.swift in Sources */,
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
@@ -421,12 +455,14 @@
 				F505746724841CB4009E7112 /* IllegalViewController.swift in Sources */,
 				F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */,
 				F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */,
+				F5E86C242486C5F20077E82E /* VocabularyBoxExtension.swift in Sources */,
 				F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */,
 				F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */,
 				F5E8E4362445F5BD00C79D4C /* PlaylistsCacheHelper.swift in Sources */,
 				F5C9988E247EC105000D6716 /* Level1ViewController.swift in Sources */,
 				F5871716247BC72900E4506D /* VocabularyBoxViewController.swift in Sources */,
 				F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */,
+				F5E86C202486C51E0077E82E /* AdvertHelperExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
