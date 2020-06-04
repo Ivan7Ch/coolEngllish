@@ -29,7 +29,6 @@ extension VideoPlayerViewController {
             self.foreignSubs = sub
             
             self.setupForeignSubtitles()
-            self.tableView.reloadData()
         })
     }
     
@@ -58,12 +57,25 @@ extension VideoPlayerViewController {
         }
         video.subtitles = newSubs
         
+        printSubs(subs: newSubs)
+        
         startTimes = []
         for i in video.subtitles {
             startTimes.append(i.start)
         }
         
         videoLastSubtitleTime = startTimes.last ?? 0
+        setupForeignSubtitles()
+    }
+    
+    
+    private func printSubs(subs: [SubtitleModel]) {
+        for i in subs {
+            print("{")
+            print("\"key\": \(i.start),")
+            print("\"value\": \"\(i.eng)\"")
+            print("},")
+        }
     }
     
     
@@ -94,9 +106,8 @@ extension VideoPlayerViewController {
     
     func setupForeignSubtitles() {
         for i in 0..<self.video.subtitles.count {
-            if i >= foreignSubs.count { return }
+            if i >= foreignSubs.count { break }
             self.video.subtitles[i].ru = foreignSubs[i].eng
         }
-        tableView.reloadData()
     }
 }

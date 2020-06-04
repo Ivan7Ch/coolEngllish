@@ -16,19 +16,12 @@ class PlaylistTableViewCell: UITableViewCell {
     
     @IBOutlet weak var placeholder: UIImageView!
     
-    @IBOutlet weak var activitiIndicator: UIActivityIndicatorView!
-    
-    @IBOutlet weak var lock: UIImageView!
-    
-    @IBOutlet weak var lockWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var viewsCountLabel: UILabel!
     
     @IBOutlet weak var videosCountLabel: UILabel!
     
     
     func configure(with playlistItem: PlaylistModel) {
-        activitiIndicator.stopAnimating()
         placeholder.image = UIImage(named: "default")
         if let url = URL(string: playlistItem.placeholder) {
             let image = UIImage(named: "default")
@@ -37,17 +30,6 @@ class PlaylistTableViewCell: UITableViewCell {
         placeholder.layer.cornerRadius = 8
         
         nameLabel.text = playlistItem.name
-        
-        if PlaylistsCacheHelper.shared.getPlaylistsId().contains("\(playlistItem.id)") {
-            lock.alpha = 0
-            lockWidth.constant = 0
-        } else {
-            lock.alpha = 1
-            lockWidth.constant = 46
-        }
-        
-        lock.alpha = 0
-        lockWidth.constant = 0
         
         viewsCountLabel.text = "\(playlistItem.views) views"
         
