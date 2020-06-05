@@ -13,7 +13,9 @@
 		F52F4A0A24784297000BE9E6 /* dict_ua.txt in Resources */ = {isa = PBXBuildFile; fileRef = F52F4A0924784297000BE9E6 /* dict_ua.txt */; };
 		F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */; };
 		F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5360F14246F087100550559 /* GoogleService-Info.plist */; };
-		F5360F17246F0C2C00550559 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5360F16246F0C2C00550559 /* Dictionary.swift */; };
+		F541726F248A376A005AA224 /* VocabularyBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */; };
+		F5417271248A37D5005AA224 /* VocabularyBoxActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */; };
+		F5417273248A3817005AA224 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5417272248A3817005AA224 /* TableViewDelegate.swift */; };
 		F548BBDC2444CA8900AE060C /* VideoFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */; };
 		F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */; };
 		F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55666B8246EA96E002C3821 /* ToastMessage.swift */; };
@@ -58,7 +60,9 @@
 		F52F4A0924784297000BE9E6 /* dict_ua.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dict_ua.txt; sourceTree = "<group>"; };
 		F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryManager.swift; sourceTree = "<group>"; };
 		F5360F14246F087100550559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		F5360F16246F0C2C00550559 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxTableViewCell.swift; sourceTree = "<group>"; };
+		F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxActions.swift; sourceTree = "<group>"; };
+		F5417272248A3817005AA224 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
 		F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFirebaseHelper.swift; sourceTree = "<group>"; };
 		F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		F55666B8246EA96E002C3821 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
@@ -138,18 +142,26 @@
 		F52F4A082478421F000BE9E6 /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
-				F5360F16246F0C2C00550559 /* Dictionary.swift */,
 				F52F4A0924784297000BE9E6 /* dict_ua.txt */,
 				F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
 		};
+		F5417274248A3832005AA224 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F5417272248A3817005AA224 /* TableViewDelegate.swift */,
+				F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F548BBDD2444DBC900AE060C /* Flow */ = {
 			isa = PBXGroup;
 			children = (
 				F5E86C252486C6C90077E82E /* Videos part */,
-				F5C99888247EB966000D6716 /* Dictionary */,
+				F5C99888247EB966000D6716 /* VocabularyLevels */,
 				F5871714247BC70C00E4506D /* VocabularyBox */,
 			);
 			path = Flow;
@@ -176,7 +188,9 @@
 		F5871714247BC70C00E4506D /* VocabularyBox */ = {
 			isa = PBXGroup;
 			children = (
+				F5417274248A3832005AA224 /* Extensions */,
 				F5871715247BC72900E4506D /* VocabularyBoxViewController.swift */,
+				F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */,
 			);
 			path = VocabularyBox;
 			sourceTree = "<group>";
@@ -214,7 +228,7 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
-		F5C99888247EB966000D6716 /* Dictionary */ = {
+		F5C99888247EB966000D6716 /* VocabularyLevels */ = {
 			isa = PBXGroup;
 			children = (
 				F5C9988B247EB9C3000D6716 /* StudyViewController.swift */,
@@ -223,7 +237,7 @@
 				F5C99891247EC10A000D6716 /* Level3ViewController.swift */,
 				F5C99893247EC10B000D6716 /* Level4ViewController.swift */,
 			);
-			path = Dictionary;
+			path = VocabularyLevels;
 			sourceTree = "<group>";
 		};
 		F5CE9EA92444958B009EB618 = {
@@ -430,9 +444,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5417273248A3817005AA224 /* TableViewDelegate.swift in Sources */,
 				F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */,
 				F5E8E4322445A9C500C79D4C /* YoutubePlayerView.swift in Sources */,
-				F5360F17246F0C2C00550559 /* Dictionary.swift in Sources */,
 				F5E86C1B2486C3AE0077E82E /* TableViewExtension.swift in Sources */,
 				F596FCB2247A824D00E140C4 /* SubtitlesTableViewCell.swift in Sources */,
 				F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */,
@@ -449,6 +463,7 @@
 				F5C9988C247EB9C4000D6716 /* StudyViewController.swift in Sources */,
 				F5E86C1D2486C3DD0077E82E /* YoutubePlayerExtension.swift in Sources */,
 				F5C99890247EC108000D6716 /* Level2ViewController.swift in Sources */,
+				F541726F248A376A005AA224 /* VocabularyBoxTableViewCell.swift in Sources */,
 				F5E8E4342445B8FF00C79D4C /* SubtitleModel.swift in Sources */,
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
 				F5C99892247EC10A000D6716 /* Level3ViewController.swift in Sources */,
@@ -463,6 +478,7 @@
 				F5871716247BC72900E4506D /* VocabularyBoxViewController.swift in Sources */,
 				F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */,
 				F5E86C202486C51E0077E82E /* AdvertHelperExtension.swift in Sources */,
+				F5417271248A37D5005AA224 /* VocabularyBoxActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

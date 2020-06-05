@@ -35,9 +35,11 @@ class VocabularyBoxViewController: UIViewController {
     }
     
     
-    var allWords = [Word]()
-    
     var words = [Word]()
+    
+    var visibleWords = [Word]()
+    
+    let wordsPackCount = 15
     
     var selectedIndixies = [Int]()
     
@@ -59,57 +61,13 @@ class VocabularyBoxViewController: UIViewController {
     }
     
     
-    @IBAction func radioButtonAction() {
-        isSelectedAll.toggle()
-        selectedIndixies = []
-        
-        var selectAllLabelText = "select all"
-        if isSelectedAll {
-            for i in 0..<words.count {
-                selectedIndixies.append(i)
-            }
-            selectAllLabelText = "deselect all"
-        }
-        selectAllLabel.text = selectAllLabelText
-        tableView.reloadData()
-        reloadViews()
-    }
-    
-    
-    @IBAction func loadMoreWords() {
-        var c = 0
-        for (i, word) in allWords.enumerated() {
-            words.append(allWords[i])
-            c += 1
-            if c == 15 { break }
-        }
-        
-        for _ in 0..<c {
-            allWords.remove(at: 0)
-        }
-        
-        tableView.reloadData()
-        reloadViews()
-    }
-    
-    
     private func prepareWords() {
-        allWords = words
-        words = []
         
-        if allWords.count < 15 {
-            for i in allWords {
-                words.append(i)
-            }
-            return
-        }
+        let wordsCount = wordsPackCount > words.count ? words.count : wordsPackCount
         
-        for i in 0..<15 {
-            words.append(allWords[i])
-        }
-        
-        for i in 0..<15 {
-            allWords.remove(at: 0)
+        for _ in 0..<wordsCount {
+            visibleWords.append(words.first!)
+            words.remove(at: 0)
         }
         
         tableView.reloadData()
@@ -117,8 +75,8 @@ class VocabularyBoxViewController: UIViewController {
     }
     
     
-    private func reloadViews() {
-        selectedCountLabel.text = "\(selectedIndixies.count)/\(words.count)"
+    func reloadViews() {
+        selectedCountLabel.text = "\(selectedIndixies.count)/\(visibleWords.count)"
         if selectedIndixies.isEmpty {
             addToVocabularyButton.setTitle("skip", for: .normal)
         } else {
@@ -127,99 +85,19 @@ class VocabularyBoxViewController: UIViewController {
     }
     
     
-    @IBAction func addToVocabularyButtonAction() {
-        addToVocabularyWords()
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    private func addToVocabularyWords() {
+    func addToVocabularyWords() {
         var dictIds = [Int]()
         var learnedIds = [Int]()
         
-        for i in 0..<words.count {
+        for i in 0..<visibleWords.count {
             if selectedIndixies.contains(i) {
-                dictIds.append(words[i].id)
+                dictIds.append(visibleWords[i].id)
             } else {
-                learnedIds.append(words[i].id)
+                learnedIds.append(visibleWords[i].id)
             }
         }
         
         DictionaryManager.shared.addToDictionary(ids: dictIds)
         DictionaryManager.shared.markAsLearned(ids: learnedIds)
-    }
-}
-
-
-extension VocabularyBoxViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return words.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "VocabularyBoxTableViewCell") as! VocabularyBoxTableViewCell
-        
-        let ind = indexPath.row
-        cell.isSelectedCell = selectedIndixies.contains(ind)
-        
-        let word = words[indexPath.row]
-        cell.setup(word)
-        
-        return cell
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let ind = indexPath.row
-        if !selectedIndixies.contains(ind) {
-            selectedIndixies.append(ind)
-        } else {
-            selectedIndixies.removeAll(where: { $0 == ind })
-        }
-        tableView.reloadData()
-        reloadViews()
-    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 74
-    }
-}
-
-
-class VocabularyBoxTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var originalWord: UILabel!
-    @IBOutlet weak var translatedWord: UILabel!
-    @IBOutlet weak var speachButton: UIButton!
-    @IBOutlet weak var selectionIndicator: UIImageView!
-    
-    private var wordText = ""
-    
-    var isSelectedCell: Bool = false {
-        didSet {
-            if isSelectedCell {
-                selectionIndicator.image = UIImage(named: "radiobutton")
-            } else {
-                selectionIndicator.image = UIImage(named: "rbempty")
-            }
-        }
-    }
-    
-    
-    func setup(_ word: Word) {
-        originalWord.text = word.original
-        translatedWord.text = word.translation
-        wordText = word.original
-    }
-    
-    
-    @IBAction func speachButtonAction() {
-        let speechSynthesizer = AVSpeechSynthesizer()
-        let speechUtterance: AVSpeechUtterance = AVSpeechUtterance(string: wordText)
-        speechUtterance.rate = AVSpeechUtteranceMaximumSpeechRate / 2.0
-        speechUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        speechSynthesizer.speak(speechUtterance)
     }
 }

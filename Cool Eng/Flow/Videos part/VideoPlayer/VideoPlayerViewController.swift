@@ -71,6 +71,16 @@ class VideoPlayerViewController: UIViewController {
         tableView.estimatedRowHeight = 80
         tableView.reloadData()
     }
+    
+    
+    @IBAction func pauseVideo() {
+        videoPlayer.pause()
+    }
+    
+    
+    @IBAction func resumeVideo() {
+        videoPlayer.play()
+    }
 }
 
 

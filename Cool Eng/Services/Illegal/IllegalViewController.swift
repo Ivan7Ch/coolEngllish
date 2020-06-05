@@ -233,7 +233,7 @@ class IllegalViewController: UIViewController {
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
-                vc.words = res
+                vc.visibleWords = res
                 self.present(vc, animated: true, completion: nil)
             }
         }

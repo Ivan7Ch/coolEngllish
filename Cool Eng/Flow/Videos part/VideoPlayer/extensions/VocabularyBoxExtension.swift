@@ -50,12 +50,19 @@ extension VideoPlayerViewController {
             }
             
             
-            DispatchQueue.main.async {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
-                vc.words = res
-                self.present(vc, animated: true, completion: nil)
+            if res.count > 0 {
+                self.showVocabularyBoxViewController(res)
             }
+        }
+    }
+    
+    
+    func showVocabularyBoxViewController(_ words: [Word]) {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
+            vc.words = words
+            self.present(vc, animated: true, completion: nil)
         }
     }
 }
