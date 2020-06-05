@@ -27,8 +27,10 @@ class VocabularyBoxViewController: UIViewController {
     var isSelectedAll: Bool = false {
         didSet {
             if isSelectedAll {
+                selectAllLabel.text = "deselect all"
                 radioButton.image = UIImage(named: "radiobutton")
             } else {
+                selectAllLabel.text = "select all"
                 radioButton.image = UIImage(named: "rbempty")
             }
         }
@@ -62,7 +64,6 @@ class VocabularyBoxViewController: UIViewController {
     
     
     private func prepareWords() {
-        
         let wordsCount = wordsPackCount > words.count ? words.count : wordsPackCount
         
         for _ in 0..<wordsCount {
@@ -82,6 +83,8 @@ class VocabularyBoxViewController: UIViewController {
         } else {
             addToVocabularyButton.setTitle("Add To Vocabulary", for: .normal)
         }
+        
+        isSelectedAll = !(selectedIndixies.count < visibleWords.count)
     }
     
     
