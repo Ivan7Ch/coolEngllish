@@ -249,6 +249,7 @@ PODS:
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
   - GTMSessionFetcher/Core (1.3.1)
+  - HMSegmentedControl (1.5.6)
   - Kingfisher (5.13.4):
     - Kingfisher/Core (= 5.13.4)
   - Kingfisher/Core (5.13.4)
@@ -272,6 +273,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - Google-Mobile-Ads-SDK
+  - HMSegmentedControl
   - Kingfisher
   - Pastel
   - RealmSwift
@@ -297,6 +299,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - HMSegmentedControl
     - Kingfisher
     - leveldb-library
     - nanopb
@@ -325,6 +328,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
+  HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
   Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
@@ -334,6 +338,6 @@ SPEC CHECKSUMS:
   RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 439cce81ff06d3d593b5234d44161b3c55998c4c
+PODFILE CHECKSUM: 2a53be50a1217fca45203457c070b8808c393b09
 
 COCOAPODS: 1.9.0
