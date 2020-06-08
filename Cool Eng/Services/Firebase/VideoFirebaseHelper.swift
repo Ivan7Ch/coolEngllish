@@ -44,14 +44,12 @@ class VideoFirebaseHelper {
             let url = dict["url"] as? String
         else { return nil }
         
-//        var subtitles = [SubtitleModel]()
-//        for i in subtitlesDict {
-//            if let sub = parseSubtitleData(dict: i) {
-//                subtitles.append(sub)
-//            }
-//        }
+        var duration = 0
+        if let d = dict["duration"] as? Double {
+            duration = Int(d)
+        }
         
-        return VideoModel(id: Int(id), name: name, playlist: Int(playlist), placeholder: placeholder, url: url)
+        return VideoModel(id: Int(id), name: name, playlist: Int(playlist), placeholder: placeholder, url: url, duration: duration)
     }
     
     

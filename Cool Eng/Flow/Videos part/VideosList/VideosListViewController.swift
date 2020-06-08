@@ -14,6 +14,15 @@ class SimpleVideoCell: UITableViewCell {
     @IBOutlet weak var thumbnail: UIImageView!
     
     @IBOutlet weak var title: UILabel!
+    
+    @IBOutlet weak var durationLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        durationLabel.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.75)
+        durationLabel.layer.masksToBounds = true
+        durationLabel.layer.cornerRadius = 10
+    }
 }
 
 
@@ -49,6 +58,28 @@ class VideosListViewController: UIViewController {
         tableView.estimatedRowHeight = 80
         tableView.reloadData()
     }
+    
+    
+    func secondsToHoursMinutesSeconds(seconds : Int) -> [Int] {
+        return [seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60]
+    }
+    
+    
+    func timeFromSeconds(_ seconds : Int) -> String {
+        let duration: TimeInterval = TimeInterval(seconds)
+
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.hour, .minute, .second]
+        if seconds / 3600 <= 0 {
+            formatter.allowedUnits = [.minute, .second]
+        }
+        formatter.zeroFormattingBehavior = [.pad]
+
+        let formattedDuration = formatter.string(from: duration)
+        
+        return formattedDuration ?? ""
+    }
 }
 
 
@@ -67,6 +98,8 @@ extension VideosListViewController: UITableViewDataSource, UITableViewDelegate {
         }
         cell.title.text = video.name
         
+        cell.durationLabel.text = "  \(timeFromSeconds(video.duration))  "
+        
         return cell
     }
     
@@ -76,4 +109,3 @@ extension VideosListViewController: UITableViewDataSource, UITableViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-

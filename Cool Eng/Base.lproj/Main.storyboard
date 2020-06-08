@@ -152,31 +152,34 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simpsons" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zd0-eW-sBP">
-                                                    <rect key="frame" x="20" y="254" width="374" height="13"/>
+                                                    <rect key="frame" x="20" y="246" width="374" height="21"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration: 00:54" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek4-1Z-OQD">
-                                                    <rect key="frame" x="316.5" y="238" width="89.5" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:54" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek4-1Z-OQD">
+                                                    <rect key="frame" x="373.5" y="208" width="34.5" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="v6x-BM-cIh"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ek4-1Z-OQD" firstAttribute="top" secondItem="afD-c4-nF7" secondAttribute="bottom" constant="4" id="4Zv-Ay-jMq"/>
                                                 <constraint firstItem="afD-c4-nF7" firstAttribute="leading" secondItem="TEh-mf-DzP" secondAttribute="leading" id="96n-VA-ggx"/>
+                                                <constraint firstItem="ek4-1Z-OQD" firstAttribute="bottom" secondItem="afD-c4-nF7" secondAttribute="bottom" constant="-6" id="BrM-u7-ab3"/>
                                                 <constraint firstAttribute="trailing" secondItem="zd0-eW-sBP" secondAttribute="trailing" constant="20" id="aUP-HF-dMd"/>
-                                                <constraint firstAttribute="trailing" secondItem="ek4-1Z-OQD" secondAttribute="trailing" constant="8" id="bci-Ek-GEy"/>
+                                                <constraint firstAttribute="trailing" secondItem="ek4-1Z-OQD" secondAttribute="trailing" constant="6" id="bci-Ek-GEy"/>
                                                 <constraint firstItem="zd0-eW-sBP" firstAttribute="leading" secondItem="TEh-mf-DzP" secondAttribute="leadingMargin" id="fCI-oQ-W4h"/>
                                                 <constraint firstItem="afD-c4-nF7" firstAttribute="top" secondItem="TEh-mf-DzP" secondAttribute="top" constant="1" id="ghZ-Dq-9i3"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="zd0-eW-sBP" secondAttribute="bottom" constant="20" id="kAn-0Z-7Ew"/>
                                                 <constraint firstAttribute="trailing" secondItem="afD-c4-nF7" secondAttribute="trailing" id="l62-21-1bX"/>
-                                                <constraint firstItem="zd0-eW-sBP" firstAttribute="top" secondItem="afD-c4-nF7" secondAttribute="bottom" constant="20" id="uuj-xU-VDu"/>
+                                                <constraint firstItem="zd0-eW-sBP" firstAttribute="top" secondItem="afD-c4-nF7" secondAttribute="bottom" constant="12" id="uuj-xU-VDu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="durationLabel" destination="ek4-1Z-OQD" id="afX-Te-hqQ"/>
                                             <outlet property="thumbnail" destination="afD-c4-nF7" id="wuS-Jx-W4U"/>
                                             <outlet property="title" destination="zd0-eW-sBP" id="UER-GE-Gls"/>
                                         </connections>
