@@ -22,13 +22,13 @@ class StudyViewController: UIViewController {
         
         self.setPastelBackground()
 
-        let w = DictionaryManager.shared.getWordsForStudy()
-        
-        words = []
-        for i in 0..<6 {
-            words.append(w[i])
+        if words.isEmpty {
+            let w = DictionaryManager.shared.getWordsForStudy()
+            words = []
+            for i in 0..<6 {
+                words.append(w[i])
+            }
         }
-        
         
         setupViews()
         self.tabBarController?.tabBar.isHidden = true

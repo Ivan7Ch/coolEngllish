@@ -36,6 +36,7 @@ class Level3ViewController: UIViewController {
         setupViews()
     }
     
+    
     private func setupViews() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -43,10 +44,14 @@ class Level3ViewController: UIViewController {
         self.setPastelBackground()
     }
     
+    
     private func nextStep() {
-        // TODO: - set words progress
-        navigationController?.popToRootViewController(animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "LearnedWordsBoxViewController") as! LearnedWordsBoxViewController
+        vc.words = self.words
+        navigationController?.pushViewController(vc, animated: true)
     }
+    
     
     func reloadViews() {
         let word = Array(words[currentIndex].original)
@@ -79,7 +84,6 @@ extension Level3ViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.isUserInteractionEnabled = true
         cell.containerView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         cell.letterLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        print(letters[indexPath.row].lowercased())
         return cell
     }
     

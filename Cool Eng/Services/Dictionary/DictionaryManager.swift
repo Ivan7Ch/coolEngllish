@@ -133,6 +133,11 @@ class DictionaryManager {
     }
     
     
+    func addToRecallList(ids: [Int]) {
+        updateProgress(progress: 50, in: ids)
+    }
+    
+    
     func markAsLearned(ids: [Int]) {
         updateProgress(progress: 100, in: ids)
     }

@@ -40,17 +40,20 @@ class VocabulariesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        wordsForLearning = DictionaryManager.shared.getWordsForStudy()
-        wordsForRecall = DictionaryManager.shared.getWordsForRecall()
-        learnedWords = DictionaryManager.shared.getLearnedWords()
-        setupViews()
+        tabBarController?.tabBar.isHidden = false
+        title = "Vocabulary"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
-        title = "Vocabulary"
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        wordsForLearning = DictionaryManager.shared.getWordsForStudy()
+        wordsForRecall = DictionaryManager.shared.getWordsForRecall()
+        learnedWords = DictionaryManager.shared.getLearnedWords()
+        
+        setupViews()
     }
     
     
@@ -87,7 +90,7 @@ class VocabulariesViewController: UIViewController {
     
     
     private func hideButton(_ hide: Bool) {
-        self.buttonHeightConstraint.constant = hide ? -100 : 50
+        self.buttonHeightConstraint.constant = hide ? -200 : 50
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
