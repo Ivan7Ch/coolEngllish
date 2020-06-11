@@ -17,6 +17,7 @@
 		F52F4A0A24784297000BE9E6 /* dict_ua.txt in Resources */ = {isa = PBXBuildFile; fileRef = F52F4A0924784297000BE9E6 /* dict_ua.txt */; };
 		F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */; };
 		F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5360F14246F087100550559 /* GoogleService-Info.plist */; };
+		F53E16072490F68700EA594A /* RecallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E16062490F68700EA594A /* RecallViewController.swift */; };
 		F541726F248A376A005AA224 /* VocabularyBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */; };
 		F5417271248A37D5005AA224 /* VocabularyBoxActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */; };
 		F5417273248A3817005AA224 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5417272248A3817005AA224 /* TableViewDelegate.swift */; };
@@ -73,6 +74,7 @@
 		F52F4A0924784297000BE9E6 /* dict_ua.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dict_ua.txt; sourceTree = "<group>"; };
 		F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryManager.swift; sourceTree = "<group>"; };
 		F5360F14246F087100550559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F53E16062490F68700EA594A /* RecallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallViewController.swift; sourceTree = "<group>"; };
 		F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxTableViewCell.swift; sourceTree = "<group>"; };
 		F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxActions.swift; sourceTree = "<group>"; };
 		F5417272248A3817005AA224 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,14 @@
 				F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */,
 			);
 			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		F53E16052490F67200EA594A /* Recall */ = {
+			isa = PBXGroup;
+			children = (
+				F53E16062490F68700EA594A /* RecallViewController.swift */,
+			);
+			path = Recall;
 			sourceTree = "<group>";
 		};
 		F5417274248A3832005AA224 /* Extensions */ = {
@@ -299,6 +309,7 @@
 		F5C99888247EB966000D6716 /* Vocabulary */ = {
 			isa = PBXGroup;
 			children = (
+				F53E16052490F67200EA594A /* Recall */,
 				F54C973B248E3C1E0019930D /* LearnedWordsBox */,
 				F5210763248A883B008408D2 /* Vocabularies Start Screen */,
 				F54C9737248E30F50019930D /* WordsLearning */,
@@ -553,6 +564,7 @@
 				F5210762248A7AAC008408D2 /* VocabulariesViewController.swift in Sources */,
 				F5210769248A88C9008408D2 /* BlurView.swift in Sources */,
 				F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */,
+				F53E16072490F68700EA594A /* RecallViewController.swift in Sources */,
 				F5E86C202486C51E0077E82E /* AdvertHelperExtension.swift in Sources */,
 				F5417271248A37D5005AA224 /* VocabularyBoxActions.swift in Sources */,
 			);
