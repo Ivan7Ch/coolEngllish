@@ -1542,11 +1542,22 @@
                                     <constraint firstAttribute="height" constant="60" id="2fN-hY-Qig"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5Y-yp-pom">
+                                <rect key="frame" x="341" y="48" width="69" height="36"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="    skip    "/>
+                                <connections>
+                                    <action selector="skipButtonAction" destination="Kwb-b0-UEO" eventType="touchUpInside" id="8nx-wq-NcK"/>
+                                    <action selector="skipButtonAction" destination="Dam-yM-IKw" eventType="touchUpInside" id="me1-4U-Jsj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="r5Y-yp-pom" firstAttribute="top" secondItem="uIA-sK-t28" secondAttribute="top" constant="4" id="9to-eL-6fp"/>
                             <constraint firstItem="1NL-Zq-7o5" firstAttribute="leading" secondItem="jUr-sN-ttu" secondAttribute="leading" id="Fb4-64-toJ"/>
                             <constraint firstItem="1NL-Zq-7o5" firstAttribute="centerX" secondItem="jUr-sN-ttu" secondAttribute="centerX" id="N5p-TY-WiJ"/>
+                            <constraint firstItem="uIA-sK-t28" firstAttribute="trailing" secondItem="r5Y-yp-pom" secondAttribute="trailing" constant="4" id="P7g-ib-MF3"/>
                             <constraint firstItem="uIA-sK-t28" firstAttribute="trailing" secondItem="h5R-S1-49L" secondAttribute="trailing" constant="20" id="YVa-so-lCS"/>
                             <constraint firstItem="h5R-S1-49L" firstAttribute="leading" secondItem="uIA-sK-t28" secondAttribute="leading" constant="20" id="jDR-lj-UYv"/>
                             <constraint firstItem="1NL-Zq-7o5" firstAttribute="centerY" secondItem="jUr-sN-ttu" secondAttribute="centerY" id="uJj-CX-tYX"/>

@@ -67,6 +67,13 @@ class RecallViewController: UIViewController {
         
         view.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
         pastelView = PastelView(frame: view.bounds)
+        
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    
+    @IBAction func skipButtonAction() {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     
@@ -75,6 +82,9 @@ class RecallViewController: UIViewController {
         
         if answers[currentIndex] == ans {
             setPastelBackground(ans: true)
+            DictionaryManager.shared.markAsLearned(ids: [words[currentIndex].id])
+            print(words[currentIndex])
+            
             currentIndex += 1
             if currentIndex >= words.count { return }
             collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .right, animated: true)
