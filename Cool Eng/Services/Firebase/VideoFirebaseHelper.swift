@@ -49,7 +49,12 @@ class VideoFirebaseHelper {
             duration = Int(d)
         }
         
-        return VideoModel(id: Int(id), name: name, playlist: Int(playlist), placeholder: placeholder, url: url, duration: duration)
+        var words = [String]()
+        if let w = dict["words"] as? [String] {
+            words = w
+        }
+        
+        return VideoModel(id: Int(id), name: name, playlist: Int(playlist), placeholder: placeholder, url: url, duration: duration, words: words)
     }
     
     

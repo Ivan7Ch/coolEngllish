@@ -18,4 +18,5 @@ struct VideoModel {
     var subtitles: [SubtitleModel] = []
     var url: String
     var duration: Int = 0
+    var words: [String] = []
 }

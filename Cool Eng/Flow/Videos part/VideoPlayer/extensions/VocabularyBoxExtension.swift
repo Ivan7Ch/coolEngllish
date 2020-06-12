@@ -57,11 +57,29 @@ extension VideoPlayerViewController {
     }
     
     
+    func prepareWords(_ words: [Word]) -> [Word] {
+        let videoWords = video.words
+        var allWords = [Word]()
+        
+        for i in videoWords {
+            if let w = realmWords.first(where: { $0.original == i }) {
+                allWords.append(w)
+            }
+        }
+        
+        for i in words {
+            allWords.append(i)
+        }
+        
+        return allWords
+    }
+    
+    
     func showVocabularyBoxViewController(_ words: [Word]) {
         DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
-            vc.words = words
+            vc.words = self.prepareWords(words)
             self.present(vc, animated: true, completion: nil)
         }
     }
