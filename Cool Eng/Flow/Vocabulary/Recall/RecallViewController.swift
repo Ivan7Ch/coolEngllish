@@ -23,7 +23,6 @@ class RecallCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         containerView.layer.cornerRadius = 16
-        containerView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1255351027)
         correctLabel.text = ""
     }
 }
@@ -58,7 +57,7 @@ class RecallViewController: UIViewController {
         falseButton.addTarget(self, action: #selector(falseButtonAction), for: .touchUpInside)
         
         words = DictionaryManager.shared.getWordsForRecall()
-        learnedWords = DictionaryManager.shared.getWordsForStudy()
+        learnedWords = DictionaryManager.shared.getRandWords()
         
         answers = Array(repeating: true, count: words.count)
         
@@ -66,9 +65,25 @@ class RecallViewController: UIViewController {
         collectionView.delegate = self
         
         view.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
-        pastelView = PastelView(frame: view.bounds)
         
         navigationController?.isNavigationBarHidden = true
+        
+        setupButton(falseButton)
+        setupButton(trueButton)
+        
+        setPastelBackground()
+    }
+    
+    
+    func setupButton(_ button: UIButton) {
+        button.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        button.layer.cornerRadius = 12
+        button.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        button.layer.shadowRadius = 8
+        button.layer.masksToBounds = false
+        button.layer.shadowOpacity = 0.2
+        button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8075502997)
+        button.layer.borderWidth = 0.5
     }
     
     
@@ -78,29 +93,31 @@ class RecallViewController: UIViewController {
     
     
     func checkIfCorrectAnswer(ans: Bool) {
-        if currentIndex >= words.count { return }
+        if currentIndex >= words.count {
+            navigationController?.popToRootViewController(animated: true)
+        }
+        guard let cell = collectionView.cellForItem(at: IndexPath(item: currentIndex, section: 0)) as? RecallCollectionViewCell else { return }
+        
+        var delay = 0.0
         
         if answers[currentIndex] == ans {
-            setPastelBackground(ans: true)
+            cell.containerView.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
             DictionaryManager.shared.markAsLearned(ids: [words[currentIndex].id])
-            print(words[currentIndex])
-            
-            currentIndex += 1
-            if currentIndex >= words.count { return }
-            collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .right, animated: true)
         } else {
-            setPastelBackground(ans: false)
+            cell.containerView.backgroundColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
             if ans {
-                let cell = collectionView.cellForItem(at: IndexPath(item: currentIndex, section: 0)) as! RecallCollectionViewCell
                 cell.correctLabel.text = words[currentIndex].translation
             }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
-                self.currentIndex += 1
-                if self.currentIndex >= self.words.count { return }
-                self.collectionView.scrollToItem(at: IndexPath(item: self.currentIndex, section: 0), at: .right, animated: true)
-            })
+            delay = 0.8
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
+            self.currentIndex += 1
+            if self.currentIndex >= self.words.count {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+            self.collectionView.scrollToItem(at: IndexPath(item: self.currentIndex, section: 0), at: .right, animated: true)
+        })
     }
     
     
@@ -112,35 +129,6 @@ class RecallViewController: UIViewController {
     @IBAction func falseButtonAction() {
         checkIfCorrectAnswer(ans: false)
     }
-    
-    func setPastelBackground(ans: Bool) {
-        pastelView.removeFromSuperview()
-        
-        pastelView = PastelView(frame: view.bounds)
-        pastelView.startPastelPoint = .top
-        pastelView.endPastelPoint = .bottom
-        pastelView.animationDuration = 5
-        
-        var colors = [#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.8904744485, green: 0.8502347224, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.6813562978, green: 0.8039215803, blue: 0.8039215803, alpha: 1), #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.6451833526, alpha: 1)]
-        
-        if self.traitCollection.userInterfaceStyle == .dark {
-            colors = [#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)]
-        }
-        
-        if ans {
-            colors = [#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1), #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1), #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1), #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1), #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)]
-        } else {
-            colors = [#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1), #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1), #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)]
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15 , execute: {
-            self.pastelView.removeFromSuperview()
-        })
-        
-        pastelView.setColors(colors)
-        pastelView.startAnimation()
-        view.insertSubview(pastelView, at: 0)
-    }
 }
 
 
@@ -151,6 +139,8 @@ extension RecallViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecallCollectionViewCell", for: indexPath) as! RecallCollectionViewCell
+        
+        cell.containerView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.75)
         
         let word = words[indexPath.row]
         var translation = word.translation

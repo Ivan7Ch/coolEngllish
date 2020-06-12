@@ -128,6 +128,29 @@ class DictionaryManager {
     }
     
     
+    func getRandWords() -> [Word] {
+        var res = [Word]()
+        let realm = try! Realm()
+        
+        let words = realm.objects(RealmWord.self).filter("progress > 50")
+        
+        for i in words {
+            res.append(Word(id: 0, original: i.original, translation: i.translation))
+        }
+        
+        if res.count < 6 {
+            for i in 0..<6 {
+                let ind = Int.random(in: 0..<5000)
+                let word = realm.objects(RealmWord.self).filter("id == \(ind)").first
+                
+                res.append(Word(id: 0, original: "", translation: word?.translation ?? ""))
+            }
+        }
+        
+        return res
+    }
+    
+    
     func addToDictionary(ids: [Int]) {
         updateProgress(progress: 0, in: ids)
     }

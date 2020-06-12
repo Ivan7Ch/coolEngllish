@@ -106,16 +106,8 @@ class VocabulariesViewController: UIViewController {
     
     
     private func showRecallViewController() {
-        if wordsForRecall.count < 6 { return }
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "RecallViewController") as! RecallViewController
-        var vcWords = [Word]()
-        
-        for i in 0..<6 {
-            vcWords.append(self.wordsForRecall[i])
-        }
-        vc.words = vcWords
         navigationController?.pushViewController(vc, animated: true)
     }
     

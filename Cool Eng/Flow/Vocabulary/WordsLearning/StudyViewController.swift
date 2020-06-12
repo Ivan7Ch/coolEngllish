@@ -24,8 +24,12 @@ class StudyViewController: UIViewController {
 
         if words.isEmpty {
             let w = DictionaryManager.shared.getWordsForStudy()
+            var count = 6
+            if w.count < 6 {
+                count = w.count
+            }
             words = []
-            for i in 0..<6 {
+            for i in 0..<count {
                 words.append(w[i])
             }
         }
