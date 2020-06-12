@@ -44,6 +44,11 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        guard let navigationController = navigationController else { return }
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationController.navigationBar.sizeToFit()
     }
     
     private func upload(error: String) {
