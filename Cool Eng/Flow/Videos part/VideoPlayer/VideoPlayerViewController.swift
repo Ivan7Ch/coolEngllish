@@ -77,12 +77,15 @@ class VideoPlayerViewController: UIViewController {
     }
     
     
-    @IBAction func pauseVideo() {
-        videoPlayer.pause()
-    }
-    
+    var isPlaying = false
     
     @IBAction func resumeVideo() {
-        videoPlayer.play()
+        if isPlaying {
+            isPlaying = false
+            videoPlayer.play()
+        } else {
+            isPlaying = true
+            videoPlayer.pause()
+        }
     }
 }

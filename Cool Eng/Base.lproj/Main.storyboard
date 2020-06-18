@@ -94,7 +94,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="k7i-8y-LUG">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Wgp-px-Ud7"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="Wgp-px-Ud7"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="L1O-7i-vXL" id="hDX-Nt-3Sm"/>
@@ -302,7 +302,6 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="233"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <action selector="pauseVideo" destination="orK-6w-SBU" eventType="touchDown" id="HRa-9o-gRS"/>
                                     <action selector="resumeVideo" destination="orK-6w-SBU" eventType="touchUpInside" id="8Va-r4-2Zd"/>
                                 </connections>
                             </button>
@@ -1784,6 +1783,7 @@
         <image name="default" width="735" height="700"/>
         <image name="next" width="256" height="256"/>
         <image name="playAydio" width="512" height="512"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rbempty" width="512" height="512"/>
     </resources>
 </document>
