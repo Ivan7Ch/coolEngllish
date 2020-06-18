@@ -94,7 +94,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="k7i-8y-LUG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Wgp-px-Ud7"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="Wgp-px-Ud7"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="L1O-7i-vXL" id="hDX-Nt-3Sm"/>

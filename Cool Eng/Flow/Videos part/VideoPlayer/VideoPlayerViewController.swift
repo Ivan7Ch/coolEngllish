@@ -17,6 +17,10 @@ class VideoPlayerViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var playerHeightConstraint: NSLayoutConstraint!
     
+    var toastMessageView: ToastMessageView!
+    
+    var tButton = UIButton()
+    
     var video: VideoModel!
     
     var startTimes = [Double]()
@@ -82,21 +86,3 @@ class VideoPlayerViewController: UIViewController {
         videoPlayer.play()
     }
 }
-
-
-
-/*
- private func replaceSubtitles() {
-     let filepath = Bundle.main.path(forResource: "ep1", ofType: "txt")!
-     let contents = try! String(contentsOfFile: filepath)
-     
-     let subs = contents.split{ $0.isNewline }
-     
-     var subsArr = [SubtitleModel]()
-     for i in subs {
-         let sub = SubtitleModel(start: 123333, eng: " " + String(i), ru: "", isWatched: false)
-         subsArr.append(sub)
-     }
-     video.subtitles = subsArr
- }
- */

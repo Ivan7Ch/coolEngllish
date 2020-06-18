@@ -286,7 +286,7 @@ extension IllegalViewController: UITableViewDataSource, UITableViewDelegate {
     
     func wordTapHandler(word: String) {
         guard let w = DictionaryManager.shared.getWord(word.lowercased()) else { return }
-        self.showToast(message: "\(word)", submessage: w.translation)
+        
     }
 }
 

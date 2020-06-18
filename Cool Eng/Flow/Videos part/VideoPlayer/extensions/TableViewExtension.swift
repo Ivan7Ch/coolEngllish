@@ -59,7 +59,13 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
     
     func wordTapHandler(word: String) {
         guard let w = DictionaryManager.shared.getWord(word.lowercased()) else { return }
-        self.showToast(message: "\(word)", submessage: w.translation)
-        learnWordsIds.append(w.id) // for learn this words later
+        
+        if toastMessageView != nil {
+            toastMessageView.removeFromSuperview()
+        }
+        
+        self.toastMessageView = ToastMessageView()
+        toastMessageView.setup(with: w)
+        view.addSubview(toastMessageView)
     }
 }
