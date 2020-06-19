@@ -76,7 +76,7 @@ class VideoPlayerViewController: UIViewController {
             self.tableView.scrollToRow(at: IndexPath(row: ind, section: 0), at: .top, animated: true)
         }))
 
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction )in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction )in
             
         }))
 

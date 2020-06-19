@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 import GoogleMobileAds
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if !UserDefaults.standard.bool(forKey: "isDictionarySettuped") {
             DictionaryManager.shared.setup()
+        }
+        
+        do {
+           try AVAudioSession.sharedInstance().setCategory(.playback)
+        } catch(let error) {
+            print(error.localizedDescription)
         }
         
         return true
