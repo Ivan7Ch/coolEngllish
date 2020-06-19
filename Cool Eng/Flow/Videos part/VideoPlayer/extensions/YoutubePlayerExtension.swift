@@ -18,6 +18,7 @@ extension VideoPlayerViewController: YoutubePlayerViewDelegate {
             if time > Float(i) {
                 setSelectedCell(index: subsIndex)
                 subsIndex += 1
+                UserDefaults.standard.set(startTimes.first, forKey: "video - \(video.id)")
                 startTimes.removeFirst()
                 isUpdated = true
             } else {

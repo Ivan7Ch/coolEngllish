@@ -39,6 +39,5 @@ class SubtitlesTableViewCell: UITableViewCell {
     
     @IBAction func seekVideoPositionButtonAction() {
         cellTapHandler(index)
-        print(index)
     }
 }

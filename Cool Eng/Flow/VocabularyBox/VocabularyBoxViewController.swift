@@ -24,6 +24,9 @@ class VocabularyBoxViewController: UIViewController {
     
     @IBOutlet weak var radioButton: UIImageView!
     
+    var completion: () -> Void = {}
+    
+    
     var isSelectedAll: Bool = false {
         didSet {
             if isSelectedAll {
@@ -102,5 +105,11 @@ class VocabularyBoxViewController: UIViewController {
         
         DictionaryManager.shared.addToDictionary(ids: dictIds)
         DictionaryManager.shared.markAsLearned(ids: learnedIds)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        completion()
     }
 }

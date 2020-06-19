@@ -61,6 +61,11 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
     func reloadData() {
         tableView.reloadData()
     }
+    
+    
+    @IBAction func addOwnPlaylist() {
+        print("zaebis`")
+    }
 }
 
 
