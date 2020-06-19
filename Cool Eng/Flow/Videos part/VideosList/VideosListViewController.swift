@@ -34,6 +34,8 @@ class VideosListViewController: UIViewController {
     
     var playlistId: Int = 0
     
+    var activityView = UIActivityIndicatorView(style: .large)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +47,18 @@ class VideosListViewController: UIViewController {
         VideoFirebaseHelper.shared.fetchVideos(playlistId: playlistId, callback: { videos in
             self.videos = videos
             self.tableView.reloadData()
+            self.activityView.stopAnimating()
         })
         tabBarController?.tabBar.isHidden = true
+        showActivityIndicator()
+    }
+    
+    
+    func showActivityIndicator() {
+        activityView.center = self.view.center
+        activityView.color = UIColor(named: "main")
+        self.view.addSubview(activityView)
+        activityView.startAnimating()
     }
     
     

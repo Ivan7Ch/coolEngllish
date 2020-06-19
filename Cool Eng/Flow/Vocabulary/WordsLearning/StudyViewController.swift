@@ -49,7 +49,7 @@ class StudyViewController: UIViewController {
         readyButton.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
         readyButton.layer.cornerRadius = 12
         readyButton.layer.borderWidth = 0.2
-        readyButton.layer.borderColor = #colorLiteral(red: 0.1411764706, green: 0.4470588235, blue: 0.6705882353, alpha: 1)
+        readyButton.layer.borderColor = #colorLiteral(red: 0.1912888479, green: 0.6130264327, blue: 0.927208915, alpha: 1)
         readyButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         readyButton.layer.shadowRadius = 8
         readyButton.layer.shadowOpacity = 0.3

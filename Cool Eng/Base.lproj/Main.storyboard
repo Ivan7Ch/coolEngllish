@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -112,7 +113,7 @@
         <scene sceneID="uMx-sE-uUn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fVB-Ue-dTG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="AyB-G2-j1k"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="list.bullet" catalog="system" id="AyB-G2-j1k"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JPR-kG-f8z">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -566,6 +567,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.14117647059999999" green="0.44705882349999998" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" name="main"/>
                     </tabBar>
                     <connections>
                         <segue destination="fVB-Ue-dTG" kind="relationship" relationship="viewControllers" id="sz8-t0-Kse"/>
@@ -1259,7 +1261,7 @@
         <scene sceneID="v8c-Qq-ZYg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BXz-GO-KTc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Vocabulary" id="uN4-85-KPT"/>
+                    <tabBarItem key="tabBarItem" title="Vocabulary" image="book" catalog="system" id="uN4-85-KPT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Svn-bD-Gp5">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1579,6 +1581,35 @@
             </objects>
             <point key="canvasLocation" x="1774" y="1611"/>
         </scene>
+        <!--Purchase View Controller-->
+        <scene sceneID="eNj-lF-6Hz">
+            <objects>
+                <viewController id="BH2-M1-D7Q" customClass="PurchaseViewController" customModule="Cool_Eng" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l0Z-Xh-cjS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNY-HZ-duQ">
+                                <rect key="frame" x="137" y="421" width="140" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Purchase"/>
+                                <connections>
+                                    <action selector="purchaseViewController" destination="BH2-M1-D7Q" eventType="touchUpInside" id="PhX-hq-UBE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="PNY-HZ-duQ" firstAttribute="centerX" secondItem="l0Z-Xh-cjS" secondAttribute="centerX" id="2f2-my-dEl"/>
+                            <constraint firstItem="PNY-HZ-duQ" firstAttribute="centerY" secondItem="l0Z-Xh-cjS" secondAttribute="centerY" id="XX8-ss-729"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iF0-gM-bb3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ea-1c-FV7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2761" y="1610"/>
+        </scene>
         <!--Learned Words Box View Controller-->
         <scene sceneID="3u1-hx-GPK">
             <objects>
@@ -1783,10 +1814,15 @@
     </scenes>
     <resources>
         <image name="award" width="128" height="128"/>
+        <image name="book" catalog="system" width="128" height="101"/>
         <image name="default" width="735" height="700"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="next" width="256" height="256"/>
         <image name="playAydio" width="512" height="512"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rbempty" width="512" height="512"/>
+        <namedColor name="main">
+            <color red="0.1912888479338101" green="0.6130264326657896" blue="0.92720891497461932" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

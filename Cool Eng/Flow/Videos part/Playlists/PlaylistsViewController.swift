@@ -20,12 +20,15 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
     var selectedCell: PlaylistTableViewCell?
     
     var selectedPlaylistId: Int = 0
+    
+    var activityView = UIActivityIndicatorView(style: .large)
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = PlaylistViewModel(delegate: self)
         setupViews()
+        showActivityIndicator()
     }
     
     
@@ -34,6 +37,14 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.reloadData()
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    
+    func showActivityIndicator() {
+        activityView.center = self.view.center
+        activityView.color = UIColor(named: "main")
+        self.view.addSubview(activityView)
+        activityView.startAnimating()
     }
     
     
@@ -59,6 +70,7 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
     
     
     func reloadData() {
+        activityView.stopAnimating()
         tableView.reloadData()
     }
     
