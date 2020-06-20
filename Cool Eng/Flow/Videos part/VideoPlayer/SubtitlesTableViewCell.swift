@@ -29,8 +29,8 @@ class SubtitlesTableViewCell: UITableViewCell {
     
     private func setupActiveLabel() {
         originalText.numberOfLines = 0
-        originalText.textColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
-        originalText.hashtagColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        originalText.textColor = UIColor(named: "subtitleLabel")
+        originalText.hashtagColor = UIColor(named: "subtitleLabel")!
         originalText.handleHashtagTap {
             self.wordTapHandler($0)
         }

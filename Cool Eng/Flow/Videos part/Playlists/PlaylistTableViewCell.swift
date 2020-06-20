@@ -28,6 +28,8 @@ class PlaylistTableViewCell: UITableViewCell {
             placeholder.kf.setImage(with: url, placeholder: image)
         }
         placeholder.layer.cornerRadius = 8
+        placeholder.layer.borderWidth = 0.5
+        placeholder.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 0.327739726)
         
         nameLabel.text = playlistItem.name
         

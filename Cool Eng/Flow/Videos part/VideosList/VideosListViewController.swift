@@ -19,7 +19,7 @@ class SimpleVideoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        durationLabel.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.75)
+        durationLabel.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
         durationLabel.layer.masksToBounds = true
         durationLabel.layer.cornerRadius = 10
     }
