@@ -82,7 +82,8 @@ extension Level3ViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.letterLabel.text = letters[indexPath.row].lowercased()
         cell.containerView.layer.cornerRadius = 4
         cell.isUserInteractionEnabled = true
-        cell.containerView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        cell.containerView.backgroundColor = UIColor(named: "cellBackground")
+        cell.containerView.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         cell.letterLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return cell
     }
@@ -117,10 +118,10 @@ extension Level3ViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let correctLetter = Array(words[currentIndex].original)[mainWord.count]
         
         if letters[indexPath.row] == "\(correctLetter)" {
-            cell.letterLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            cell.letterLabel.textColor = UIColor(named: "borderColorL3")
             UIView.animate(withDuration: 0.5, animations: {
                 cell.containerView.layer.borderWidth = 0.5
-                cell.containerView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                cell.containerView.layer.borderColor = UIColor(named: "borderColorL3")!.cgColor
                 cell.containerView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
             })
             cell.isUserInteractionEnabled = false
@@ -139,7 +140,7 @@ extension Level3ViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.containerView.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
             
             UIView.animate(withDuration: 0.5, animations: {
-                cell.containerView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                cell.containerView.backgroundColor = UIColor(named: "cellBackground")
             })
         }
     }

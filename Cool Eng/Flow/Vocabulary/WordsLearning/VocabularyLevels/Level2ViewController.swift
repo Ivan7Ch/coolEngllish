@@ -18,7 +18,9 @@ class Level2TableViewCell: UITableViewCell {
         let view = UIView()
         view.frame = CGRect(x: 0, y: self.bounds.height, width: self.bounds.width, height: 1)
         view.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        selectedBackgroundView = backgroundView
     }
     
     func setup(with text: String) {
@@ -55,8 +57,7 @@ class Level2ViewController: UIViewController {
         underView.layer.shadowRadius = 8
         underView.layer.shadowOpacity = 0.5
         underView.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        underView.layer.borderWidth = 0.5
-        underView.backgroundColor = UIColor(named: "color2")
+        underView.backgroundColor = UIColor(named: "learnCellContainer")
         
         leftTableView.layer.cornerRadius = 8
         leftTableView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
@@ -69,8 +70,6 @@ class Level2ViewController: UIViewController {
         
         leftTableView.dataSource = self
         rightTableView.dataSource = self
-        
-        view.backgroundColor = UIColor(named: "color1")
         
         setupWords()
         self.setPastelBackground()

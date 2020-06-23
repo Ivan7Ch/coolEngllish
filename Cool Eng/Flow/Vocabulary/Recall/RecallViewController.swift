@@ -24,6 +24,8 @@ class RecallCollectionViewCell: UICollectionViewCell {
         
         containerView.layer.cornerRadius = 16
         correctLabel.text = ""
+        originalWordLabel.textColor = UIColor(named: "negativeLabel")
+        translationWordLabel.textColor = UIColor(named: "negativeLabel")
     }
 }
 
@@ -76,7 +78,7 @@ class RecallViewController: UIViewController {
     
     
     func setupButton(_ button: UIButton) {
-        button.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        button.backgroundColor = UIColor(named: "learnCellContainer")
         button.layer.cornerRadius = 12
         button.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         button.layer.shadowRadius = 8
@@ -101,10 +103,10 @@ class RecallViewController: UIViewController {
         var delay = 0.0
         
         if answers[currentIndex] == ans {
-            cell.containerView.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+            cell.containerView.backgroundColor = UIColor(named: "correctAnswer")
             DictionaryManager.shared.markAsLearned(ids: [words[currentIndex].id])
         } else {
-            cell.containerView.backgroundColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
+            cell.containerView.backgroundColor = UIColor(named: "incorrectAnswer")
             if ans {
                 cell.correctLabel.text = words[currentIndex].translation
             }

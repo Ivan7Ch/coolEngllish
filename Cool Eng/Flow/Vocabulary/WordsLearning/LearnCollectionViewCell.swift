@@ -33,6 +33,7 @@ class StudyCollectionViewCell: UICollectionViewCell {
         
         containerView.layer.cornerRadius = 12
         containerView.backgroundColor = #colorLiteral(red: 0.09019607843, green: 0.08911801666, blue: 0.08911801666, alpha: 0.760354238)
+        containerView.backgroundColor = UIColor(named: "learnCellContainer")
         
         self.word = word
     }

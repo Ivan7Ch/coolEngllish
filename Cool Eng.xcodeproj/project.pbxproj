@@ -224,6 +224,7 @@
 		F54C9737248E30F50019930D /* WordsLearning */ = {
 			isa = PBXGroup;
 			children = (
+				F54C973A248E37EF0019930D /* VocabularyLevels */,
 				F5C9988B247EB9C3000D6716 /* StudyViewController.swift */,
 				F54C9738248E31490019930D /* LearnCollectionViewCell.swift */,
 			);
@@ -315,11 +316,10 @@
 		F5C99888247EB966000D6716 /* Vocabulary */ = {
 			isa = PBXGroup;
 			children = (
-				F53E16052490F67200EA594A /* Recall */,
-				F54C973B248E3C1E0019930D /* LearnedWordsBox */,
 				F5210763248A883B008408D2 /* Vocabularies Start Screen */,
 				F54C9737248E30F50019930D /* WordsLearning */,
-				F54C973A248E37EF0019930D /* VocabularyLevels */,
+				F53E16052490F67200EA594A /* Recall */,
+				F54C973B248E3C1E0019930D /* LearnedWordsBox */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";

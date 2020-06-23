@@ -137,7 +137,7 @@ extension Level1ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Level1TableViewCell", for: indexPath) as! Level1TableViewCell
         cell.selectionStyle = .none
-        cell.backgroundColor = #colorLiteral(red: 0.09019607843, green: 0.08911801666, blue: 0.08911801666, alpha: 0.760354238)
+        cell.backgroundColor = UIColor(named: "learnCellContainer")
         
         let word = tableWords[indexPath.row]
         if state == .original {
@@ -165,12 +165,12 @@ extension Level1ViewController: UITableViewDelegate, UITableViewDataSource {
         
         if selectedWord.original == words[currentIndex].original {
             UIView.animate(withDuration: 0.18, animations: {
-                cell?.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 0.58)
+                cell?.backgroundColor = UIColor(named: "correctAnswer")
             })
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.28, execute: {
                 UIView.animate(withDuration: 0.12, animations: {
-                    cell?.backgroundColor = #colorLiteral(red: 0.09019607843, green: 0.08911801666, blue: 0.08911801666, alpha: 0.760354238)
+                    cell?.backgroundColor = UIColor(named: "learnCellContainer")
                 })
             })
 
@@ -180,7 +180,7 @@ extension Level1ViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell?.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 0.7858251284)
             UIView.animate(withDuration: delay, animations: {
-                cell?.backgroundColor = #colorLiteral(red: 0.09019607843, green: 0.08911801666, blue: 0.08911801666, alpha: 0.760354238)
+                cell?.backgroundColor = UIColor(named: "learnCellContainer")
             })
         }
         
