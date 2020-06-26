@@ -9,9 +9,10 @@ target 'Cool Eng' do
   pod 'Google-Mobile-Ads-SDK'
   pod 'ActiveLabel'
   pod 'Kingfisher'
-  pod 'SwiftyJSON'
   pod 'RealmSwift'
   pod 'Pastel'
+  pod 'SwiftyStoreKit'
+  pod 'UIImageColors'
   # Pods for Cool Eng
 
 end

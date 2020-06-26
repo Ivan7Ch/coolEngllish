@@ -61,7 +61,7 @@ class StudyViewController: UIViewController {
         if words.count < 6 { return }
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "Level2ViewController") as! Level2ViewController
+        let vc = storyboard.instantiateViewController(identifier: "Level1ViewController") as! Level1ViewController
         var vcWords = [Word]()
         
         for i in 0..<6 {

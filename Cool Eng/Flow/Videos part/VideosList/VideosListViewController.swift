@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UIImageColors
 
 
 class SimpleVideoCell: UITableViewCell {
@@ -17,11 +18,16 @@ class SimpleVideoCell: UITableViewCell {
     
     @IBOutlet weak var durationLabel: UILabel!
     
+    @IBOutlet weak var containerView: UIView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         durationLabel.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
         durationLabel.layer.masksToBounds = true
         durationLabel.layer.cornerRadius = 10
+        containerView.layer.cornerRadius = 14
+        containerView.layer.masksToBounds = true
     }
 }
 
@@ -104,9 +110,14 @@ extension VideosListViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleVideoCell") as! SimpleVideoCell
         let video = videos[indexPath.row]
         
+        
         if let url = URL(string: video.placeholder) {
             let image = UIImage(named: "default")
-            cell.thumbnail.kf.setImage(with: url, placeholder: image)
+            cell.thumbnail.kf.setImage(with: url, placeholder: image, completionHandler: { _ in
+                let color = (cell.thumbnail.image?.averageColor)!
+                cell.containerView.backgroundColor = color
+                cell.title.textColor = color.isDarkColor ? .white : .black
+            })
         }
         cell.title.text = video.name
         
@@ -115,9 +126,57 @@ extension VideosListViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "VideoPlayerViewController") as! VideoPlayerViewController
         vc.video = videos[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
+extension UIImage {
+    var averageColor: UIColor? {
+        let start = CFAbsoluteTimeGetCurrent()
+
+        guard let inputImage = CIImage(image: self) else { return nil }
+        let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
+
+        guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
+        guard let outputImage = filter.outputImage else { return nil }
+
+        var bitmap = [UInt8](repeating: 0, count: 4)
+        let context = CIContext(options: [.workingColorSpace: kCFNull])
+        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
+
+        let diff = CFAbsoluteTimeGetCurrent() - start
+        print("Took \(diff) seconds")
+        
+        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
+    }
+}
+
+
+func getComplementaryForColor(color: UIColor) -> UIColor {
+    
+    let ciColor = CIColor(color: color)
+    
+    // get the current values and make the difference from white:
+    let compRed: CGFloat = 1.0 - ciColor.red
+    let compGreen: CGFloat = 1.0 - ciColor.green
+    let compBlue: CGFloat = 1.0 - ciColor.blue
+    
+    return UIColor(red: compRed, green: compGreen, blue: compBlue, alpha: 1.0)
+}
+
+
+extension UIColor
+{
+    var isDarkColor: Bool {
+        var r, g, b, a: CGFloat
+        (r, g, b, a) = (0, 0, 0, 0)
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        let lum = 0.2126 * r + 0.7152 * g + 0.0722 * b
+        return  lum < 0.50
     }
 }

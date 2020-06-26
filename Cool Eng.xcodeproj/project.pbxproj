@@ -18,6 +18,7 @@
 		F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */; };
 		F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5360F14246F087100550559 /* GoogleService-Info.plist */; };
 		F53E16072490F68700EA594A /* RecallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E16062490F68700EA594A /* RecallViewController.swift */; };
+		F53FC9BF24A24F0C0078025D /* IAPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53FC9BE24A24F0C0078025D /* IAPViewController.swift */; };
 		F541726F248A376A005AA224 /* VocabularyBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */; };
 		F5417271248A37D5005AA224 /* VocabularyBoxActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */; };
 		F5417273248A3817005AA224 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5417272248A3817005AA224 /* TableViewDelegate.swift */; };
@@ -77,6 +78,7 @@
 		F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryManager.swift; sourceTree = "<group>"; };
 		F5360F14246F087100550559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F53E16062490F68700EA594A /* RecallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallViewController.swift; sourceTree = "<group>"; };
+		F53FC9BE24A24F0C0078025D /* IAPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPViewController.swift; sourceTree = "<group>"; };
 		F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxTableViewCell.swift; sourceTree = "<group>"; };
 		F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxActions.swift; sourceTree = "<group>"; };
 		F5417272248A3817005AA224 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				F5CE9EC62444958C009EB618 /* Info.plist */,
 				F5CE9EBE2444958B009EB618 /* Cool_Eng.xcdatamodeld */,
 				F552AF82249D040F008F7439 /* PurchaseViewController.swift */,
+				F53FC9BE24A24F0C0078025D /* IAPViewController.swift */,
 			);
 			path = "Cool Eng";
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				F5B46A782444B69E0007E8E4 /* PlaylistModel.swift in Sources */,
 				F5C99894247EC10C000D6716 /* Level4ViewController.swift in Sources */,
 				F548BBDC2444CA8900AE060C /* VideoFirebaseHelper.swift in Sources */,
+				F53FC9BF24A24F0C0078025D /* IAPViewController.swift in Sources */,
 				F5B46A762444B67E0007E8E4 /* VideoModel.swift in Sources */,
 				F54C9740248E3CD30019930D /* LearnedWordsBoxTableViewExtension.swift in Sources */,
 				F5C6A8772444BC8300716E96 /* PlaylistFirebaseHelper.swift in Sources */,

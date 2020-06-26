@@ -249,7 +249,6 @@ PODS:
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
   - GTMSessionFetcher/Core (1.3.1)
-  - HMSegmentedControl (1.5.6)
   - Kingfisher (5.13.4):
     - Kingfisher/Core (= 5.13.4)
   - Kingfisher/Core (5.13.4)
@@ -266,18 +265,19 @@ PODS:
   - Realm/Headers (4.4.1)
   - RealmSwift (4.4.1):
     - Realm (= 4.4.1)
-  - SwiftyJSON (5.0.0)
+  - SwiftyStoreKit (0.15.0)
+  - UIImageColors (2.1.0)
 
 DEPENDENCIES:
   - ActiveLabel
   - Firebase/Firestore
   - Firebase/Storage
   - Google-Mobile-Ads-SDK
-  - HMSegmentedControl
   - Kingfisher
   - Pastel
   - RealmSwift
-  - SwiftyJSON
+  - SwiftyStoreKit
+  - UIImageColors
 
 SPEC REPOS:
   trunk:
@@ -299,7 +299,6 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
-    - HMSegmentedControl
     - Kingfisher
     - leveldb-library
     - nanopb
@@ -307,7 +306,8 @@ SPEC REPOS:
     - PromisesObjC
     - Realm
     - RealmSwift
-    - SwiftyJSON
+    - SwiftyStoreKit
+    - UIImageColors
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -328,7 +328,6 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
-  HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
   Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
@@ -336,8 +335,9 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
   RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
-  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
+  UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
 
-PODFILE CHECKSUM: 2a53be50a1217fca45203457c070b8808c393b09
+PODFILE CHECKSUM: 34fb38bc74d4b197ccc401194528a2b85a624185
 
 COCOAPODS: 1.9.0
