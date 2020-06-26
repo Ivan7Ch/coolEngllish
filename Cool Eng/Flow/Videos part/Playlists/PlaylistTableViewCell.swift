@@ -20,6 +20,16 @@ class PlaylistTableViewCell: UITableViewCell {
     
     @IBOutlet weak var videosCountLabel: UILabel!
     
+    @IBOutlet weak var containerView: UIView!
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+//        placeholder.layer.cornerRadius = 14
+        containerView.layer.cornerRadius = 20
+        containerView.layer.masksToBounds = true
+    }
+    
     
     func configure(with playlistItem: PlaylistModel) {
         placeholder.image = UIImage(named: "default")
@@ -27,9 +37,9 @@ class PlaylistTableViewCell: UITableViewCell {
             let image = UIImage(named: "default")
             placeholder.kf.setImage(with: url, placeholder: image)
         }
-        placeholder.layer.cornerRadius = 8
         placeholder.layer.borderWidth = 0.5
         placeholder.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 0.327739726)
+        placeholder.layer.cornerRadius = 14
         
         nameLabel.text = playlistItem.name
         
