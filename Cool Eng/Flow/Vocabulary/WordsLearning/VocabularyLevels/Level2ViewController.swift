@@ -89,6 +89,10 @@ class Level2ViewController: UIViewController {
         vc.words = self.words
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @IBAction func skipButtonAction() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 extension Level2ViewController: UITableViewDelegate, UITableViewDataSource {

@@ -1162,6 +1162,15 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FV4-4V-Oej">
+                                <rect key="frame" x="341" y="48" width="69" height="36"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="    skip    "/>
+                                <connections>
+                                    <action selector="skipButtonAction" destination="Kwb-b0-UEO" eventType="touchUpInside" id="5wR-NE-rRk"/>
+                                    <action selector="skipButtonAction" destination="BLi-qV-HhS" eventType="touchUpInside" id="6ct-Md-KeA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -1171,11 +1180,13 @@
                             <constraint firstItem="wRm-32-2bz" firstAttribute="height" secondItem="V4J-GN-QVh" secondAttribute="height" id="Gm1-uH-f5k"/>
                             <constraint firstItem="Sgw-nM-Qr7" firstAttribute="width" secondItem="V4J-GN-QVh" secondAttribute="width" multiplier="2" id="HYB-Wd-YGh"/>
                             <constraint firstItem="V4J-GN-QVh" firstAttribute="width" secondItem="wRm-32-2bz" secondAttribute="width" id="Jom-Ui-MIc"/>
+                            <constraint firstItem="FV4-4V-Oej" firstAttribute="top" secondItem="BlD-gy-Lc2" secondAttribute="top" constant="4" id="OKe-co-I1j"/>
                             <constraint firstItem="wRm-32-2bz" firstAttribute="leading" secondItem="V4J-GN-QVh" secondAttribute="trailing" constant="1" id="fW3-p1-VI6"/>
                             <constraint firstItem="V4J-GN-QVh" firstAttribute="leading" secondItem="BlD-gy-Lc2" secondAttribute="leading" constant="8" id="hW7-uR-gc0"/>
                             <constraint firstItem="Sgw-nM-Qr7" firstAttribute="centerY" secondItem="7zO-eV-QZE" secondAttribute="centerY" id="kxj-Ii-WwV"/>
                             <constraint firstItem="BlD-gy-Lc2" firstAttribute="trailing" secondItem="wRm-32-2bz" secondAttribute="trailing" constant="8" id="sh3-04-SLF"/>
                             <constraint firstItem="V4J-GN-QVh" firstAttribute="centerY" secondItem="7zO-eV-QZE" secondAttribute="centerY" id="ulb-7r-nZX"/>
+                            <constraint firstItem="BlD-gy-Lc2" firstAttribute="trailing" secondItem="FV4-4V-Oej" secondAttribute="trailing" constant="4" id="vxZ-hb-Oyv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BlD-gy-Lc2"/>
                     </view>
@@ -1263,14 +1274,25 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXs-DF-juH">
+                                <rect key="frame" x="341" y="48" width="69" height="36"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="    skip    "/>
+                                <connections>
+                                    <action selector="skipButtonAction" destination="INB-fs-G2p" eventType="touchUpInside" id="4xS-0Z-raI"/>
+                                    <action selector="skipButtonAction" destination="Kwb-b0-UEO" eventType="touchUpInside" id="NLJ-1w-K9I"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="XY6-hk-ibt" firstAttribute="centerX" secondItem="Q7S-DT-9KH" secondAttribute="centerX" id="7ht-ku-MZH"/>
+                            <constraint firstItem="bTH-L1-JZp" firstAttribute="trailing" secondItem="WXs-DF-juH" secondAttribute="trailing" constant="4" id="CAR-OC-VDb"/>
                             <constraint firstItem="Qch-FZ-Kbm" firstAttribute="top" secondItem="bTH-L1-JZp" secondAttribute="top" constant="120" id="MR2-gz-WcG"/>
                             <constraint firstItem="ot3-dD-q57" firstAttribute="centerX" secondItem="Q7S-DT-9KH" secondAttribute="centerX" id="Rzt-cY-ERb"/>
                             <constraint firstItem="Qch-FZ-Kbm" firstAttribute="centerX" secondItem="Q7S-DT-9KH" secondAttribute="centerX" id="cIX-7s-oQT"/>
                             <constraint firstItem="bTH-L1-JZp" firstAttribute="bottom" secondItem="XY6-hk-ibt" secondAttribute="bottom" constant="100" id="fDu-WM-m0M"/>
+                            <constraint firstItem="WXs-DF-juH" firstAttribute="top" secondItem="bTH-L1-JZp" secondAttribute="top" constant="4" id="iA3-Z4-pGt"/>
                             <constraint firstItem="ot3-dD-q57" firstAttribute="top" secondItem="Qch-FZ-Kbm" secondAttribute="bottom" constant="16" id="zqd-XY-3HR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bTH-L1-JZp"/>

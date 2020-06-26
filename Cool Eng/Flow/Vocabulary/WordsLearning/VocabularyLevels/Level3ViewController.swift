@@ -66,6 +66,10 @@ class Level3ViewController: UIViewController {
         
         collectionView.reloadData()
     }
+    
+    @IBAction func skipButtonAction() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 
