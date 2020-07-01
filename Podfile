@@ -13,6 +13,7 @@ target 'Cool Eng' do
   pod 'Pastel'
   pod 'SwiftyStoreKit'
   pod 'UIImageColors'
+  pod 'lottie-ios'
   # Pods for Cool Eng
 
 end

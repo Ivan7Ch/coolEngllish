@@ -7,21 +7,24 @@
 //
 
 import UIKit
+import Lottie
 
 
 class StudyViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var readyButton: UIButton!
     
     var words = [Word]()
+    
+    var lottieView = AnimationView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setPastelBackground()
-
+        
         if words.isEmpty {
             let w = DictionaryManager.shared.getWordsForStudy()
             var count = 6
@@ -47,7 +50,7 @@ class StudyViewController: UIViewController {
         setupReadyButton(isEnabled: false)
     }
     
-     
+    
     private func setupReadyButton(isEnabled: Bool = true) {
         readyButton.isUserInteractionEnabled = false
         readyButton.addTarget(self, action: #selector(readyButtonAction), for: .touchUpInside)
@@ -67,6 +70,18 @@ class StudyViewController: UIViewController {
             readyButton.layer.borderColor = #colorLiteral(red: 0.1912888479, green: 0.6130264327, blue: 0.927208915, alpha: 1)
             readyButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
+    }
+    
+    
+    private func showRightSwipe(containerView: UIView) {
+        let jsonName = "rSwipe_White"
+        let animation = Animation.named(jsonName)
+        
+        lottieView = AnimationView(animation: animation)
+        lottieView.frame = CGRect(x: UIScreen.main.bounds.width - 150, y: (UIScreen.main.bounds.height / 2) - 100, width: 200, height: 200)
+        view.addSubview(lottieView)
+        lottieView.loopMode = .loop
+        lottieView.play()
     }
     
     
@@ -96,12 +111,23 @@ extension StudyViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StudyCollectionViewCell", for: indexPath) as! StudyCollectionViewCell
         let word = words[indexPath.row]
         cell.setup(word)
+        
+        if indexPath.row == 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.showRightSwipe(containerView: self.view)
+            })
+        }
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row >= words.count - 1 {
             setupReadyButton()
+        }
+        
+        if indexPath.row >= 1 {
+            lottieView.stop()
         }
     }
 }

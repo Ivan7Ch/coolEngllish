@@ -68,7 +68,7 @@ class VideoPlayerViewController: UIViewController {
         let position = UserDefaults.standard.double(forKey: "video - \(video.id)")
         if position <= 1 { return }
         
-        let alert = UIAlertController(title: "Continue", message: "Would you like to continue from the Last position", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Continue", message: "Would you like to continue from the last position", preferredStyle: .actionSheet)
 
         alert.addAction(UIAlertAction(title: "Continue", style: .default , handler:{ (UIAlertAction) in
             self.videoPlayer.seek(to: Float(position), allowSeekAhead: true)

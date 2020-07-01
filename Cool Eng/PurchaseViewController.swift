@@ -7,17 +7,17 @@
 //
 
 import UIKit
+import Lottie
 
 
 class PurchaseViewController: UIViewController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
     }
     
     @IBAction func purchaseViewController() {
-        print("shoto take")
     }
 }

@@ -18,6 +18,8 @@
 		F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */; };
 		F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5360F14246F087100550559 /* GoogleService-Info.plist */; };
 		F53E16072490F68700EA594A /* RecallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E16062490F68700EA594A /* RecallViewController.swift */; };
+		F53FBD8124A65FDB00F8B0E8 /* rSwipe.json in Resources */ = {isa = PBXBuildFile; fileRef = F53FBD8024A65FDB00F8B0E8 /* rSwipe.json */; };
+		F53FBD8324A6659500F8B0E8 /* rSwipe_White.json in Resources */ = {isa = PBXBuildFile; fileRef = F53FBD8224A6659400F8B0E8 /* rSwipe_White.json */; };
 		F53FC9BF24A24F0C0078025D /* IAPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53FC9BE24A24F0C0078025D /* IAPViewController.swift */; };
 		F541726F248A376A005AA224 /* VocabularyBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */; };
 		F5417271248A37D5005AA224 /* VocabularyBoxActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */; };
@@ -78,6 +80,8 @@
 		F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryManager.swift; sourceTree = "<group>"; };
 		F5360F14246F087100550559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F53E16062490F68700EA594A /* RecallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallViewController.swift; sourceTree = "<group>"; };
+		F53FBD8024A65FDB00F8B0E8 /* rSwipe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rSwipe.json; sourceTree = "<group>"; };
+		F53FBD8224A6659400F8B0E8 /* rSwipe_White.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rSwipe_White.json; sourceTree = "<group>"; };
 		F53FC9BE24A24F0C0078025D /* IAPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPViewController.swift; sourceTree = "<group>"; };
 		F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxTableViewCell.swift; sourceTree = "<group>"; };
 		F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxActions.swift; sourceTree = "<group>"; };
@@ -103,7 +107,7 @@
 		F5C9988F247EC108000D6716 /* Level2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level2ViewController.swift; sourceTree = "<group>"; };
 		F5C99891247EC10A000D6716 /* Level3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level3ViewController.swift; sourceTree = "<group>"; };
 		F5C99893247EC10B000D6716 /* Level4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level4ViewController.swift; sourceTree = "<group>"; };
-		F5CE9EB22444958B009EB618 /* Cool Eng.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cool Eng.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5CE9EB22444958B009EB618 /* engTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = engTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5CE9EB52444958B009EB618 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5CE9EB72444958B009EB618 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F5CE9EBC2444958B009EB618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -339,7 +343,7 @@
 		F5CE9EB32444958B009EB618 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F5CE9EB22444958B009EB618 /* Cool Eng.app */,
+				F5CE9EB22444958B009EB618 /* engTube.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -347,6 +351,8 @@
 		F5CE9EB42444958B009EB618 /* Cool Eng */ = {
 			isa = PBXGroup;
 			children = (
+				F53FBD8224A6659400F8B0E8 /* rSwipe_White.json */,
+				F53FBD8024A65FDB00F8B0E8 /* rSwipe.json */,
 				F5F8C050244B5B22002F9123 /* Cool Eng.entitlements */,
 				F5C6A8752444BC6800716E96 /* Services */,
 				F5B46A742444B66E0007E8E4 /* Models */,
@@ -433,7 +439,7 @@
 			);
 			name = "Cool Eng";
 			productName = "Cool Eng";
-			productReference = F5CE9EB22444958B009EB618 /* Cool Eng.app */;
+			productReference = F5CE9EB22444958B009EB618 /* engTube.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -476,10 +482,12 @@
 			files = (
 				F5CE9EC52444958C009EB618 /* LaunchScreen.storyboard in Resources */,
 				F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */,
+				F53FBD8124A65FDB00F8B0E8 /* rSwipe.json in Resources */,
 				F5CE9EC22444958C009EB618 /* Assets.xcassets in Resources */,
 				F505746524841ABB009E7112 /* ep1.txt in Resources */,
 				F5CE9EBD2444958B009EB618 /* Main.storyboard in Resources */,
 				F52F4A0A24784297000BE9E6 /* dict_ua.txt in Resources */,
+				F53FBD8324A6659500F8B0E8 /* rSwipe_White.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,7 +733,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Cool Eng/Cool Eng.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = Z6SVM5W336;
 				INFOPLIST_FILE = "Cool Eng/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -733,9 +741,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.15;
+				MARKETING_VERSION = 1.16;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inch70798.cool-eng";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = engTube;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -748,7 +756,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Cool Eng/Cool Eng.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = Z6SVM5W336;
 				INFOPLIST_FILE = "Cool Eng/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -756,9 +764,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.15;
+				MARKETING_VERSION = 1.16;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inch70798.cool-eng";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = engTube;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

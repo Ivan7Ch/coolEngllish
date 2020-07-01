@@ -54,6 +54,11 @@ class VideosListViewController: UIViewController {
             self.videos = videos
             self.tableView.reloadData()
             self.activityView.stopAnimating()
+            
+            for i in videos {
+                let position = UserDefaults.standard.double(forKey: "video - \(i.id)")
+                print("lp = \(position), dur = \(i.duration);    progress = \(position / Double(i.duration))")
+            }
         })
         tabBarController?.tabBar.isHidden = true
         showActivityIndicator()
@@ -102,9 +107,11 @@ class VideosListViewController: UIViewController {
 
 
 extension VideosListViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videos.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleVideoCell") as! SimpleVideoCell
@@ -137,8 +144,6 @@ extension VideosListViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension UIImage {
     var averageColor: UIColor? {
-        let start = CFAbsoluteTimeGetCurrent()
-
         guard let inputImage = CIImage(image: self) else { return nil }
         let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
 
@@ -146,27 +151,11 @@ extension UIImage {
         guard let outputImage = filter.outputImage else { return nil }
 
         var bitmap = [UInt8](repeating: 0, count: 4)
-        let context = CIContext(options: [.workingColorSpace: kCFNull])
+        let context = CIContext(options: [.workingColorSpace: kCFNull!])
         context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
-
-        let diff = CFAbsoluteTimeGetCurrent() - start
-        print("Took \(diff) seconds")
         
         return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
     }
-}
-
-
-func getComplementaryForColor(color: UIColor) -> UIColor {
-    
-    let ciColor = CIColor(color: color)
-    
-    // get the current values and make the difference from white:
-    let compRed: CGFloat = 1.0 - ciColor.red
-    let compGreen: CGFloat = 1.0 - ciColor.green
-    let compBlue: CGFloat = 1.0 - ciColor.blue
-    
-    return UIColor(red: compRed, green: compGreen, blue: compBlue, alpha: 1.0)
 }
 
 
