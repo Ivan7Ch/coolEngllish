@@ -981,6 +981,7 @@
                     <connections>
                         <outlet property="collectionView" destination="fsM-RF-1cz" id="YAp-A1-bGf"/>
                         <outlet property="readyButton" destination="1h7-ck-WRV" id="GNg-w6-7Pr"/>
+                        <outlet property="readyButtonBottomConstraint" destination="KTW-Dz-GXr" id="ogr-uH-WSb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJ4-3h-8VX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

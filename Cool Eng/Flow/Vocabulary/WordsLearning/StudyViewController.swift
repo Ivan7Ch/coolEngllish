@@ -14,10 +14,13 @@ class StudyViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var readyButton: UIButton!
+    @IBOutlet weak var readyButtonBottomConstraint: NSLayoutConstraint!
     
     var words = [Word]()
     
     var lottieView = AnimationView()
+    
+    var shouldShowHint = false
     
     
     override func viewDidLoad() {
@@ -47,33 +50,40 @@ class StudyViewController: UIViewController {
         collectionView.dataSource = self
         view.backgroundColor = UIColor(named: "color1")
         
-        setupReadyButton(isEnabled: false)
+        setupReadyButton()
     }
     
     
-    private func setupReadyButton(isEnabled: Bool = true) {
+    private func setupReadyButton() {
         readyButton.isUserInteractionEnabled = false
         readyButton.addTarget(self, action: #selector(readyButtonAction), for: .touchUpInside)
         readyButton.setTitleColor(.white, for: .normal)
         readyButton.layer.cornerRadius = 12
         readyButton.layer.borderWidth = 0.2
         
+        readyButton.isUserInteractionEnabled = true
+        readyButton.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        readyButton.layer.borderColor = #colorLiteral(red: 0.1912888479, green: 0.6130264327, blue: 0.927208915, alpha: 1)
+        readyButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         readyButton.layer.shadowRadius = 8
         readyButton.layer.shadowOpacity = 0.3
         readyButton.layer.shadowOffset = CGSize(width: 0, height: 1)
         
-        readyButton.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        
-        if isEnabled {
-            readyButton.isUserInteractionEnabled = true
-            readyButton.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
-            readyButton.layer.borderColor = #colorLiteral(red: 0.1912888479, green: 0.6130264327, blue: 0.927208915, alpha: 1)
-            readyButton.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        }
+        readyButtonBottomConstraint.constant = -40 - 58
+    }
+    
+    
+    private func showReadyButton() {
+        self.readyButtonBottomConstraint.constant = 40
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
     
     
     private func showRightSwipe(containerView: UIView) {
+        if !shouldShowHint { return }
+        
         let jsonName = "rSwipe_White"
         let animation = Animation.named(jsonName)
         
@@ -81,6 +91,7 @@ class StudyViewController: UIViewController {
         lottieView.frame = CGRect(x: UIScreen.main.bounds.width - 150, y: (UIScreen.main.bounds.height / 2) - 100, width: 200, height: 200)
         view.addSubview(lottieView)
         lottieView.loopMode = .loop
+        lottieView.isUserInteractionEnabled = false
         lottieView.play()
     }
     
@@ -123,11 +134,12 @@ extension StudyViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row >= words.count - 1 {
-            setupReadyButton()
+            showReadyButton()
         }
         
         if indexPath.row >= 1 {
             lottieView.stop()
+            shouldShowHint = false
         }
     }
 }
