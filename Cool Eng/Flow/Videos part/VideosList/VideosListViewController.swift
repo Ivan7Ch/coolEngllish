@@ -20,6 +20,8 @@ class SimpleVideoCell: UITableViewCell {
     
     @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var videoProgressView: UIProgressView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +30,8 @@ class SimpleVideoCell: UITableViewCell {
         durationLabel.layer.cornerRadius = 10
         containerView.layer.cornerRadius = 14
         containerView.layer.masksToBounds = true
+        
+        videoProgressView.transform = CGAffineTransform(scaleX: 1, y: 1.5)
     }
 }
 
@@ -54,11 +58,6 @@ class VideosListViewController: UIViewController {
             self.videos = videos
             self.tableView.reloadData()
             self.activityView.stopAnimating()
-            
-            for i in videos {
-                let position = UserDefaults.standard.double(forKey: "video - \(i.id)")
-                print("lp = \(position), dur = \(i.duration);    progress = \(position / Double(i.duration))")
-            }
         })
         tabBarController?.tabBar.isHidden = true
         showActivityIndicator()
@@ -129,6 +128,14 @@ extension VideosListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.title.text = video.name
         
         cell.durationLabel.text = "  \(timeFromSeconds(video.duration))  "
+        
+        // calculate progress
+        cell.videoProgressView.progress = 0
+        let position = UserDefaults.standard.double(forKey: "video - \(video.id)")
+        let progress = position / Double(video.duration)
+        if progress.isNormal {
+            cell.videoProgressView.progress = Float(progress)
+        }
         
         return cell
     }
