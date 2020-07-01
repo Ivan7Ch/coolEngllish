@@ -68,17 +68,33 @@ class VocabulariesViewController: UIViewController {
     }
     
     
+    func showAlert() {
+        let alert = UIAlertController(title: "Not enough words to study", message: "You should collect at least 6 words.", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "OK", style: .default , handler: nil))
+
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     func reloadViews() {
         switch state {
         case .learn:
             hideButton(false)
             controlButton.setTitle("Learn Words", for: .normal)
             visibleWords = wordsForLearning
+            if wordsForLearning.count == 0 {
+                hideButton(true)
+                controlButton.setTitle("", for: .normal)
+            }
             
         case .recall:
             hideButton(false)
             controlButton.setTitle("Recall Words", for: .normal)
             visibleWords = wordsForRecall
+            if wordsForRecall.count == 0 {
+                hideButton(true)
+                controlButton.setTitle("", for: .normal)
+            }
             
         case .learned:
             hideButton(true)
@@ -115,7 +131,11 @@ class VocabulariesViewController: UIViewController {
     @IBAction func controlButtonAction() {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            showStudyViewController()
+            if wordsForLearning.count < 6 {
+                showAlert()
+            } else {
+                showStudyViewController()
+            }
         case 1:
             showRecallViewController()
         default:
