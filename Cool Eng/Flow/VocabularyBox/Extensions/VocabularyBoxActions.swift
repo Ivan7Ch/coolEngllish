@@ -37,6 +37,10 @@ extension VocabularyBoxViewController {
             if c == wordsPackCount { break }
         }
         
+        if c < wordsPackCount {
+            loadMoreButton.setTitle("", for: .normal)
+        }
+        
         for _ in 0..<c {
             words.remove(at: 0)
         }

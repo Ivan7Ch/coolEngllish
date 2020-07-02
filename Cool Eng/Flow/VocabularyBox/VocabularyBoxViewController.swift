@@ -16,6 +16,8 @@ class VocabularyBoxViewController: UIViewController {
     
     @IBOutlet weak var addToVocabularyButton: UIButton!
     
+    @IBOutlet weak var loadMoreButton: UIButton!
+    
     @IBOutlet weak var buttonContainer: UIView!
     
     @IBOutlet weak var selectedCountLabel: UILabel!
