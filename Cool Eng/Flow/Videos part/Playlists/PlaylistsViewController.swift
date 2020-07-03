@@ -76,7 +76,7 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
     
     
     @IBAction func addOwnPlaylist() {
-        print("zaebis`")
+        
     }
 }
 

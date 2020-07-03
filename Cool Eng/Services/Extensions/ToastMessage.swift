@@ -91,7 +91,7 @@ class ToastMessageView: UIView {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             self.removeFromSuperview()
         })
-        print(word.id)
+        
         DictionaryManager.shared.addToDictionary(ids: [word.id])
     }
     

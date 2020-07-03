@@ -181,8 +181,10 @@ class DictionaryManager {
     private func saveWordsToRealm(_ words: [Word]) {
         let realm = try! Realm()
         
-        for w in words {
-            var word = w
+        let index = getAllWords().count
+        
+        for i in index..<words.count {
+            var word = words[i]
             let realmWord = RealmWord()
             word.progress = -1
             realmWord.setup(with: word)

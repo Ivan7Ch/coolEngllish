@@ -57,8 +57,6 @@ extension VideoPlayerViewController {
         }
         video.subtitles = newSubs
         
-        printSubs(subs: newSubs)
-        
         startTimes = []
         for i in video.subtitles {
             startTimes.append(i.start)
