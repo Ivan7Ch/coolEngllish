@@ -183,15 +183,21 @@ class DictionaryManager {
         
         let index = getAllWords().count
         
+        var realmArr = [RealmWord]()
+        
         for i in index..<words.count {
             var word = words[i]
             let realmWord = RealmWord()
             word.progress = -1
             realmWord.setup(with: word)
-            try! realm.write {
-                realm.add(realmWord)
-            }
+            realmArr.append(realmWord)
         }
+        
+        try! realm.write {
+            realm.add(realmArr)
+        }
+
+        
         UserDefaults.standard.set(true, forKey: "isDictionarySettuped")
         let diff = CFAbsoluteTimeGetCurrent() - start
         print("Took \(diff) seconds")
