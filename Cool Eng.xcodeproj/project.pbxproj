@@ -10,6 +10,7 @@
 		F41E68F9C744D95FC53B34DD /* Pods_Cool_Eng.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76774B42A233CFA1A3671E34 /* Pods_Cool_Eng.framework */; };
 		F505746524841ABB009E7112 /* ep1.txt in Resources */ = {isa = PBXBuildFile; fileRef = F505746424841ABB009E7112 /* ep1.txt */; };
 		F505746724841CB4009E7112 /* IllegalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F505746624841CB4009E7112 /* IllegalViewController.swift */; };
+		F50EDCEC24C4464200A7ED1E /* EnglishLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50EDCEB24C4464200A7ED1E /* EnglishLevel.swift */; };
 		F5210762248A7AAC008408D2 /* VocabulariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5210761248A7AAC008408D2 /* VocabulariesViewController.swift */; };
 		F5210765248A885D008408D2 /* VocabulariesTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5210764248A885D008408D2 /* VocabulariesTableViewExtension.swift */; };
 		F5210767248A8890008408D2 /* VocabulariesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5210766248A8890008408D2 /* VocabulariesTableViewCell.swift */; };
@@ -72,6 +73,7 @@
 		C9DC0C9F6A69511812593570 /* Pods-Cool Eng.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cool Eng.release.xcconfig"; path = "Target Support Files/Pods-Cool Eng/Pods-Cool Eng.release.xcconfig"; sourceTree = "<group>"; };
 		F505746424841ABB009E7112 /* ep1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ep1.txt; sourceTree = "<group>"; };
 		F505746624841CB4009E7112 /* IllegalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllegalViewController.swift; sourceTree = "<group>"; };
+		F50EDCEB24C4464200A7ED1E /* EnglishLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishLevel.swift; sourceTree = "<group>"; };
 		F5210761248A7AAC008408D2 /* VocabulariesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabulariesViewController.swift; sourceTree = "<group>"; };
 		F5210764248A885D008408D2 /* VocabulariesTableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabulariesTableViewExtension.swift; sourceTree = "<group>"; };
 		F5210766248A8890008408D2 /* VocabulariesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabulariesTableViewCell.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				F5B46A752444B67E0007E8E4 /* VideoModel.swift */,
 				F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */,
 				F5E8E4332445B8FF00C79D4C /* SubtitleModel.swift */,
+				F50EDCEB24C4464200A7ED1E /* EnglishLevel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
 				F5C99892247EC10A000D6716 /* Level3ViewController.swift in Sources */,
 				F505746724841CB4009E7112 /* IllegalViewController.swift in Sources */,
+				F50EDCEC24C4464200A7ED1E /* EnglishLevel.swift in Sources */,
 				F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */,
 				F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */,
 				F5E86C242486C5F20077E82E /* VocabularyBoxExtension.swift in Sources */,

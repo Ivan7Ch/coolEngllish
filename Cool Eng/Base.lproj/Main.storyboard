@@ -821,7 +821,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YVf-l4-Ann"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dictionary" id="M8V-GX-bdf"/>
+                    <navigationItem key="navigationItem" title="Dictionary" id="M8V-GX-bdf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LlI-qr-lKq">
+                            <connections>
+                                <action selector="addNewWords" destination="k0Y-g2-olM" id="CBJ-ox-t1P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonHeightConstraint" destination="Yip-nN-xkJ" id="JCV-8c-vhx"/>
                         <outlet property="controlButton" destination="f6Z-td-U9f" id="stx-en-3qq"/>

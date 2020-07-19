@@ -151,6 +151,37 @@ class DictionaryManager {
     }
     
     
+    func getWordsFor(level: EnglishLevel) -> [Word] {
+        var res = [Word]()
+        let realm = try! Realm()
+        
+        var minId = 0
+        
+        switch level {
+        case .beginer:
+            minId = 400
+        case .intermediate:
+            minId = 3000
+        case .advanced:
+            minId = 8000
+        case .native:
+            minId = 10000
+        }
+        
+        let words = realm.objects(RealmWord.self).filter("progress == -1").filter("id > \(minId)")
+        
+    
+        for i in 0..<words.count {
+            if i >= 99 { break }
+            
+            let word = words[i]
+            res.append(Word(id: 0, original: word.original, translation: word.translation))
+        }
+        
+        return res
+    }
+    
+    
     func addToDictionary(ids: [Int]) {
         updateProgress(progress: 0, in: ids)
     }
