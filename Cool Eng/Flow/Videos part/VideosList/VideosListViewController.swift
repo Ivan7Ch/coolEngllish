@@ -63,6 +63,11 @@ class VideosListViewController: UIViewController {
         showActivityIndicator()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     
     func showActivityIndicator() {
         activityView.center = self.view.center
