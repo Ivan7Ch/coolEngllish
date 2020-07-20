@@ -134,11 +134,13 @@ extension Level3ViewController: UICollectionViewDelegate, UICollectionViewDataSo
             
             if words[currentIndex].original.lowercased() == mainWord.lowercased() {
                 currentIndex += 1
-                if words.count == currentIndex {
-                    nextStep()
-                } else {
-                    reloadViews()
-                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
+                    if self.words.count == self.currentIndex {
+                        self.nextStep()
+                    } else {
+                        self.reloadViews()
+                    }
+                })
             }
         } else {
             cell.containerView.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
