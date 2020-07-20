@@ -120,6 +120,7 @@ class RecallViewController: UIViewController {
             }
             delay = 0.8
         }
+        cell.transcriptionLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         var containsFreeCells = false
         for i in 0..<answers.count {
@@ -189,6 +190,7 @@ extension RecallViewController: UICollectionViewDataSource, UICollectionViewDele
         if let answ = answeredCells[indexPath.row] {
             let colorName = answ ? "correctAnswer" : "incorrectAnswer"
             cell.containerView.backgroundColor = UIColor(named: colorName)
+            cell.transcriptionLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
         
         return cell
