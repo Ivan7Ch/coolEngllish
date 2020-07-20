@@ -121,9 +121,9 @@ extension VideosListViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleVideoCell") as! SimpleVideoCell
         let video = videos[indexPath.row]
         
-        
+        let image = UIImage(named: "default")
+        cell.thumbnail.image = image
         if let url = URL(string: video.placeholder) {
-            let image = UIImage(named: "default")
             cell.thumbnail.kf.setImage(with: url, placeholder: image, completionHandler: { _ in
                 let color = (cell.thumbnail.image?.averageColor)!
                 cell.containerView.backgroundColor = color
