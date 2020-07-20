@@ -128,6 +128,13 @@ class VocabulariesViewController: UIViewController {
     }
     
     
+    private func showAddNewWordsViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "AddNewWordsViewController") as! AddNewWordsViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     @IBAction func controlButtonAction() {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
@@ -163,42 +170,26 @@ class VocabulariesViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Beginer", style: .default , handler:{ (UIAlertAction) in
             UserDefaults.standard.set(EnglishLevel.beginer.rawValue, forKey: "englishLevel")
-            let _ = self.getWords()
+            self.showAddNewWordsViewController()
         }))
         
         alert.addAction(UIAlertAction(title: "Intermediate", style: .default , handler:{ (UIAlertAction) in
             UserDefaults.standard.set(EnglishLevel.intermediate.rawValue, forKey: "englishLevel")
-            let _ = self.getWords()
+            self.showAddNewWordsViewController()
         }))
         
         alert.addAction(UIAlertAction(title: "Advanced", style: .default , handler:{ (UIAlertAction) in
             UserDefaults.standard.set(EnglishLevel.advanced.rawValue, forKey: "englishLevel")
-            let _ = self.getWords()
+            self.showAddNewWordsViewController()
         }))
         
         alert.addAction(UIAlertAction(title: "Native", style: .default , handler:{ (UIAlertAction) in
             UserDefaults.standard.set(EnglishLevel.native.rawValue, forKey: "englishLevel")
-            let _ = self.getWords()
+            self.showAddNewWordsViewController()
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    
-    private func getWords() -> [Word] {
-        let level = UserDefaults.standard.integer(forKey: "englishLevel")
-        
-        for i in EnglishLevel.allCases {
-            if i.rawValue == level {
-                let words = DictionaryManager.shared.getWordsFor(level: i)
-                print(i)
-                print(words)
-                return words
-            }
-        }
-        
-        return []
     }
 }

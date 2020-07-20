@@ -175,7 +175,7 @@ class DictionaryManager {
             if i >= 99 { break }
             
             let word = words[i]
-            res.append(Word(id: 0, original: word.original, translation: word.translation))
+            res.append(Word(id: word.id, original: word.original, translation: word.translation, transcription: word.transcription, sentence: word.sentence, progress: word.progress))
         }
         
         return res
