@@ -139,7 +139,7 @@ class DictionaryManager {
         }
         
         if res.count < 6 {
-            for i in 0..<6 {
+            for _ in 0..<6 {
                 let ind = Int.random(in: 0..<5000)
                 let word = realm.objects(RealmWord.self).filter("id == \(ind)").first
                 

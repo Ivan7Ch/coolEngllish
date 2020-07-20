@@ -51,8 +51,6 @@ class RecallViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        
         tabBarController?.tabBar.isHidden = true
         
         trueButton.addTarget(self, action: #selector(trueButtonAction), for: .touchUpInside)
@@ -66,8 +64,6 @@ class RecallViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        view.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
-        
         navigationController?.isNavigationBarHidden = true
         
         setupButton(falseButton)
@@ -80,12 +76,13 @@ class RecallViewController: UIViewController {
     func setupButton(_ button: UIButton) {
         button.backgroundColor = UIColor(named: "learnCellContainer")
         button.layer.cornerRadius = 12
-        button.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        button.layer.shadowColor = UIColor(named: "recallCellColor")?.cgColor
         button.layer.shadowRadius = 8
         button.layer.masksToBounds = false
         button.layer.shadowOpacity = 0.2
-        button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8075502997)
+        button.layer.borderColor = UIColor(named: "recallCellColor")?.cgColor
         button.layer.borderWidth = 0.5
+        button.setTitleColor(UIColor(named: "subtitleLabel"), for: .normal)
     }
     
     
@@ -142,7 +139,7 @@ extension RecallViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecallCollectionViewCell", for: indexPath) as! RecallCollectionViewCell
         
-        cell.containerView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.75)
+        cell.containerView.backgroundColor = UIColor(named: "recallCellColor")
         
         let word = words[indexPath.row]
         var translation = word.translation

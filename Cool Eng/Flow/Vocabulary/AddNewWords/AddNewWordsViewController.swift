@@ -87,6 +87,7 @@ class AddNewWordsViewController: UIViewController {
         button.layer.shadowOpacity = 0.2
         button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8075502997)
         button.layer.borderWidth = 0.5
+        button.setTitleColor(UIColor(named: "subtitleLabel"), for: .normal)
     }
     
     
@@ -156,7 +157,7 @@ extension AddNewWordsViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddNewWordsCollectionViewCell", for: indexPath) as! AddNewWordsCollectionViewCell
         
-        cell.containerView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.75)
+        cell.containerView.backgroundColor = UIColor(named: "recallCellColor")
         
         let word = words[indexPath.row]
         var translation = word.translation
