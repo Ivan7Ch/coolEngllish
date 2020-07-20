@@ -47,6 +47,8 @@ class RecallViewController: UIViewController {
     
     var answers = [Bool]()
     
+    var answeredCells: [Int:Bool] = [:]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,29 +95,54 @@ class RecallViewController: UIViewController {
     
     func checkIfCorrectAnswer(ans: Bool) {
         if currentIndex >= words.count {
-            navigationController?.popToRootViewController(animated: true)
+            closeViewController()
+            return
         }
-        guard let cell = collectionView.cellForItem(at: IndexPath(item: currentIndex, section: 0)) as? RecallCollectionViewCell else { return }
+        guard let cellIndex = collectionView.visibleCells.first?.tag else { return }
+        guard let cell = collectionView.cellForItem(at: IndexPath(item: cellIndex, section: 0)) as? RecallCollectionViewCell else { return }
+        if answeredCells.keys.contains(cellIndex) { return }
         
         var delay = 0.0
         
-        if answers[currentIndex] == ans {
+        if answers[cellIndex] == ans {
             cell.containerView.backgroundColor = UIColor(named: "correctAnswer")
-            DictionaryManager.shared.markAsLearned(ids: [words[currentIndex].id])
+            answeredCells[cellIndex] = true
+            DictionaryManager.shared.markAsLearned(ids: [words[cellIndex].id])
         } else {
             cell.containerView.backgroundColor = UIColor(named: "incorrectAnswer")
+            answeredCells[cellIndex] = false
             if ans {
                 cell.correctLabel.text = words[currentIndex].translation
             }
             delay = 0.8
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
-            self.currentIndex += 1
-            if self.currentIndex >= self.words.count {
-                self.navigationController?.popToRootViewController(animated: true)
+        var containsFreeCells = false
+        for i in 0..<answers.count {
+            if answeredCells[i] == nil {
+                currentIndex = i
+                containsFreeCells = true
+                break
             }
-            self.collectionView.scrollToItem(at: IndexPath(item: self.currentIndex, section: 0), at: .right, animated: true)
+        }
+        
+        if !containsFreeCells {
+            closeViewController()
+            return
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
+            guard let currentCell = self.collectionView.visibleCells.first as? RecallCollectionViewCell else { return }
+            if cell == currentCell {
+                self.collectionView.scrollToItem(at: IndexPath(item: self.currentIndex, section: 0), at: .right, animated: true)
+            }
+        })
+    }
+    
+    
+    private func closeViewController() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            self.navigationController?.popToRootViewController(animated: true)
         })
     }
     
@@ -153,6 +180,12 @@ extension RecallViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.transcriptionLabel.text = word.transcription
         cell.translationWordLabel.text = translation
         cell.correctLabel.text = ""
+        cell.tag = indexPath.row
+        
+        if let answ = answeredCells[indexPath.row] {
+            let colorName = answ ? "correctAnswer" : "incorrectAnswer"
+            cell.containerView.backgroundColor = UIColor(named: colorName)
+        }
         
         return cell
     }
