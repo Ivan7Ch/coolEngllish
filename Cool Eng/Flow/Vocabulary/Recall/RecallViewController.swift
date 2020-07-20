@@ -8,6 +8,7 @@
 
 import UIKit
 import Pastel
+import AudioToolbox
 
 
 class RecallCollectionViewCell: UICollectionViewCell {
@@ -110,6 +111,9 @@ class RecallViewController: UIViewController {
             DictionaryManager.shared.markAsLearned(ids: [words[cellIndex].id])
         } else {
             cell.containerView.backgroundColor = UIColor(named: "incorrectAnswer")
+            
+            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+            
             answeredCells[cellIndex] = false
             if ans {
                 cell.correctLabel.text = words[currentIndex].translation
