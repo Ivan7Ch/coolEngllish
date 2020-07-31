@@ -15,7 +15,6 @@
 		F5210765248A885D008408D2 /* VocabulariesTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5210764248A885D008408D2 /* VocabulariesTableViewExtension.swift */; };
 		F5210767248A8890008408D2 /* VocabulariesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5210766248A8890008408D2 /* VocabulariesTableViewCell.swift */; };
 		F5210769248A88C9008408D2 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5210768248A88C9008408D2 /* BlurView.swift */; };
-		F52F4A0A24784297000BE9E6 /* dict_ua.txt in Resources */ = {isa = PBXBuildFile; fileRef = F52F4A0924784297000BE9E6 /* dict_ua.txt */; };
 		F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */; };
 		F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5360F14246F087100550559 /* GoogleService-Info.plist */; };
 		F53E16072490F68700EA594A /* RecallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E16062490F68700EA594A /* RecallViewController.swift */; };
@@ -25,6 +24,7 @@
 		F541726F248A376A005AA224 /* VocabularyBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */; };
 		F5417271248A37D5005AA224 /* VocabularyBoxActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */; };
 		F5417273248A3817005AA224 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5417272248A3817005AA224 /* TableViewDelegate.swift */; };
+		F541A64524D49FD800FA452C /* dictionary.txt in Resources */ = {isa = PBXBuildFile; fileRef = F541A64424D49FD800FA452C /* dictionary.txt */; };
 		F548BBDC2444CA8900AE060C /* VideoFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */; };
 		F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */; };
 		F54C9736248E30C50019930D /* PastelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C9735248E30C50019930D /* PastelExtension.swift */; };
@@ -79,7 +79,6 @@
 		F5210764248A885D008408D2 /* VocabulariesTableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabulariesTableViewExtension.swift; sourceTree = "<group>"; };
 		F5210766248A8890008408D2 /* VocabulariesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabulariesTableViewCell.swift; sourceTree = "<group>"; };
 		F5210768248A88C9008408D2 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		F52F4A0924784297000BE9E6 /* dict_ua.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dict_ua.txt; sourceTree = "<group>"; };
 		F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryManager.swift; sourceTree = "<group>"; };
 		F5360F14246F087100550559 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F53E16062490F68700EA594A /* RecallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxTableViewCell.swift; sourceTree = "<group>"; };
 		F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxActions.swift; sourceTree = "<group>"; };
 		F5417272248A3817005AA224 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
+		F541A64424D49FD800FA452C /* dictionary.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dictionary.txt; sourceTree = "<group>"; };
 		F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFirebaseHelper.swift; sourceTree = "<group>"; };
 		F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		F54C9735248E30C50019930D /* PastelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastelExtension.swift; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		F52F4A082478421F000BE9E6 /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
-				F52F4A0924784297000BE9E6 /* dict_ua.txt */,
+				F541A64424D49FD800FA452C /* dictionary.txt */,
 				F52F4A0B247842B6000BE9E6 /* DictionaryManager.swift */,
 			);
 			path = Dictionary;
@@ -497,10 +497,10 @@
 				F5CE9EC52444958C009EB618 /* LaunchScreen.storyboard in Resources */,
 				F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */,
 				F53FBD8124A65FDB00F8B0E8 /* rSwipe.json in Resources */,
+				F541A64524D49FD800FA452C /* dictionary.txt in Resources */,
 				F5CE9EC22444958C009EB618 /* Assets.xcassets in Resources */,
 				F505746524841ABB009E7112 /* ep1.txt in Resources */,
 				F5CE9EBD2444958B009EB618 /* Main.storyboard in Resources */,
-				F52F4A0A24784297000BE9E6 /* dict_ua.txt in Resources */,
 				F53FBD8324A6659500F8B0E8 /* rSwipe_White.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,6 +20,14 @@ struct Word: Codable {
 }
 
 
+fileprivate struct SimpleWord: Codable {
+    var o: String
+    var tr: String = ""
+    var ts: String = ""
+    var s: String = ""
+}
+
+
 class RealmWord: Object {
     @objc dynamic var id = 0
     @objc dynamic var original = ""
@@ -50,13 +58,20 @@ class DictionaryManager {
     func setup() {
         start = CFAbsoluteTimeGetCurrent()
         
-        let filepath = Bundle.main.path(forResource: "dict_ua", ofType: "txt")!
+        let filepath = Bundle.main.path(forResource: "dictionary", ofType: "txt")!
         let contents = try! String(contentsOfFile: filepath)
         let jsonData = contents.data(using: .utf8)!
-        let objects = try! JSONDecoder().decode([Word].self, from: jsonData)
+        let objects = try! JSONDecoder().decode([SimpleWord].self, from: jsonData)
         
-        DispatchQueue.global(qos: .background).async {
-            self.saveWordsToRealm(objects)
+        var correctWords = [Word]()
+        for (i, v) in objects.enumerated() {
+            let word = Word(id: i, original: v.o, translation: v.tr, transcription: v.ts, sentence: v.s, progress: 0)
+            correctWords.append(word)
+        }
+        
+        
+        DispatchQueue.global(qos: .utility).async {
+            self.saveWordsToRealm(correctWords)
         }
     }
     
