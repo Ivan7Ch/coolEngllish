@@ -111,7 +111,13 @@ extension Level2ViewController: UITableViewDelegate, UITableViewDataSource {
         
         if tableView == rightTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Level2TableViewCellRight", for: indexPath) as! Level2TableViewCell
-            cell.setup(with: rightWords[indexPath.row])
+            
+            var translation = rightWords[indexPath.row]
+            if translation.contains(",") {
+                let words = translation.components(separatedBy: ",")
+                translation = "\(words[0]), \(words[1])"
+            }
+            cell.setup(with: translation)
             return cell
         }
         

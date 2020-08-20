@@ -54,29 +54,61 @@ class RecallViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBarController?.tabBar.isHidden = true
-        
-        trueButton.addTarget(self, action: #selector(trueButtonAction), for: .touchUpInside)
-        falseButton.addTarget(self, action: #selector(falseButtonAction), for: .touchUpInside)
-        
-        words = DictionaryManager.shared.getWordsForRecall()
-        learnedWords = DictionaryManager.shared.getRandWords()
+        setupWords()
         
         answers = Array(repeating: true, count: words.count)
         
+        setupUI()
+    }
+    
+    
+    private func setupUI() {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = true
         
         setupButton(falseButton)
         setupButton(trueButton)
         
+        trueButton.addTarget(self, action: #selector(trueButtonAction), for: .touchUpInside)
+        falseButton.addTarget(self, action: #selector(falseButtonAction), for: .touchUpInside)
+        
         setPastelBackground()
     }
     
     
-    func setupButton(_ button: UIButton) {
+    private func setupWords() {
+        //getting words for recall from dictionary
+        words = DictionaryManager.shared.getWordsForRecall()
+        
+        //remove very long translation
+        for (index, value) in words.enumerated() {
+            var translation = value.translation
+            if translation.contains(",") {
+                let ws = translation.components(separatedBy: ",")
+                translation = "\(ws[0]), \(ws[1])"
+            }
+            words[index].translation = translation
+        }
+        
+        //getting learned words from dictionary
+        learnedWords = DictionaryManager.shared.getRandWords()
+        
+        //remove very long translation
+        for (index, value) in learnedWords.enumerated() {
+            var translation = value.translation
+            if translation.contains(",") {
+                let ws = translation.components(separatedBy: ",")
+                translation = "\(ws[0]), \(ws[1])"
+            }
+            learnedWords[index].translation = translation
+        }
+    }
+    
+    
+    private func setupButton(_ button: UIButton) {
         button.backgroundColor = UIColor(named: "learnCellContainer")
         button.layer.cornerRadius = 12
         button.layer.shadowColor = UIColor(named: "recallCellColor")?.cgColor
@@ -86,11 +118,6 @@ class RecallViewController: UIViewController {
         button.layer.borderColor = UIColor(named: "recallCellColor")?.cgColor
         button.layer.borderWidth = 0.5
         button.setTitleColor(UIColor(named: "subtitleLabel"), for: .normal)
-    }
-    
-    
-    @IBAction func skipButtonAction() {
-        navigationController?.popToRootViewController(animated: true)
     }
     
     
@@ -152,6 +179,7 @@ class RecallViewController: UIViewController {
     }
     
     
+    // MARK:- IBActions
     @IBAction func trueButtonAction() {
         checkIfCorrectAnswer(ans: true)
     }
@@ -160,13 +188,20 @@ class RecallViewController: UIViewController {
     @IBAction func falseButtonAction() {
         checkIfCorrectAnswer(ans: false)
     }
+    
+    
+    @IBAction func skipButtonAction() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 
 extension RecallViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return words.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecallCollectionViewCell", for: indexPath) as! RecallCollectionViewCell
@@ -175,6 +210,7 @@ extension RecallViewController: UICollectionViewDataSource, UICollectionViewDele
         
         let word = words[indexPath.row]
         var translation = word.translation
+        
         if Bool.random() {
             let ind = Int.random(in: 0..<learnedWords.count)
             translation = learnedWords[ind].translation
@@ -195,8 +231,8 @@ extension RecallViewController: UICollectionViewDataSource, UICollectionViewDele
         
         return cell
     }
-    
 }
+
 
 extension RecallViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

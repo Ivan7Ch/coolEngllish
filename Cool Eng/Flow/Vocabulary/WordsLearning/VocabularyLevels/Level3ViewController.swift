@@ -62,7 +62,13 @@ class Level3ViewController: UIViewController {
         }
         letters.shuffle()
         
-        translationWordLabel.text = words[currentIndex].translation
+        var translation = words[currentIndex].translation
+        if translation.contains(",") {
+            let words = translation.components(separatedBy: ",")
+            translation = "\(words[0]), \(words[1])"
+        }
+        
+        translationWordLabel.text = translation
         
         collectionView.reloadData()
     }

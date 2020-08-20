@@ -109,7 +109,12 @@ class AddNewWordsViewController: UIViewController {
         } else {
             cell.containerView.backgroundColor = UIColor(named: "incorrectAnswer")
             if ans {
-                cell.correctLabel.text = words[currentIndex].translation
+                var translation = words[currentIndex].translation
+                if translation.contains(",") {
+                    let words = translation.components(separatedBy: ",")
+                    translation = "\(words[0]), \(words[1])"
+                }
+                cell.correctLabel.text = translation
             }
             DictionaryManager.shared.addToDictionary(ids: [words[currentIndex].id])
             delay = 0.8

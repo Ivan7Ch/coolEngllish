@@ -77,7 +77,12 @@ class Level1ViewController: UIViewController {
     
     private func reloadViews(with index: Int) {
         if state == .original {
-            mainWordLabel.text = words[index].translation
+            var translation = words[index].translation
+            if translation.contains(",") {
+                let words = translation.components(separatedBy: ",")
+                translation = "\(words[0]), \(words[1])"
+            }
+            mainWordLabel.text = translation
         } else {
             mainWordLabel.text = words[index].original
         }
@@ -143,7 +148,12 @@ extension Level1ViewController: UITableViewDelegate, UITableViewDataSource {
         if state == .original {
             cell.setup(with: word.original)
         } else {
-            cell.setup(with: word.translation)
+            var translation = word.translation
+            if translation.contains(",") {
+                let words = translation.components(separatedBy: ",")
+                translation = "\(words[0]), \(words[1])"
+            }
+            cell.setup(with: translation)
         }
         return cell
     }

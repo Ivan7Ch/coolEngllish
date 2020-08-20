@@ -30,7 +30,12 @@ class ToastMessageView: UIView {
     
     func setup(with word: Word) {
         self.message = word.original
-        self.subMessage = word.translation
+        var translation = word.translation
+        if translation.contains(",") {
+            let words = translation.components(separatedBy: ",")
+            translation = "\(words[0]), \(words[1])"
+        }
+        self.subMessage = translation
         self.word = word
         setupViews()
     }
