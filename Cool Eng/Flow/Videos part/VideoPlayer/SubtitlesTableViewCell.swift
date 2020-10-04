@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ActiveLabel
 
 class SubtitlesTableViewCell: UITableViewCell {
     

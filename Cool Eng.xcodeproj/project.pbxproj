@@ -102,6 +102,11 @@
 		F552AF82249D040F008F7439 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		F55666B8246EA96E002C3821 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		F5871715247BC72900E4506D /* VocabularyBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxViewController.swift; sourceTree = "<group>"; };
+		F58D77B8252A4A9A00DDC3C8 /* ActiveBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveBuilder.swift; path = ActiveLabel/ActiveBuilder.swift; sourceTree = "<group>"; };
+		F58D77B9252A4A9A00DDC3C8 /* ActiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveLabel.swift; path = ActiveLabel/ActiveLabel.swift; sourceTree = "<group>"; };
+		F58D77BA252A4A9A00DDC3C8 /* ActiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveType.swift; path = ActiveLabel/ActiveType.swift; sourceTree = "<group>"; };
+		F58D77BB252A4A9A00DDC3C8 /* RegexParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegexParser.swift; path = ActiveLabel/RegexParser.swift; sourceTree = "<group>"; };
+		F58D77BC252A4A9A00DDC3C8 /* StringTrimExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringTrimExtension.swift; path = ActiveLabel/StringTrimExtension.swift; sourceTree = "<group>"; };
 		F596FCB1247A824D00E140C4 /* SubtitlesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitlesTableViewCell.swift; sourceTree = "<group>"; };
 		F5B10093249B223800742BF5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F5B46A752444B67E0007E8E4 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
@@ -295,6 +300,18 @@
 			path = VocabularyBox;
 			sourceTree = "<group>";
 		};
+		F58D77C5252A4A9A00DDC3C8 /* ActiveLabel */ = {
+			isa = PBXGroup;
+			children = (
+				F58D77B8252A4A9A00DDC3C8 /* ActiveBuilder.swift */,
+				F58D77B9252A4A9A00DDC3C8 /* ActiveLabel.swift */,
+				F58D77BA252A4A9A00DDC3C8 /* ActiveType.swift */,
+				F58D77BB252A4A9A00DDC3C8 /* RegexParser.swift */,
+				F58D77BC252A4A9A00DDC3C8 /* StringTrimExtension.swift */,
+			);
+			path = ActiveLabel;
+			sourceTree = "<group>";
+		};
 		F5B46A742444B66E0007E8E4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +326,7 @@
 		F5C6A8752444BC6800716E96 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F58D77C5252A4A9A00DDC3C8 /* ActiveLabel */,
 				F505746324841A9C009E7112 /* Illegal */,
 				F52F4A082478421F000BE9E6 /* Dictionary */,
 				F55666B7246EA95A002C3821 /* Extensions */,
