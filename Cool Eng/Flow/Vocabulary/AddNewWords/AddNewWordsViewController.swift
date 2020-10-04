@@ -2,191 +2,176 @@
 //  AddNewWordsViewController.swift
 //  Cool Eng
 //
-//  Created by Ivan Chernetskiy on 10.06.2020.
+//  Created by Ivan Chernetskiy on 20.08.2020.
 //  Copyright © 2020 Ivan Chernetskiy. All rights reserved.
 //
 
 import UIKit
-import Pastel
-
-
-class AddNewWordsCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var originalWordLabel: UILabel!
-    @IBOutlet weak var transcriptionLabel: UILabel!
-    @IBOutlet weak var translationWordLabel: UILabel!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var correctLabel: UILabel!
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        containerView.layer.cornerRadius = 16
-        correctLabel.text = ""
-        originalWordLabel.textColor = UIColor(named: "negativeLabel")
-        translationWordLabel.textColor = UIColor(named: "negativeLabel")
-    }
-}
-
 
 
 class AddNewWordsViewController: UIViewController {
     
-    var pastelView: PastelView!
+
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var falseButton: UIButton!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var mainWordLabel: UILabel!
+    
+    @IBOutlet weak var mainWordContainer: UIView!
+    
     
     var words = [Word]()
     
-    var learnedWords = [Word]()
-    
     var currentIndex = 0
     
-    var answers = [Bool]()
+    var tableWords = [Word]()
+    
+    var level = EnglishLevel.advanced
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        words = DictionaryManager.shared.getWordsFor(level: level)
         
-        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        
-        tabBarController?.tabBar.isHidden = true
-        
-        trueButton.addTarget(self, action: #selector(trueButtonAction), for: .touchUpInside)
-        falseButton.addTarget(self, action: #selector(falseButtonAction), for: .touchUpInside)
-        
-        words = getWords().shuffled()
-        
-        learnedWords = DictionaryManager.shared.getRandWords()
-        
-        answers = Array(repeating: true, count: words.count)
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
-        view.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
-        
-        navigationController?.isNavigationBarHidden = true
-        
-        setupButton(falseButton)
-        setupButton(trueButton)
-        
-        setPastelBackground()
+        setupViews()
+        reloadViews(with: 0)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        self.setPastelBackground()
     }
     
     
-    func setupButton(_ button: UIButton) {
-        button.backgroundColor = UIColor(named: "learnCellContainer")
-        button.layer.cornerRadius = 12
-        button.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        button.layer.shadowRadius = 8
-        button.layer.masksToBounds = false
-        button.layer.shadowOpacity = 0.2
-        button.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.8075502997)
-        button.layer.borderWidth = 0.5
-        button.setTitleColor(UIColor(named: "subtitleLabel"), for: .normal)
+    private func setTableWords() {
+        tableWords = []
+        var shuffledWords = words.shuffled()
+        shuffledWords.removeAll(where: { return $0.original == self.words[currentIndex].original })
+        for i in 0..<4 {
+            tableWords.append(shuffledWords[i])
+        }
+        let word = words[currentIndex]
+        let wordInd = Int.random(in: 0..<4)
+        tableWords[wordInd] = word
+        tableView.reloadData()
     }
     
     
-    @IBAction func skipButtonAction() {
-        navigationController?.popToRootViewController(animated: true)
+    private func reloadViews(with index: Int) {
+        if words.isEmpty || index > words.count { return }
+        
+        let word = words[index]
+        
+        
+        mainWordLabel.text = word.original
+        setTableWords()
     }
     
     
-    func checkIfCorrectAnswer(ans: Bool) {
+    
+    private func correctSelection() {
+        currentIndex += 1
+        
         if currentIndex >= words.count {
-            navigationController?.popToRootViewController(animated: true)
-        }
-        guard let cell = collectionView.cellForItem(at: IndexPath(item: currentIndex, section: 0)) as? AddNewWordsCollectionViewCell else { return }
-        
-        var delay = 0.0
-        
-        if answers[currentIndex] == ans {
-            cell.containerView.backgroundColor = UIColor(named: "correctAnswer")
+            showNext()
         } else {
-            cell.containerView.backgroundColor = UIColor(named: "incorrectAnswer")
-            if ans {
-                var translation = words[currentIndex].translation
-                if translation.contains(",") {
-                    let words = translation.components(separatedBy: ",")
-                    translation = "\(words[0]), \(words[1])"
-                }
-                cell.correctLabel.text = translation
-            }
-            DictionaryManager.shared.addToDictionary(ids: [words[currentIndex].id])
-            delay = 0.8
+            reloadViews(with: currentIndex)
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
-            self.currentIndex += 1
-            if self.currentIndex >= self.words.count {
-                self.navigationController?.popToRootViewController(animated: true)
-            }
-            self.collectionView.scrollToItem(at: IndexPath(item: self.currentIndex, section: 0), at: .right, animated: true)
-        })
     }
     
     
-    @IBAction func trueButtonAction() {
-        checkIfCorrectAnswer(ans: true)
-    }
-    
-    
-    @IBAction func falseButtonAction() {
-        checkIfCorrectAnswer(ans: false)
-    }
-    
-    private func getWords() -> [Word] {
-        let level = UserDefaults.standard.integer(forKey: "englishLevel")
-        
-        for i in EnglishLevel.allCases {
-            if i.rawValue == level {
-                let words = DictionaryManager.shared.getWordsFor(level: i)
-                return words
-            }
-        }
-        
-        return []
+    private func showNext() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 
 
-extension AddNewWordsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return words.count
+extension AddNewWordsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableWords.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddNewWordsCollectionViewCell", for: indexPath) as! AddNewWordsCollectionViewCell
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Level1TableViewCell", for: indexPath) as! Level1TableViewCell
+        cell.selectionStyle = .none
+        cell.backgroundColor = UIColor(named: "learnCellContainer")
         
-        cell.containerView.backgroundColor = UIColor(named: "recallCellColor")
-        
-        let word = words[indexPath.row]
+        let word = tableWords[indexPath.row]
         var translation = word.translation
-        if Bool.random() {
-            let ind = Int.random(in: 0..<learnedWords.count)
-            translation = learnedWords[ind].translation
-            answers[indexPath.row] = false
+        if translation.contains(",") {
+            let words = translation.components(separatedBy: ",")
+            translation = "\(words[0]), \(words[1])"
         }
-        
-        cell.originalWordLabel.text = word.original
-        cell.transcriptionLabel.text = word.transcription
-        cell.translationWordLabel.text = translation
-        cell.correctLabel.text = ""
-        
+        cell.setup(with: translation)
         return cell
     }
     
-}
-
-extension AddNewWordsViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = tableView.bounds.size.height / 4
+        return height
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if currentIndex >= words.count { return }
         
-        let width = UIScreen.main.bounds.width
-        let height = collectionView.bounds.height
-        return CGSize(width: width, height: height)
+        let delay = 0.6
+        let selectedWord = tableWords[indexPath.row]
+        let cell = tableView.cellForRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        if selectedWord.original == words[currentIndex].original {
+            DictionaryManager.shared.markAsLearned(ids: [words[currentIndex].id])
+            UIView.animate(withDuration: 0.18, animations: {
+                cell?.backgroundColor = UIColor(named: "correctAnswer")
+            })
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.28, execute: {
+                UIView.animate(withDuration: 0.12, animations: {
+                    cell?.backgroundColor = UIColor(named: "learnCellContainer")
+                })
+            })
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
+                self.correctSelection()
+            })
+        } else {
+            DictionaryManager.shared.addToDictionary(ids: [words[currentIndex].id])
+            cell?.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 0.7858251284)
+            UIView.animate(withDuration: delay, animations: {
+                cell?.backgroundColor = UIColor(named: "learnCellContainer")
+            })
+        }
     }
 }
+
+
+// MARK:- View settup
+extension AddNewWordsViewController {
+    private func setupViews() {
+        tableView.layer.cornerRadius = 12
+        tableView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        tableView.layer.shadowRadius = 4
+        tableView.layer.shadowOpacity = 0.5
+        tableView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        tableView.layer.borderWidth = 0.5
+        tableView.layer.borderColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        mainWordContainer.layer.cornerRadius = 8
+        mainWordContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        mainWordContainer.backgroundColor = UIColor(named: "color5")
+        
+        tabBarController?.tabBar.isHidden = true
+    }
+}
+
+
+// MARK:- IBactions
+extension AddNewWordsViewController {
+    @IBAction func skipButtonAction() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+}
+

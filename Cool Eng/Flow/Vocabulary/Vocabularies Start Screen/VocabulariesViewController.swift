@@ -128,9 +128,10 @@ class VocabulariesViewController: UIViewController {
     }
     
     
-    private func showAddNewWordsViewController() {
+    private func showAddNewWordsViewController(_ level: EnglishLevel) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "AddNewWordsViewController") as! AddNewWordsViewController
+        vc.level = level
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -170,22 +171,22 @@ class VocabulariesViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Beginer", style: .default , handler:{ (UIAlertAction) in
             UserDefaults.standard.set(EnglishLevel.beginer.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController()
+            self.showAddNewWordsViewController(.beginer)
         }))
         
         alert.addAction(UIAlertAction(title: "Intermediate", style: .default , handler:{ (UIAlertAction) in
             UserDefaults.standard.set(EnglishLevel.intermediate.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController()
+            self.showAddNewWordsViewController(.intermediate)
         }))
         
         alert.addAction(UIAlertAction(title: "Advanced", style: .default , handler:{ (UIAlertAction) in
             UserDefaults.standard.set(EnglishLevel.advanced.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController()
+            self.showAddNewWordsViewController(.advanced)
         }))
         
         alert.addAction(UIAlertAction(title: "Native", style: .default , handler:{ (UIAlertAction) in
             UserDefaults.standard.set(EnglishLevel.native.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController()
+            self.showAddNewWordsViewController(.native)
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
