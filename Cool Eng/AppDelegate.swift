@@ -31,7 +31,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(error.localizedDescription)
         }
         
+//        var words = ["word", "words", "city", "cities", "potato", "potatoes", "life", "lives", "shelf", "shelves"]
+        let words = ["work", "worked", "practice", "practiced", "recommend", "recommended"]
+        
+        for word in words {
+            if let w = DictionaryManager.shared.getWord(word.lowercased()) {
+                print("~ \(word)     \(w.translation)")
+            } else {
+                var abc = false
+                for i in process(word) {
+                    if let nw = DictionaryManager.shared.getWord(i.lowercased()) {
+                        print("~ \(word)     \(nw.translation)")
+                        abc = true
+                        break
+                    }
+                }
+                if !abc {
+                    print("~ \(word)     ----------")
+                }
+            }
+        }
+        
+        
         return true
+    }
+    
+    func process(_ w: String) -> [String] {
+        var set = Set<String>()
+        set.insert(w.replacingOccurrences(of: "s", with: ""))
+        set.insert(w.replacingOccurrences(of: "es", with: ""))
+        set.insert(w.replacingOccurrences(of: "ies", with: "y"))
+        
+        
+        return Array(set)
     }
 
     // MARK: UISceneSession Lifecycle

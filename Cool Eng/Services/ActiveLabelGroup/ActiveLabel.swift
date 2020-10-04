@@ -6,7 +6,6 @@
 //  Copyright © 2015 Optonaut. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 public protocol ActiveLabelDelegate: class {
@@ -16,7 +15,7 @@ public protocol ActiveLabelDelegate: class {
 public typealias ConfigureLinkAttribute = (ActiveType, [NSAttributedString.Key : Any], Bool) -> ([NSAttributedString.Key : Any])
 typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveType)
 
-@IBDesignable open class ActiveLabel: UILabel {
+class ActiveLabel: UILabel {
     
     // MARK: - public properties
     open weak var delegate: ActiveLabelDelegate?

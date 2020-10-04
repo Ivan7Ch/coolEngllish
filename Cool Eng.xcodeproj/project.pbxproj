@@ -37,6 +37,11 @@
 		F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55666B8246EA96E002C3821 /* ToastMessage.swift */; };
 		F5871716247BC72900E4506D /* VocabularyBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5871715247BC72900E4506D /* VocabularyBoxViewController.swift */; };
 		F596FCB2247A824D00E140C4 /* SubtitlesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F596FCB1247A824D00E140C4 /* SubtitlesTableViewCell.swift */; };
+		F59D9B5B252A5053003B0ADB /* ActiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59D9B5A252A5053003B0ADB /* ActiveLabel.swift */; };
+		F59D9B61252A5118003B0ADB /* StringTrimExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59D9B5D252A5116003B0ADB /* StringTrimExtension.swift */; };
+		F59D9B62252A5118003B0ADB /* RegexParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59D9B5E252A5117003B0ADB /* RegexParser.swift */; };
+		F59D9B63252A5118003B0ADB /* ActiveBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59D9B5F252A5117003B0ADB /* ActiveBuilder.swift */; };
+		F59D9B64252A5118003B0ADB /* ActiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59D9B60252A5118003B0ADB /* ActiveType.swift */; };
 		F5B10094249B223800742BF5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B10093249B223800742BF5 /* StoreKit.framework */; };
 		F5B46A762444B67E0007E8E4 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A752444B67E0007E8E4 /* VideoModel.swift */; };
 		F5B46A782444B69E0007E8E4 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */; };
@@ -102,12 +107,12 @@
 		F552AF82249D040F008F7439 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		F55666B8246EA96E002C3821 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		F5871715247BC72900E4506D /* VocabularyBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxViewController.swift; sourceTree = "<group>"; };
-		F58D77B8252A4A9A00DDC3C8 /* ActiveBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveBuilder.swift; path = ActiveLabel/ActiveBuilder.swift; sourceTree = "<group>"; };
-		F58D77B9252A4A9A00DDC3C8 /* ActiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveLabel.swift; path = ActiveLabel/ActiveLabel.swift; sourceTree = "<group>"; };
-		F58D77BA252A4A9A00DDC3C8 /* ActiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveType.swift; path = ActiveLabel/ActiveType.swift; sourceTree = "<group>"; };
-		F58D77BB252A4A9A00DDC3C8 /* RegexParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegexParser.swift; path = ActiveLabel/RegexParser.swift; sourceTree = "<group>"; };
-		F58D77BC252A4A9A00DDC3C8 /* StringTrimExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringTrimExtension.swift; path = ActiveLabel/StringTrimExtension.swift; sourceTree = "<group>"; };
 		F596FCB1247A824D00E140C4 /* SubtitlesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitlesTableViewCell.swift; sourceTree = "<group>"; };
+		F59D9B5A252A5053003B0ADB /* ActiveLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveLabel.swift; sourceTree = "<group>"; };
+		F59D9B5D252A5116003B0ADB /* StringTrimExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTrimExtension.swift; sourceTree = "<group>"; };
+		F59D9B5E252A5117003B0ADB /* RegexParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexParser.swift; sourceTree = "<group>"; };
+		F59D9B5F252A5117003B0ADB /* ActiveBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveBuilder.swift; sourceTree = "<group>"; };
+		F59D9B60252A5118003B0ADB /* ActiveType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveType.swift; sourceTree = "<group>"; };
 		F5B10093249B223800742BF5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F5B46A752444B67E0007E8E4 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		F5B46A772444B69E0007E8E4 /* PlaylistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistModel.swift; sourceTree = "<group>"; };
@@ -300,16 +305,16 @@
 			path = VocabularyBox;
 			sourceTree = "<group>";
 		};
-		F58D77C5252A4A9A00DDC3C8 /* ActiveLabel */ = {
+		F58D77C5252A4A9A00DDC3C8 /* ActiveLabelGroup */ = {
 			isa = PBXGroup;
 			children = (
-				F58D77B8252A4A9A00DDC3C8 /* ActiveBuilder.swift */,
-				F58D77B9252A4A9A00DDC3C8 /* ActiveLabel.swift */,
-				F58D77BA252A4A9A00DDC3C8 /* ActiveType.swift */,
-				F58D77BB252A4A9A00DDC3C8 /* RegexParser.swift */,
-				F58D77BC252A4A9A00DDC3C8 /* StringTrimExtension.swift */,
+				F59D9B5A252A5053003B0ADB /* ActiveLabel.swift */,
+				F59D9B5F252A5117003B0ADB /* ActiveBuilder.swift */,
+				F59D9B60252A5118003B0ADB /* ActiveType.swift */,
+				F59D9B5E252A5117003B0ADB /* RegexParser.swift */,
+				F59D9B5D252A5116003B0ADB /* StringTrimExtension.swift */,
 			);
-			path = ActiveLabel;
+			path = ActiveLabelGroup;
 			sourceTree = "<group>";
 		};
 		F5B46A742444B66E0007E8E4 /* Models */ = {
@@ -326,7 +331,7 @@
 		F5C6A8752444BC6800716E96 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				F58D77C5252A4A9A00DDC3C8 /* ActiveLabel */,
+				F58D77C5252A4A9A00DDC3C8 /* ActiveLabelGroup */,
 				F505746324841A9C009E7112 /* Illegal */,
 				F52F4A082478421F000BE9E6 /* Dictionary */,
 				F55666B7246EA95A002C3821 /* Extensions */,
@@ -600,6 +605,7 @@
 				F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */,
 				F5FDA6F82444AFA000AC6A9D /* PlaylistTableViewCell.swift in Sources */,
 				F5B46A782444B69E0007E8E4 /* PlaylistModel.swift in Sources */,
+				F59D9B62252A5118003B0ADB /* RegexParser.swift in Sources */,
 				F5C99894247EC10C000D6716 /* Level4ViewController.swift in Sources */,
 				F548BBDC2444CA8900AE060C /* VideoFirebaseHelper.swift in Sources */,
 				F53FC9BF24A24F0C0078025D /* IAPViewController.swift in Sources */,
@@ -618,10 +624,12 @@
 				F5E8E4342445B8FF00C79D4C /* SubtitleModel.swift in Sources */,
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,
 				F5C99892247EC10A000D6716 /* Level3ViewController.swift in Sources */,
+				F59D9B5B252A5053003B0ADB /* ActiveLabel.swift in Sources */,
 				F505746724841CB4009E7112 /* IllegalViewController.swift in Sources */,
 				F50EDCEC24C4464200A7ED1E /* EnglishLevel.swift in Sources */,
 				F5E8E4312445A9C500C79D4C /* YoutubePlayerExtras.swift in Sources */,
 				F52F4A0C247842B6000BE9E6 /* DictionaryManager.swift in Sources */,
+				F59D9B61252A5118003B0ADB /* StringTrimExtension.swift in Sources */,
 				F5E86C242486C5F20077E82E /* VocabularyBoxExtension.swift in Sources */,
 				F536009F24FA996C00210556 /* GeneralExtensions.swift in Sources */,
 				F55666B9246EA96E002C3821 /* ToastMessage.swift in Sources */,
@@ -632,10 +640,12 @@
 				F5871716247BC72900E4506D /* VocabularyBoxViewController.swift in Sources */,
 				F54C9742248E3D420019930D /* LearnedWordsBoxActionsExxtension.swift in Sources */,
 				F5210762248A7AAC008408D2 /* VocabulariesViewController.swift in Sources */,
+				F59D9B64252A5118003B0ADB /* ActiveType.swift in Sources */,
 				F5210769248A88C9008408D2 /* BlurView.swift in Sources */,
 				F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */,
 				F53E16072490F68700EA594A /* RecallViewController.swift in Sources */,
 				F5E86C202486C51E0077E82E /* AdvertHelperExtension.swift in Sources */,
+				F59D9B63252A5118003B0ADB /* ActiveBuilder.swift in Sources */,
 				F5417271248A37D5005AA224 /* VocabularyBoxActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

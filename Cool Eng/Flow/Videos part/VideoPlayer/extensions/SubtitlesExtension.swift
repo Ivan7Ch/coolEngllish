@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: - Subtitles helper
 extension VideoPlayerViewController {
-    
+
     func fetchSubtitles() {
         SubtitlesFirebaseHelper.shared.fetchSubtitles(videoId: video.id, lang: "en", callback: { sub in
             self.video.subtitles = sub
