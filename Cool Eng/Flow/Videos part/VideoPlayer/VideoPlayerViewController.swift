@@ -54,17 +54,14 @@ class VideoPlayerViewController: UIViewController {
         
         realmWords = DictionaryManager.shared.getAllWords()
         tabBarController?.tabBar.isHidden = true
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
     }
     
     func showAlertIfNeeded() {
-        
         let position = UserDefaults.standard.double(forKey: "video - \(video.id)")
         if position <= 1 { return }
         
@@ -111,10 +108,10 @@ class VideoPlayerViewController: UIViewController {
     @IBAction func resumeVideo() {
         if isPlaying {
             isPlaying = false
-            videoPlayer.play()
+            videoPlayer.pause()
         } else {
             isPlaying = true
-            videoPlayer.pause()
+            videoPlayer.play()
         }
     }
 }
