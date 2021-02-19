@@ -10,6 +10,7 @@ import UIKit
 
 
 class PlaylistTableViewCell: UITableViewCell {
+    
     static let reuseIdentifer = "playlist-cell"
     
     @IBOutlet weak var nameLabel: UILabel!

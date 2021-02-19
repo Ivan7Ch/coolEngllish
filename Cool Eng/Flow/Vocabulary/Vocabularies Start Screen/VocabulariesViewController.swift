@@ -11,7 +11,7 @@ import AVFoundation
 
 
 fileprivate enum VocabularyState {
-    case learn
+    case new
     case recall
     case learned
 }
@@ -29,7 +29,7 @@ class VocabulariesViewController: UIViewController {
     
     var visibleWords = [Word]()
     
-    fileprivate var state = VocabularyState.learn
+    fileprivate var state = VocabularyState.new
     
     var wordsForLearning = [Word]()
     
@@ -61,6 +61,9 @@ class VocabulariesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 89
+        
         visibleWords = DictionaryManager.shared.getWordsForStudy()
         controlButton.blurView(style: .systemChromeMaterial)
         segmentedControl.addTarget(self, action: #selector(segmentedControlAction(segmentedControl:)), for: .valueChanged)
@@ -78,7 +81,7 @@ class VocabulariesViewController: UIViewController {
     
     func reloadViews() {
         switch state {
-        case .learn:
+        case .new:
             hideButton(false)
             controlButton.setTitle("Learn Words", for: .normal)
             visibleWords = wordsForLearning
@@ -155,7 +158,7 @@ class VocabulariesViewController: UIViewController {
     @IBAction func segmentedControlAction(segmentedControl: UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            state = .learn
+            state = .new
         case 1:
             state = .recall
         default:

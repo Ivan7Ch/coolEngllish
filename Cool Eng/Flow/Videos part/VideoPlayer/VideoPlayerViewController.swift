@@ -109,9 +109,11 @@ class VideoPlayerViewController: UIViewController {
         if isPlaying {
             isPlaying = false
             videoPlayer.pause()
+            navigationController?.setNavigationBarHidden(false, animated: true)
         } else {
             isPlaying = true
             videoPlayer.play()
+            navigationController?.setNavigationBarHidden(true, animated: true)
         }
     }
 }

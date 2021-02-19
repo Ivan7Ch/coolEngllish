@@ -11,22 +11,28 @@ import AVFoundation
 
 
 class VocabulariesTableViewCell: UITableViewCell {
-    @IBOutlet weak var originalWord: UILabel!
-    @IBOutlet weak var translatedWord: UILabel!
-    @IBOutlet weak var speachButton: UIButton!
+    @IBOutlet weak var originalWordLabel: UILabel!
+    @IBOutlet weak var translatedWordLabel: UILabel!
+    @IBOutlet weak var speachImageView: UIImageView!
     
     private var wordText = ""
     
     
     func setup(_ word: Word) {
-        originalWord.text = word.original
+        originalWordLabel.text = word.original
         var translation = word.translation
         if translation.contains(",") {
             let words = translation.components(separatedBy: ",")
             translation = "\(words[0]), \(words[1])"
         }
-        translatedWord.text = translation
+        translatedWordLabel.text = translation.trimmingCharacters(in: .whitespacesAndNewlines)
         wordText = word.original
+        
+        for i in speachImageView.gestureRecognizers ?? [] {
+            speachImageView.removeGestureRecognizer(i)
+        }
+        let tap = UITapGestureRecognizer(target: self, action: #selector(speachButtonAction))
+        speachImageView.addGestureRecognizer(tap)
     }
     
     

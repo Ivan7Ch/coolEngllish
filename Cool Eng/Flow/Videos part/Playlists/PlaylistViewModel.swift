@@ -27,7 +27,8 @@ class PlaylistViewModel {
     
     func fetchPlaylists() {
         PlaylistFirebaseHelper.shared.fetchPlaylists(callback: { playlists in
-            self.playlists = playlists
+            let shouldIgnore = [2, 3, 9]
+            self.playlists = playlists.filter{ !shouldIgnore.contains($0.id) }
             self.delegate.reloadData()
         })
     }

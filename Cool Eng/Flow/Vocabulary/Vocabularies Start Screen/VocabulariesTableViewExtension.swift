@@ -14,7 +14,6 @@ extension VocabulariesViewController: UITableViewDelegate, UITableViewDataSource
         return visibleWords.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VocabulariesTableViewCell", for: indexPath) as! VocabulariesTableViewCell
         
@@ -24,6 +23,6 @@ extension VocabulariesViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 74
+        return UITableView.automaticDimension
     }
 }
