@@ -46,6 +46,8 @@ class VideosListViewController: UIViewController {
     
     var activityView = UIActivityIndicatorView(style: .large)
     
+    var refreshControl = UIRefreshControl()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +56,7 @@ class VideosListViewController: UIViewController {
         
         title = "Videos"
         navigationController?.navigationBar.prefersLargeTitles = false
-        VideoFirebaseHelper.shared.fetchVideos(playlistId: playlistId, callback: { videos in
-            self.videos = videos
-            self.sortVideos()
-            self.tableView.reloadData()
-            self.activityView.stopAnimating()
-        })
-        tabBarController?.tabBar.isHidden = true
+        fetchData()
         showActivityIndicator()
     }
     
@@ -70,6 +66,15 @@ class VideosListViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
+    private func fetchData() {
+        VideoFirebaseHelper.shared.fetchVideos(playlistId: playlistId, callback: { videos in
+            self.videos = videos
+            self.sortVideos()
+            self.tableView.reloadData()
+            self.activityView.stopAnimating()
+            self.refreshControl.endRefreshing()
+        })
+    }
     
     func showActivityIndicator() {
         activityView.center = self.view.center
@@ -86,6 +91,10 @@ class VideosListViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80
         tableView.reloadData()
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Reloading...")
+        refreshControl.addTarget(self, action: #selector(refreshTableViewAction), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
     
     
@@ -108,6 +117,10 @@ class VideosListViewController: UIViewController {
         let formattedDuration = formatter.string(from: duration)
         
         return formattedDuration ?? ""
+    }
+    
+    @objc func refreshTableViewAction() {
+        fetchData()
     }
 }
 

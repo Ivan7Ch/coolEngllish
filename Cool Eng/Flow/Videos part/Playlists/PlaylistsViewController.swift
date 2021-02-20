@@ -15,6 +15,8 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var refreshControl = UIRefreshControl()
+    
     var viewModel: PlaylistViewModel!
     
     var selectedCell: PlaylistTableViewCell?
@@ -61,6 +63,10 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         
+        refreshControl.attributedTitle = NSAttributedString(string: "Reloading...")
+        refreshControl.addTarget(self, action: #selector(refreshTableViewAction), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        
         guard let navigationController = navigationController else { return }
         navigationController.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
@@ -77,11 +83,16 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
     func reloadData() {
         activityView.stopAnimating()
         tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     
     @IBAction func addOwnPlaylist() {
         
+    }
+    
+    @objc func refreshTableViewAction() {
+        viewModel.fetchPlaylists()
     }
 }
 
