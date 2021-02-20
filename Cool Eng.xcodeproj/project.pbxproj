@@ -25,8 +25,6 @@
 		F53FBD8324A6659500F8B0E8 /* rSwipe_White.json in Resources */ = {isa = PBXBuildFile; fileRef = F53FBD8224A6659400F8B0E8 /* rSwipe_White.json */; };
 		F53FC9BF24A24F0C0078025D /* IAPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53FC9BE24A24F0C0078025D /* IAPViewController.swift */; };
 		F541726F248A376A005AA224 /* VocabularyBoxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */; };
-		F5417271248A37D5005AA224 /* VocabularyBoxActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */; };
-		F5417273248A3817005AA224 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5417272248A3817005AA224 /* TableViewDelegate.swift */; };
 		F541A64524D49FD800FA452C /* dictionary.txt in Resources */ = {isa = PBXBuildFile; fileRef = F541A64424D49FD800FA452C /* dictionary.txt */; };
 		F548BBDC2444CA8900AE060C /* VideoFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */; };
 		F548BBE02444DC2700AE060C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */; };
@@ -100,8 +98,6 @@
 		F53FBD8224A6659400F8B0E8 /* rSwipe_White.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rSwipe_White.json; sourceTree = "<group>"; };
 		F53FC9BE24A24F0C0078025D /* IAPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPViewController.swift; sourceTree = "<group>"; };
 		F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxTableViewCell.swift; sourceTree = "<group>"; };
-		F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyBoxActions.swift; sourceTree = "<group>"; };
-		F5417272248A3817005AA224 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
 		F541A64424D49FD800FA452C /* dictionary.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dictionary.txt; sourceTree = "<group>"; };
 		F548BBDB2444CA8900AE060C /* VideoFirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFirebaseHelper.swift; sourceTree = "<group>"; };
 		F548BBDF2444DC2700AE060C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +196,7 @@
 		F50C385125E13EDC00ED12A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F56BEB5A25E1883300C8F60A /* Cells */,
 				F5A8875025E166B30040C817 /* VocabulariesTableView */,
 				F50C385225E13EF700ED12A3 /* RadioButton.swift */,
 			);
@@ -231,15 +228,6 @@
 				F53E16062490F68700EA594A /* RecallViewController.swift */,
 			);
 			path = Recall;
-			sourceTree = "<group>";
-		};
-		F5417274248A3832005AA224 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				F5417272248A3817005AA224 /* TableViewDelegate.swift */,
-				F5417270248A37D5005AA224 /* VocabularyBoxActions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F548BBDD2444DBC900AE060C /* Flow */ = {
@@ -312,12 +300,18 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F56BEB5A25E1883300C8F60A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F5871714247BC70C00E4506D /* VocabularyBox */ = {
 			isa = PBXGroup;
 			children = (
-				F5417274248A3832005AA224 /* Extensions */,
 				F5871715247BC72900E4506D /* VocabularyBoxViewController.swift */,
-				F541726E248A376A005AA224 /* VocabularyBoxTableViewCell.swift */,
 			);
 			path = VocabularyBox;
 			sourceTree = "<group>";
@@ -629,7 +623,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5417273248A3817005AA224 /* TableViewDelegate.swift in Sources */,
 				F54C9739248E31490019930D /* LearnCollectionViewCell.swift in Sources */,
 				F5210765248A885D008408D2 /* VocabulariesTableViewExtension.swift in Sources */,
 				F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */,
@@ -687,7 +680,6 @@
 				F53E16072490F68700EA594A /* RecallViewController.swift in Sources */,
 				F5E86C202486C51E0077E82E /* AdvertHelperExtension.swift in Sources */,
 				F59D9B63252A5118003B0ADB /* ActiveBuilder.swift in Sources */,
-				F5417271248A37D5005AA224 /* VocabularyBoxActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,7 +13,8 @@ class VocabularyTableView: UIView {
     let tableView = UITableView()
     var isSelectable: Bool = false
     var source = [Word]()
-    var selectedIndexies = [Int]()
+    var selectedIndices = [Int]()
+    var didSelectHandler: (() -> Void) = {}
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,7 +56,7 @@ extension VocabularyTableView: UITableViewDelegate, UITableViewDataSource {
         
         let word = source[indexPath.row]
         if isSelectable {
-            cell.setup(word, setSelected: selectedIndexies.contains(indexPath.row), isSelectable: true)
+            cell.setup(word, setSelected: selectedIndices.contains(indexPath.row), isSelectable: true)
         } else {
             cell.setup(word)
         }
@@ -69,6 +70,13 @@ extension VocabularyTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if let ind = selectedIndices.firstIndex(of: indexPath.row) {
+            selectedIndices.remove(at: ind)
+        } else {
+            selectedIndices.append(indexPath.row)
+        }
+        tableView.reloadData()
+        didSelectHandler()
     }
 }
 
