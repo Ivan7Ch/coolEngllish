@@ -19,12 +19,9 @@ fileprivate enum VocabularyState {
 
 class VocabulariesViewController: UIViewController {
     
+    @IBOutlet weak var wordsListView: VocabularyTableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
-    @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var controlButton: UIButton!
-    
     @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
     
     var visibleWords = [Word]()
@@ -58,12 +55,6 @@ class VocabulariesViewController: UIViewController {
     
     
     func setupViews() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 89
-        
         visibleWords = DictionaryManager.shared.getWordsForStudy()
         controlButton.blurView(style: .systemChromeMaterial)
         segmentedControl.addTarget(self, action: #selector(segmentedControlAction(segmentedControl:)), for: .valueChanged)
@@ -104,7 +95,8 @@ class VocabulariesViewController: UIViewController {
             controlButton.setTitle("", for: .normal)
             visibleWords = learnedWords
         }
-        tableView.reloadData()
+        wordsListView.source = visibleWords
+        wordsListView.tableView.reloadData()
     }
     
     

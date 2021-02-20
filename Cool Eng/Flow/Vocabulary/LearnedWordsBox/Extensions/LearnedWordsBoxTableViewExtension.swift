@@ -43,6 +43,6 @@ extension LearnedWordsBoxViewController: UITableViewDelegate, UITableViewDataSou
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 74
+        return UITableView.automaticDimension
     }
 }

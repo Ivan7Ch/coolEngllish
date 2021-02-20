@@ -18,10 +18,10 @@ extension VocabularyBoxViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "VocabularyBoxTableViewCell") as! VocabularyBoxTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "VocabulariesTableViewCell") as! VocabulariesTableViewCell
         
         let ind = indexPath.row
-        cell.isSelectedCell = selectedIndixies.contains(ind)
+//        cell.isSelectedCell = selectedIndixies.contains(ind)
         
         let word = visibleWords[indexPath.row]
         cell.setup(word)
