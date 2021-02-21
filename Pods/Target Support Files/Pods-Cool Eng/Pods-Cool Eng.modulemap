@@ -1,0 +1,6 @@
+framework module Pods_Cool_Eng {
+  umbrella header "Pods-Cool Eng-umbrella.h"
+
+  export *
+  module * { export * }
+}
