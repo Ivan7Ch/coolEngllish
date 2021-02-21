@@ -47,9 +47,22 @@ class Level3ViewController: UIViewController {
     
     private func nextStep() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "LearnedWordsBoxViewController") as! LearnedWordsBoxViewController
+        let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
         vc.words = self.words
-        navigationController?.pushViewController(vc, animated: true)
+        vc.mainButtonName = "Add to recall list"
+        vc.mainButtonActionClosure = {
+            var recallIds = [Int]()
+            for i in 0..<self.words.count {
+                if vc.wordsListView.selectedIndices.contains(i) {
+                    recallIds.append(self.words[i].id)
+                }
+            }
+            DictionaryManager.shared.addToRecallList(ids: recallIds)
+        }
+        vc.dissmisCompletion = {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        present(vc, animated: true, completion: nil)
     }
     
     

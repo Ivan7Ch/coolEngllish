@@ -54,7 +54,6 @@
 		F5C99890247EC108000D6716 /* Level2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9988F247EC108000D6716 /* Level2ViewController.swift */; };
 		F5C99892247EC10A000D6716 /* Level3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C99891247EC10A000D6716 /* Level3ViewController.swift */; };
 		F5C99894247EC10C000D6716 /* Level4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C99893247EC10B000D6716 /* Level4ViewController.swift */; };
-		F5CDE7A324C5BAA9007D7790 /* AddNewWordsViewController_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CDE7A224C5BAA9007D7790 /* AddNewWordsViewController_old.swift */; };
 		F5CE9EB62444958B009EB618 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9EB52444958B009EB618 /* AppDelegate.swift */; };
 		F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9EB72444958B009EB618 /* SceneDelegate.swift */; };
 		F5CE9EBD2444958B009EB618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CE9EBB2444958B009EB618 /* Main.storyboard */; };
@@ -72,7 +71,6 @@
 		F5E8E4322445A9C500C79D4C /* YoutubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E4302445A9C500C79D4C /* YoutubePlayerView.swift */; };
 		F5E8E4342445B8FF00C79D4C /* SubtitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E4332445B8FF00C79D4C /* SubtitleModel.swift */; };
 		F5E8E4362445F5BD00C79D4C /* PlaylistsCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E8E4352445F5BD00C79D4C /* PlaylistsCacheHelper.swift */; };
-		F5F07CBD24EEBBDC00DEFFB6 /* AddNewWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F07CBC24EEBBDC00DEFFB6 /* AddNewWordsViewController.swift */; };
 		F5FDA6F82444AFA000AC6A9D /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */; };
 		F5FDA6FC2444B04C00AC6A9D /* VideosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FDA6FB2444B04C00AC6A9D /* VideosListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -127,7 +125,6 @@
 		F5C9988F247EC108000D6716 /* Level2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level2ViewController.swift; sourceTree = "<group>"; };
 		F5C99891247EC10A000D6716 /* Level3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level3ViewController.swift; sourceTree = "<group>"; };
 		F5C99893247EC10B000D6716 /* Level4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level4ViewController.swift; sourceTree = "<group>"; };
-		F5CDE7A224C5BAA9007D7790 /* AddNewWordsViewController_old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewWordsViewController_old.swift; sourceTree = "<group>"; };
 		F5CE9EB22444958B009EB618 /* engTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = engTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5CE9EB52444958B009EB618 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5CE9EB72444958B009EB618 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,7 +144,6 @@
 		F5E8E4302445A9C500C79D4C /* YoutubePlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubePlayerView.swift; sourceTree = "<group>"; };
 		F5E8E4332445B8FF00C79D4C /* SubtitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleModel.swift; sourceTree = "<group>"; };
 		F5E8E4352445F5BD00C79D4C /* PlaylistsCacheHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsCacheHelper.swift; sourceTree = "<group>"; };
-		F5F07CBC24EEBBDC00DEFFB6 /* AddNewWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewWordsViewController.swift; sourceTree = "<group>"; };
 		F5F8C050244B5B22002F9123 /* Cool Eng.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cool Eng.entitlements"; sourceTree = "<group>"; };
 		F5FDA6F72444AFA000AC6A9D /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		F5FDA6FB2444B04C00AC6A9D /* VideosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListViewController.swift; sourceTree = "<group>"; };
@@ -384,22 +380,12 @@
 		F5C99888247EB966000D6716 /* Vocabulary */ = {
 			isa = PBXGroup;
 			children = (
-				F5F07CBB24EEBBA300DEFFB6 /* AddNewWords */,
-				F5CDE7A124C5BA8F007D7790 /* AddNewWords_old */,
 				F5210763248A883B008408D2 /* Vocabularies Start Screen */,
 				F54C9737248E30F50019930D /* WordsLearning */,
 				F53E16052490F67200EA594A /* Recall */,
 				F54C973B248E3C1E0019930D /* LearnedWordsBox */,
 			);
 			path = Vocabulary;
-			sourceTree = "<group>";
-		};
-		F5CDE7A124C5BA8F007D7790 /* AddNewWords_old */ = {
-			isa = PBXGroup;
-			children = (
-				F5CDE7A224C5BAA9007D7790 /* AddNewWordsViewController_old.swift */,
-			);
-			path = AddNewWords_old;
 			sourceTree = "<group>";
 		};
 		F5CE9EA92444958B009EB618 = {
@@ -483,14 +469,6 @@
 				F5E8E4302445A9C500C79D4C /* YoutubePlayerView.swift */,
 			);
 			path = VideoPlayer;
-			sourceTree = "<group>";
-		};
-		F5F07CBB24EEBBA300DEFFB6 /* AddNewWords */ = {
-			isa = PBXGroup;
-			children = (
-				F5F07CBC24EEBBDC00DEFFB6 /* AddNewWordsViewController.swift */,
-			);
-			path = AddNewWords;
 			sourceTree = "<group>";
 		};
 		F5FDA6F92444B01C00AC6A9D /* VideosList */ = {
@@ -629,7 +607,6 @@
 				F5E8E4322445A9C500C79D4C /* YoutubePlayerView.swift in Sources */,
 				F5E86C1B2486C3AE0077E82E /* TableViewExtension.swift in Sources */,
 				F5210767248A8890008408D2 /* VocabulariesTableViewCell.swift in Sources */,
-				F5F07CBD24EEBBDC00DEFFB6 /* AddNewWordsViewController.swift in Sources */,
 				F596FCB2247A824D00E140C4 /* SubtitlesTableViewCell.swift in Sources */,
 				F54C973D248E3C5E0019930D /* LearnedWordsBoxViewController.swift in Sources */,
 				F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */,
@@ -652,7 +629,6 @@
 				F5E86C1D2486C3DD0077E82E /* YoutubePlayerExtension.swift in Sources */,
 				F552AF83249D040F008F7439 /* PurchaseViewController.swift in Sources */,
 				F5C99890247EC108000D6716 /* Level2ViewController.swift in Sources */,
-				F5CDE7A324C5BAA9007D7790 /* AddNewWordsViewController_old.swift in Sources */,
 				F541726F248A376A005AA224 /* VocabularyBoxTableViewCell.swift in Sources */,
 				F5E8E4342445B8FF00C79D4C /* SubtitleModel.swift in Sources */,
 				F5CE9EB82444958B009EB618 /* SceneDelegate.swift in Sources */,

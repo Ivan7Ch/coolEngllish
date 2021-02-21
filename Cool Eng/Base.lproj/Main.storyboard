@@ -546,8 +546,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addToVocabularyButton" destination="YSh-Ov-N4h" id="GTz-XQ-w9j"/>
                         <outlet property="buttonContainer" destination="sOV-Fd-hTx" id="7IR-lN-jJx"/>
+                        <outlet property="mainButton" destination="YSh-Ov-N4h" id="GTz-XQ-w9j"/>
                         <outlet property="radioButton" destination="Fnt-6z-7gQ" id="11i-T3-chH"/>
                         <outlet property="selectAllLabel" destination="cov-x4-pxe" id="KGT-bQ-TZE"/>
                         <outlet property="selectedCountLabel" destination="97C-yf-0zO" id="1Ir-Vx-bVA"/>

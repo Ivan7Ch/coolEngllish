@@ -12,7 +12,7 @@ import AVFoundation
 
 class VocabularyBoxViewController: UIViewController {
     
-    @IBOutlet weak var addToVocabularyButton: UIButton!
+    @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var loadMoreButton: UIButton!
     @IBOutlet weak var buttonContainer: UIView!
     @IBOutlet weak var selectedCountLabel: UILabel!
@@ -20,10 +20,12 @@ class VocabularyBoxViewController: UIViewController {
     @IBOutlet weak var radioButton: UIImageView!
     @IBOutlet weak var wordsListView: VocabularyTableView!
     
-    var completion: () -> Void = {}
+    var dissmisCompletion: () -> Void = {}
+    var mainButtonActionClosure: (() -> Void)?
     var words = [Word]()
     var visibleWords = [Word]()
     let wordsPackCount = 9999
+    var mainButtonName: String?
     
     var isSelectedAll: Bool = false {
         didSet {
@@ -48,7 +50,7 @@ class VocabularyBoxViewController: UIViewController {
         reloadViews()
         prepareWords()
         
-        addToVocabularyButton.addTarget(self, action: #selector(addToVocabularyButtonAction), for: .touchUpInside)
+        mainButton.addTarget(self, action: #selector(addToVocabularyButtonAction), for: .touchUpInside)
         
         wordsListView.isSelectable = true
         wordsListView.tableView.tableFooterView = createLoadMoreButton()
@@ -80,12 +82,11 @@ class VocabularyBoxViewController: UIViewController {
     
     func reloadViews() {
         selectedCountLabel.text = "\(wordsListView.selectedIndices.count)/\(visibleWords.count)"
-        if wordsListView.selectedIndices.isEmpty {
-            addToVocabularyButton.setTitle("skip", for: .normal)
+        if let name = mainButtonName {
+            mainButton.setTitle(name, for: .normal)
         } else {
-            addToVocabularyButton.setTitle("Add To Vocabulary", for: .normal)
+            mainButton.setTitle("Add To Vocabulary", for: .normal)
         }
-        
         isSelectedAll = !(wordsListView.selectedIndices.count < visibleWords.count)
     }
     
@@ -109,7 +110,7 @@ class VocabularyBoxViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        completion()
+        dissmisCompletion()
     }
 }
 
@@ -153,9 +154,13 @@ extension VocabularyBoxViewController {
     }
     
     @IBAction func addToVocabularyButtonAction() {
-        addToVocabularyWords()
+        if let completion = mainButtonActionClosure {
+            completion()
+        } else {
+            addToVocabularyWords()
+        }
         self.dismiss(animated: true, completion: {
-            self.completion()
+            self.dissmisCompletion()
         })
     }
 }

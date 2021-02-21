@@ -81,7 +81,7 @@ extension VideoPlayerViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
             vc.words = self.prepareWords(words)
-            vc.completion = { self.showAlertIfNeeded() }
+            vc.dissmisCompletion = { self.showAlertIfNeeded() }
             self.present(vc, animated: true, completion: nil)
         }
     }

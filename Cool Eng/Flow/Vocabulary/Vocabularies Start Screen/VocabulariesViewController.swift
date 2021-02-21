@@ -128,7 +128,7 @@ class VocabulariesViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
             vc.words = DictionaryManager.shared.getWordsFor(level: level)
-            vc.completion = { self.reloadViews() }
+            vc.dissmisCompletion = { self.reloadViews() }
             self.present(vc, animated: true, completion: nil)
         }
     }
