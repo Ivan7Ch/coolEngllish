@@ -45,11 +45,7 @@ class VocabulariesViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: false)
-        
-        wordsForLearning = DictionaryManager.shared.getWordsForStudy()
-        wordsForRecall = DictionaryManager.shared.getWordsForRecall()
-        learnedWords = DictionaryManager.shared.getLearnedWords()
-        
+        reloadViews()
         setupViews()
     }
     
@@ -71,6 +67,10 @@ class VocabulariesViewController: UIViewController {
     
     
     func reloadViews() {
+        wordsForLearning = DictionaryManager.shared.getWordsForStudy()
+        wordsForRecall = DictionaryManager.shared.getWordsForRecall()
+        learnedWords = DictionaryManager.shared.getLearnedWords()
+        
         switch state {
         case .new:
             hideButton(false)
@@ -124,10 +124,13 @@ class VocabulariesViewController: UIViewController {
     
     
     private func showAddNewWordsViewController(_ level: EnglishLevel) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "AddNewWordsViewController") as! AddNewWordsViewController
-        vc.level = level
-        navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
+            vc.words = DictionaryManager.shared.getWordsFor(level: level)
+            vc.completion = { self.reloadViews() }
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     

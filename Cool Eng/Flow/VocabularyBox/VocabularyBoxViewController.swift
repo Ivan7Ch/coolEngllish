@@ -154,6 +154,8 @@ extension VocabularyBoxViewController {
     
     @IBAction func addToVocabularyButtonAction() {
         addToVocabularyWords()
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            self.completion()
+        })
     }
 }
