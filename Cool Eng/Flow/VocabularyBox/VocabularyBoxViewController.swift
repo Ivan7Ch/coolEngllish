@@ -53,17 +53,10 @@ class VocabularyBoxViewController: UIViewController {
         mainButton.addTarget(self, action: #selector(addToVocabularyButtonAction), for: .touchUpInside)
         
         wordsListView.isSelectable = true
-        wordsListView.tableView.tableFooterView = createLoadMoreButton()
+        wordsListView.tableView.tableFooterView = UIView()
         wordsListView.didSelectHandler = {
             self.reloadViews()
         }
-    }
-    
-    private func createLoadMoreButton() -> UIButton {
-        let button = UIButton()
-        button.addTarget(self, action: #selector(loadMoreWords), for: .touchUpInside)
-        button.setTitle("Load more...", for: .normal)
-        return button
     }
     
     

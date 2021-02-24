@@ -10,11 +10,11 @@ import UIKit
 
 class RadioButton: UIControl {
     
-    var outerColor: UIColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
-    var innerColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+    var outerColor: UIColor = #colorLiteral(red: 0.1411764706, green: 0.4470588235, blue: 0.6705882353, alpha: 1)
+    var innerColor: UIColor = #colorLiteral(red: 0.1411764706, green: 0.4470588235, blue: 0.6705882353, alpha: 1)
     var outerRadius: CGFloat = 10
-    var innerRadius: CGFloat = 7
-    var outerLineWidth: CGFloat = 1.5
+    var innerRadius: CGFloat = 6
+    var outerLineWidth: CGFloat = 2.5
     var isOn: Bool = false {
         didSet {
             setNeedsDisplay()

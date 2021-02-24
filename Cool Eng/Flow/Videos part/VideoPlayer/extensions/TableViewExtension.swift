@@ -22,8 +22,8 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
         
         let sub = video.subtitles[indexPath.row]
 
-        cell.originalText.text = sub.eng
-        cell.translatedText.text = sub.ru
+        cell.originalText.text = sub.eng.trimmingCharacters(in: .whitespacesAndNewlines)
+        cell.translatedText.text = sub.ru.trimmingCharacters(in: .whitespacesAndNewlines)
         cell.indicator.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         cell.wordTapHandler = { word in
             self.wordTapHandler(word: word)
