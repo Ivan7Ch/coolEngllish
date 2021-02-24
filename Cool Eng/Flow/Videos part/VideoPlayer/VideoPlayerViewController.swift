@@ -33,8 +33,6 @@ class VideoPlayerViewController: UIViewController {
     
     var subsIndex = 0
     
-    var realmWords = [Word]()
-    
     var learnWordsIds = [Int]()
     
     var foreignSubs = [SubtitleModel]()
@@ -50,15 +48,12 @@ class VideoPlayerViewController: UIViewController {
         setupSubtitles()
         configTable()
         fetchSubtitles()
-        
-        
-        realmWords = DictionaryManager.shared.getAllWords()
         tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        wordsForLearning()
     }
     
     func showAlertIfNeeded() {
@@ -114,6 +109,30 @@ class VideoPlayerViewController: UIViewController {
             isPlaying = true
             videoPlayer.play()
             navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+    }
+}
+
+
+// MARK: -  Vocabulary box
+extension VideoPlayerViewController {
+    func wordsForLearning() {
+        if vocabularyBoxIsPresented { return }
+        DispatchQueue.global(qos: .default).async {
+            let res = WordsHelper.shared.wordsFromVideo(video: self.video)
+            if res.count > 0 {
+                self.showVocabularyBoxViewController(res)
+            }
+        }
+    }
+    
+    func showVocabularyBoxViewController(_ words: [Word]) {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
+            vc.words = words
+            vc.dissmisCompletion = { self.showAlertIfNeeded() }
+            self.present(vc, animated: true, completion: nil)
         }
     }
 }

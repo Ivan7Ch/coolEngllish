@@ -82,7 +82,7 @@ extension VideoPlayerViewController {
         let words = text.split { $0.isWhitespace }
         var dict = [String: String]()
         
-        for i in realmWords {
+        for i in WordsHelper.shared.realmWords {
             dict[i.original] = i.translation
         }
         

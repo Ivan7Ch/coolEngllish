@@ -10,18 +10,16 @@ import UIKit
 
 
 class LearnedWordsBoxViewController: UIViewController {
-    
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var addToVocabularyButton: UIButton!
-    
     @IBOutlet weak var buttonContainer: UIView!
-    
     @IBOutlet weak var selectedCountLabel: UILabel!
-    
     @IBOutlet weak var selectAllLabel: UILabel!
-    
     @IBOutlet weak var radioButton: UIImageView!
+    var words = [Word]()
+    var visibleWords = [Word]()
+    let wordsPackCount = 15
+    var selectedIndixies = [Int]()
     
     var isSelectedAll: Bool = false {
         didSet {
@@ -34,16 +32,6 @@ class LearnedWordsBoxViewController: UIViewController {
             }
         }
     }
-    
-    
-    var words = [Word]()
-    
-    var visibleWords = [Word]()
-    
-    let wordsPackCount = 15
-    
-    var selectedIndixies = [Int]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,12 +59,10 @@ class LearnedWordsBoxViewController: UIViewController {
     
     private func prepareWords() {
         let wordsCount = wordsPackCount > words.count ? words.count : wordsPackCount
-        
         for _ in 0..<wordsCount {
             visibleWords.append(words.first!)
             words.remove(at: 0)
         }
-        
         tableView.reloadData()
         reloadViews()
     }
@@ -89,20 +75,77 @@ class LearnedWordsBoxViewController: UIViewController {
         } else {
             addToVocabularyButton.setTitle("Add to Recall List", for: .normal)
         }
-        
         isSelectedAll = !(selectedIndixies.count < visibleWords.count)
     }
     
     
     func addToRecallBox() {
         var recallIds = [Int]()
-        
         for i in 0..<visibleWords.count {
             if selectedIndixies.contains(i) {
                 recallIds.append(visibleWords[i].id)
             }
         }
-        
         DictionaryManager.shared.addToRecallList(ids: recallIds)
     }
 }
+
+
+//MARK: - Actions
+extension LearnedWordsBoxViewController {
+    @IBAction func radioButtonAction() {
+        isSelectedAll.toggle()
+        selectedIndixies = []
+        
+        var selectAllLabelText = "select all"
+        if isSelectedAll {
+            for i in 0..<visibleWords.count {
+                selectedIndixies.append(i)
+            }
+            selectAllLabelText = "deselect all"
+        }
+        selectAllLabel.text = selectAllLabelText
+        tableView.reloadData()
+        reloadViews()
+    }
+    
+    @IBAction func addToVocabularyButtonAction() {
+        addToRecallBox()
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+}
+
+
+//MARK: - UITableViewDelegate, UITableViewDataSource
+extension LearnedWordsBoxViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return visibleWords.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LearnedWordsBoxTableViewCell") as! VocabularyBoxTableViewCell
+        
+        let ind = indexPath.row
+        cell.isSelectedCell = selectedIndixies.contains(ind)
+        let word = visibleWords[indexPath.row]
+        cell.setup(word)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let ind = indexPath.row
+        if !selectedIndixies.contains(ind) {
+            selectedIndixies.append(ind)
+        } else {
+            selectedIndixies.removeAll(where: { $0 == ind })
+        }
+        tableView.reloadData()
+        reloadViews()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+
