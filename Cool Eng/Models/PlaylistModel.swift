@@ -15,4 +15,5 @@ struct PlaylistModel {
     var placeholder: String
     var views: Int = 2
     var videosCount = 0
+    var isFree = true
 }

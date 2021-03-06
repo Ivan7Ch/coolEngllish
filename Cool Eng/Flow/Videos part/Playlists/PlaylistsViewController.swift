@@ -67,6 +67,8 @@ class PlaylistsViewController: UIViewController, PlaylistDelegate {
         refreshControl.addTarget(self, action: #selector(refreshTableViewAction), for: .valueChanged)
         tableView.addSubview(refreshControl)
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { self.reloadData() })
+        
         guard let navigationController = navigationController else { return }
         navigationController.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
@@ -114,11 +116,17 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCell = tableView.cellForRow(at: indexPath) as! PlaylistTableViewCell
-        selectedPlaylistId = viewModel.playlists[indexPath.row].id
-        let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
-        vc.playlistId = selectedPlaylistId
-        navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        let selectedPlaylist = viewModel.playlists[indexPath.row]
+        if !selectedPlaylist.isFree {
+            let vc = storyboard?.instantiateViewController(identifier: "IAPViewController")
+            present(vc!, animated: true, completion: nil)
+        } else {
+            let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
+            selectedPlaylistId = selectedPlaylist.id
+            vc.playlistId = selectedPlaylist.id
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

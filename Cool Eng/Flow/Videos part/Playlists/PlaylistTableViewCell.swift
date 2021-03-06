@@ -25,6 +25,10 @@ class PlaylistTableViewCell: UITableViewCell {
     
     @IBOutlet weak var effectView: UIView!
     
+    @IBOutlet weak var lockIcon: UIImageView!
+    
+    @IBOutlet weak var lockIconHeightConstraint: NSLayoutConstraint!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,6 +51,10 @@ class PlaylistTableViewCell: UITableViewCell {
                 
                 self.videosCountLabel.backgroundColor = color
                 self.videosCountLabel.textColor = color.isDarkColor ? .white : .black
+                if !playlistItem.isFree {
+                    self.viewsCountLabel.backgroundColor = UIColor(named: "main")
+                    self.viewsCountLabel.textColor = .white
+                }
             })
         }
         placeholder.layer.borderWidth = 0.5
@@ -62,5 +70,19 @@ class PlaylistTableViewCell: UITableViewCell {
         videosCountLabel.text = "\(playlistItem.videosCount) videos"
         videosCountLabel.layer.cornerRadius = 8
         videosCountLabel.layer.maskedCorners = [.layerMinXMinYCorner]
+        
+        if playlistItem.isFree {
+            lockIcon.isHidden = true
+            videosCountLabel.isHidden = false
+            placeholder.alpha = 1
+            lockIconHeightConstraint.constant = 6
+        } else {
+            lockIcon.isHidden = false
+            videosCountLabel.isHidden = true
+            viewsCountLabel.text = "Paid"
+            viewsCountLabel.backgroundColor = UIColor(named: "main")
+            placeholder.alpha = 0.4
+            lockIconHeightConstraint.constant = 29
+        }
     }
 }

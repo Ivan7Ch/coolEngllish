@@ -12,15 +12,16 @@ import SwiftyStoreKit
 
 class IAPViewController: UIViewController {
     
-    @IBOutlet weak var buyButton: UIButton!
-    
+    @IBOutlet weak var monthlyButton: UIView!
+    @IBOutlet weak var annualButton: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        buyButton.addTarget(self, action: #selector(buyButtonAction), for: .touchUpInside)
+//        buyButton.addTarget(self, action: #selector(buyButtonAction), for: .touchUpInside)
         title = "Premium access"
-        buyButton.layer.cornerRadius = 16
+        monthlyButton.layer.cornerRadius = 16
+        annualButton.layer.cornerRadius = 16
     }
     
     
