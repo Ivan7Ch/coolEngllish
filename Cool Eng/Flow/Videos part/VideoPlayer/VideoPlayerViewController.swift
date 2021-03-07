@@ -18,25 +18,14 @@ class VideoPlayerViewController: UIViewController {
     @IBOutlet weak var playerHeightConstraint: NSLayoutConstraint!
     
     var toastMessageView: ToastMessageView!
-    
     var tButton = UIButton()
-    
     var video: VideoModel!
-    
     var startTimes = [Double]()
-    
-    private var player: AVPlayer!
-    
     var videoLastSubtitleTime: Double = 0
-    
     var interstitial: GADInterstitial!
-    
     var subsIndex = 0
-    
     var learnWordsIds = [Int]()
-    
     var foreignSubs = [SubtitleModel]()
-    
     var vocabularyBoxIsPresented = false
     
     
@@ -51,15 +40,16 @@ class VideoPlayerViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         wordsForLearning()
     }
     
+    
     func showAlertIfNeeded() {
         let position = UserDefaults.standard.double(forKey: "video - \(video.id)")
         if position <= 1 { return }
-        
         let alert = UIAlertController(title: "Continue", message: "Would you like to continue from the last position", preferredStyle: .actionSheet)
 
         alert.addAction(UIAlertAction(title: "Continue", style: .default , handler:{ (UIAlertAction) in
@@ -68,9 +58,7 @@ class VideoPlayerViewController: UIViewController {
             self.tableView.scrollToRow(at: IndexPath(row: ind, section: 0), at: .top, animated: true)
         }))
 
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction )in
-            
-        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ _ in}))
 
         self.present(alert, animated: true, completion: nil)
     }
@@ -95,20 +83,17 @@ class VideoPlayerViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80
         tableView.reloadData()
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction))
+        tableView.addGestureRecognizer(longPress)
     }
     
-    
-    var isPlaying = false
-    
-    @IBAction func resumeVideo() {
-        if isPlaying {
-            isPlaying = false
+    @IBAction func longPressAction(sender: UILongPressGestureRecognizer) {
+        switch sender.state {
+        case .began:
             videoPlayer.pause()
-            navigationController?.setNavigationBarHidden(false, animated: true)
-        } else {
-            isPlaying = true
+        default:
             videoPlayer.play()
-            navigationController?.setNavigationBarHidden(true, animated: true)
         }
     }
 }
