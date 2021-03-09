@@ -119,8 +119,12 @@ extension PlaylistsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedPlaylist = viewModel.playlists[indexPath.row]
         if !selectedPlaylist.isFree {
-            let vc = storyboard?.instantiateViewController(identifier: "IAPViewController")
-            present(vc!, animated: true, completion: nil)
+//            let vc = storyboard?.instantiateViewController(identifier: "IAPViewController")
+//            present(vc!, animated: true, completion: nil)
+            
+            let alert = UIAlertController(title: "This playlist is currently unavailable", message: "", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler:{ _ in}))
+            self.present(alert, animated: true, completion: nil)
         } else {
             let vc = storyboard?.instantiateViewController(identifier: "VideosListViewController") as! VideosListViewController
             selectedPlaylistId = selectedPlaylist.id

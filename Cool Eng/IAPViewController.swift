@@ -22,6 +22,9 @@ class IAPViewController: UIViewController {
         title = "Premium access"
         monthlyButton.layer.cornerRadius = 16
         annualButton.layer.cornerRadius = 16
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(buyButtonAction))
+        monthlyButton.addGestureRecognizer(tap)
     }
     
     

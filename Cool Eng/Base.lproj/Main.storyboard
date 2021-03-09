@@ -720,6 +720,7 @@
                     <connections>
                         <segue destination="fVB-Ue-dTG" kind="relationship" relationship="viewControllers" id="sz8-t0-Kse"/>
                         <segue destination="BXz-GO-KTc" kind="relationship" relationship="viewControllers" id="q1w-wZ-eSy"/>
+                        <segue destination="lOM-mv-58q" kind="relationship" relationship="viewControllers" id="gSI-oj-5hc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBZ-er-A16" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -804,6 +805,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoP-GH-goR" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1773.913043478261" y="837.72321428571422"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="IFL-jb-Ncb">
+            <objects>
+                <navigationController id="lOM-mv-58q" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="R5w-Zp-ogI"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VOg-v7-n8l">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jrq-KO-whW" kind="relationship" relationship="rootViewController" id="yAm-d7-wru"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ig-sG-WU9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1043" y="1557"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="caS-mh-X18">
+            <objects>
+                <viewController title="Settings" id="jrq-KO-whW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sOS-Yi-zvd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="MZt-pB-Zsh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FBD-1y-9e1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qHR-6W-gfC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1762" y="1558"/>
         </scene>
         <!--Study View Controller-->
         <scene sceneID="AoD-NX-f1t">
@@ -1925,7 +1959,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCv-VD-GNH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4920" y="1792"/>
+            <point key="canvasLocation" x="-300" y="1521"/>
         </scene>
         <!--Add New Words View Controller-->
         <scene sceneID="naH-Si-Hi0">
@@ -2030,7 +2064,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E41-4E-W4d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3077" y="1639"/>
+            <point key="canvasLocation" x="-810" y="2188"/>
         </scene>
     </scenes>
     <resources>
@@ -2039,6 +2073,7 @@
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="crown" width="860" height="665"/>
         <image name="default" width="735" height="700"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="next" width="256" height="256"/>
         <image name="playAydio" width="512" height="512"/>
