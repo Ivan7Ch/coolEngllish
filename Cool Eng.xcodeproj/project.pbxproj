@@ -58,6 +58,7 @@
 		F5CE9EC52444958C009EB618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CE9EC32444958C009EB618 /* LaunchScreen.storyboard */; };
 		F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9ECD2444997C009EB618 /* PlaylistsViewController.swift */; };
 		F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9ECF24449D70009EB618 /* PlaylistViewModel.swift */; };
+		F5D7A81425F791E30097FFF1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7A81325F791E30097FFF1 /* SettingsViewController.swift */; };
 		F5E86C1B2486C3AE0077E82E /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E86C1A2486C3AE0077E82E /* TableViewExtension.swift */; };
 		F5E86C1D2486C3DD0077E82E /* YoutubePlayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E86C1C2486C3DD0077E82E /* YoutubePlayerExtension.swift */; };
 		F5E86C202486C51E0077E82E /* AdvertHelperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E86C1F2486C51E0077E82E /* AdvertHelperExtension.swift */; };
@@ -126,6 +127,7 @@
 		F5CE9EC62444958C009EB618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5CE9ECD2444997C009EB618 /* PlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
 		F5CE9ECF24449D70009EB618 /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
+		F5D7A81325F791E30097FFF1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F5E86C1A2486C3AE0077E82E /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		F5E86C1C2486C3DD0077E82E /* YoutubePlayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayerExtension.swift; sourceTree = "<group>"; };
 		F5E86C1F2486C51E0077E82E /* AdvertHelperExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertHelperExtension.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		F548BBDD2444DBC900AE060C /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				F5D7A81225F791BF0097FFF1 /* Settings */,
 				F5E86C252486C6C90077E82E /* Videos part */,
 				F5C99888247EB966000D6716 /* Vocabulary */,
 				F5871714247BC70C00E4506D /* VocabularyBox */,
@@ -402,6 +405,14 @@
 			path = Playlists;
 			sourceTree = "<group>";
 		};
+		F5D7A81225F791BF0097FFF1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F5D7A81325F791E30097FFF1 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		F5E86C1E2486C3ED0077E82E /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +595,7 @@
 				F5E86C222486C57E0077E82E /* SubtitlesExtension.swift in Sources */,
 				F50C385325E13EF700ED12A3 /* RadioButton.swift in Sources */,
 				F5C9988C247EB9C4000D6716 /* StudyViewController.swift in Sources */,
+				F5D7A81425F791E30097FFF1 /* SettingsViewController.swift in Sources */,
 				F5A8876325E16BC00040C817 /* VocabularyTableViewCell.swift in Sources */,
 				F5E86C1D2486C3DD0077E82E /* YoutubePlayerExtension.swift in Sources */,
 				F552AF83249D040F008F7439 /* PurchaseViewController.swift in Sources */,

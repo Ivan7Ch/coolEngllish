@@ -85,15 +85,19 @@ class VideoPlayerViewController: UIViewController {
         tableView.reloadData()
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction))
+        longPress.minimumPressDuration = 0.5
         tableView.addGestureRecognizer(longPress)
     }
     
     @IBAction func longPressAction(sender: UILongPressGestureRecognizer) {
+        print("~~ \(sender.state.rawValue)")
         switch sender.state {
         case .began:
             videoPlayer.pause()
-        default:
+        case .ended, .failed, .cancelled:
             videoPlayer.play()
+        default:
+            break
         }
     }
 }
