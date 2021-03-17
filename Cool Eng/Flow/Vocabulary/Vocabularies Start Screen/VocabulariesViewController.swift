@@ -10,13 +10,11 @@ import UIKit
 import AVFoundation
 import UserNotifications
 
-
-fileprivate enum VocabularyState {
-    case new
-    case recall
-    case learned
+enum VocabularyState: Int {
+    case new = 0
+    case recall = 1
+    case learned = 2
 }
-
 
 class VocabulariesViewController: UIViewController {
     
@@ -24,12 +22,17 @@ class VocabulariesViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var controlButton: UIButton!
     @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    var visibleWords = [Word]()
-    fileprivate var state = VocabularyState.new
+    var state = VocabularyState.new {
+        didSet {
+            reloadViews()
+        }
+    }
     var wordsForLearning = [Word]()
     var wordsForRecall = [Word]()
     var learnedWords = [Word]()
+    
     let userNotificationCenter = UNUserNotificationCenter.current()
     
     
@@ -39,19 +42,24 @@ class VocabulariesViewController: UIViewController {
         title = "Vocabulary"
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: false)
+        wordsForLearning = DictionaryManager.shared.getWordsForStudy()
+        wordsForRecall = DictionaryManager.shared.getWordsForRecall()
+        learnedWords = DictionaryManager.shared.getLearnedWords()
         reloadViews()
         setupViews()
     }
     
     
     func setupViews() {
-        visibleWords = DictionaryManager.shared.getWordsForStudy()
         controlButton.blurView(style: .systemChromeMaterial)
         segmentedControl.addTarget(self, action: #selector(segmentedControlAction(segmentedControl:)), for: .valueChanged)
+        collectionView.delegate = self
+        collectionView.dataSource = self
         reloadViews()
     }
     
@@ -64,37 +72,32 @@ class VocabulariesViewController: UIViewController {
     }
     
     
-    func reloadViews() {
-        wordsForLearning = DictionaryManager.shared.getWordsForStudy()
-        wordsForRecall = DictionaryManager.shared.getWordsForRecall()
-        learnedWords = DictionaryManager.shared.getLearnedWords()
-        
+    @objc func reloadViews() {
         switch state {
         case .new:
             hideButton(false)
             controlButton.setTitle("Learn Words", for: .normal)
-            visibleWords = wordsForLearning
             if wordsForLearning.count == 0 {
                 hideButton(true)
                 controlButton.setTitle("", for: .normal)
             }
-            
         case .recall:
             hideButton(false)
             controlButton.setTitle("Recall Words", for: .normal)
-            visibleWords = wordsForRecall
             if wordsForRecall.count == 0 {
                 hideButton(true)
                 controlButton.setTitle("", for: .normal)
             }
-            
         case .learned:
             hideButton(true)
             controlButton.setTitle("", for: .normal)
-            visibleWords = learnedWords
         }
-        wordsListView.source = visibleWords
-        wordsListView.tableView.reloadData()
+        segmentedControl.selectedSegmentIndex = state.rawValue
+        DispatchQueue.main.async {
+            self.collectionView.isPagingEnabled = false
+            self.collectionView.scrollToItem(at: IndexPath(item: self.state.rawValue, section: 0), at: .right, animated: true)
+            self.collectionView.isPagingEnabled = true
+        }
     }
     
     
@@ -157,7 +160,8 @@ class VocabulariesViewController: UIViewController {
         default:
             state = .learned
         }
-        reloadViews()
+        
+        NotificationCenter.default.post(name: Notification.Name("VocabularyStateChanged"), object: nil)
     }
     
     
@@ -192,14 +196,62 @@ class VocabulariesViewController: UIViewController {
 }
 
 
-//MARK: LocalNotifications
+//MARK: - Collection View
+extension VocabulariesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 3 }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VocabularyCollectionViewCell", for: indexPath) as! VocabularyCollectionViewCell
+        
+        switch indexPath.row {
+        case 0:
+            cell.setup(wordsForLearning)
+        case 1:
+            cell.setup(wordsForRecall)
+        case 2:
+            cell.setup(learnedWords)
+        default: break
+        }
+        
+        cell.tag = indexPath.row
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width - 1, height: collectionView.bounds.size.height)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        let indexPath = collectionView.indexPathForItem(at: visiblePoint)
+        if let st = VocabularyState(rawValue: indexPath?.row ?? 0) {
+            state = st
+        }
+    }
+}
+
+
+class VocabularyCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var wordsListView: VocabularyTableView!
+    
+    func setup(_ words: [Word]) {
+        wordsListView.source = words
+        wordsListView.tableView.reloadData()
+    }
+}
+
+
+//MARK: - LocalNotifications
 extension VocabulariesViewController {
     @IBAction func startNotifying() {
         requestNotificationAuthorization()
         
         if wordsForLearning.count >= 6 {
             for i in 0..<6 {
-                self.sendNotification(self.wordsForLearning[i], TimeInterval((i * 45) + 15))
+                self.sendNotification(wordsForLearning[i], TimeInterval((i * 45) + 15))
             }
         } else {
             showAlert()
@@ -218,7 +270,7 @@ extension VocabulariesViewController {
 
     func sendNotification(_ word: Word, _ timeInterval: TimeInterval) {
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = word.original.trimmingCharacters(in: .whitespacesAndNewlines)
+        notificationContent.title = "4/6" + word.original.trimmingCharacters(in: .whitespacesAndNewlines)
         notificationContent.body = word.translation.trimmingCharacters(in: .whitespacesAndNewlines)
         notificationContent.badge = NSNumber(value: 0)
         
@@ -231,3 +283,4 @@ extension VocabulariesViewController {
         }
     }
 }
+

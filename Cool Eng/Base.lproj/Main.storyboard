@@ -720,7 +720,6 @@
                     <connections>
                         <segue destination="fVB-Ue-dTG" kind="relationship" relationship="viewControllers" id="sz8-t0-Kse"/>
                         <segue destination="BXz-GO-KTc" kind="relationship" relationship="viewControllers" id="q1w-wZ-eSy"/>
-                        <segue destination="lOM-mv-58q" kind="relationship" relationship="viewControllers" id="gSI-oj-5hc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBZ-er-A16" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -735,10 +734,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nlk-7o-nd5" customClass="VocabularyTableView" customModule="engTube" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="130" width="414" height="633"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P3s-aQ-osg">
                                 <rect key="frame" x="0.0" y="88" width="414" height="43"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -765,19 +760,61 @@
                                     <action selector="controlButtonAction" destination="k0Y-g2-olM" eventType="touchUpInside" id="uBt-F6-Ow2"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Chi-rN-udH">
+                                <rect key="frame" x="0.0" y="130" width="414" height="633"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="1" id="GNq-eH-8EL">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="estimatedItemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <view key="backgroundView" contentMode="scaleToFill" id="jce-Je-Cb8" customClass="VocabularyTableView" customModule="engTube" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="633"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VocabularyCollectionViewCell" id="sev-eJ-i9h" customClass="VocabularyCollectionViewCell" customModule="engTube" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="70" width="350" height="493"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CVF-e6-aaS">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="493"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9T5-B8-1dI" customClass="VocabularyTableView" customModule="engTube" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="493"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9T5-B8-1dI" firstAttribute="top" secondItem="CVF-e6-aaS" secondAttribute="top" id="6MD-nS-PSA"/>
+                                                <constraint firstItem="9T5-B8-1dI" firstAttribute="leading" secondItem="CVF-e6-aaS" secondAttribute="leading" id="Tkc-J6-T71"/>
+                                                <constraint firstAttribute="trailing" secondItem="9T5-B8-1dI" secondAttribute="trailing" id="UO5-UQ-ZyP"/>
+                                                <constraint firstAttribute="bottom" secondItem="9T5-B8-1dI" secondAttribute="bottom" id="gwC-uL-GOp"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="350" height="493"/>
+                                        <connections>
+                                            <outlet property="wordsListView" destination="9T5-B8-1dI" id="DaX-PL-Inu"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YVf-l4-Ann"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="f6Z-td-U9f" firstAttribute="centerX" secondItem="rLv-QD-qek" secondAttribute="centerX" id="Dk6-yp-OZX"/>
-                            <constraint firstItem="nlk-7o-nd5" firstAttribute="leading" secondItem="YVf-l4-Ann" secondAttribute="leading" id="IXn-z5-R0z"/>
+                            <constraint firstItem="YVf-l4-Ann" firstAttribute="trailing" secondItem="Chi-rN-udH" secondAttribute="trailing" id="Pju-bd-uql"/>
                             <constraint firstItem="P3s-aQ-osg" firstAttribute="top" secondItem="YVf-l4-Ann" secondAttribute="top" id="XHn-4W-xaR"/>
                             <constraint firstItem="f6Z-td-U9f" firstAttribute="leading" secondItem="rLv-QD-qek" secondAttribute="leading" id="d7P-YZ-38n"/>
-                            <constraint firstItem="f6Z-td-U9f" firstAttribute="top" secondItem="nlk-7o-nd5" secondAttribute="bottom" id="g7n-3g-RLo"/>
-                            <constraint firstItem="YVf-l4-Ann" firstAttribute="trailing" secondItem="nlk-7o-nd5" secondAttribute="trailing" id="hGq-Eg-QYW"/>
+                            <constraint firstItem="Chi-rN-udH" firstAttribute="top" secondItem="P3s-aQ-osg" secondAttribute="bottom" id="dhs-Q1-G0B"/>
                             <constraint firstItem="YVf-l4-Ann" firstAttribute="bottom" secondItem="f6Z-td-U9f" secondAttribute="bottom" id="hUJ-eW-7w7"/>
+                            <constraint firstItem="Chi-rN-udH" firstAttribute="leading" secondItem="YVf-l4-Ann" secondAttribute="leading" id="kz0-Fl-EgJ"/>
+                            <constraint firstItem="f6Z-td-U9f" firstAttribute="top" secondItem="Chi-rN-udH" secondAttribute="bottom" id="nX5-Uh-ZNZ"/>
                             <constraint firstItem="YVf-l4-Ann" firstAttribute="trailing" secondItem="P3s-aQ-osg" secondAttribute="trailing" id="nnP-6n-u5w"/>
-                            <constraint firstItem="nlk-7o-nd5" firstAttribute="top" secondItem="P3s-aQ-osg" secondAttribute="bottom" id="pMP-pJ-qbD"/>
                             <constraint firstItem="P3s-aQ-osg" firstAttribute="leading" secondItem="YVf-l4-Ann" secondAttribute="leading" id="qG8-HZ-nJA"/>
                         </constraints>
                     </view>
@@ -797,14 +834,44 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttonHeightConstraint" destination="Yip-nN-xkJ" id="JCV-8c-vhx"/>
+                        <outlet property="collectionView" destination="Chi-rN-udH" id="PIv-YE-oQM"/>
                         <outlet property="controlButton" destination="f6Z-td-U9f" id="stx-en-3qq"/>
                         <outlet property="segmentedControl" destination="P3s-aQ-osg" id="rro-mf-9r5"/>
-                        <outlet property="wordsListView" destination="nlk-7o-nd5" id="0B3-vT-RdQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoP-GH-goR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773.913043478261" y="837.72321428571422"/>
+            <point key="canvasLocation" x="1818.840579710145" y="833.70535714285711"/>
+        </scene>
+        <!--Embeded Vocabulary View Controller-->
+        <scene sceneID="zMM-Uw-yVK">
+            <objects>
+                <viewController storyboardIdentifier="EmbededVocabularyViewController" id="FYd-vr-R8g" customClass="EmbededVocabularyViewController" customModule="engTube" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rUM-B5-0yq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yf1-Al-aZN" customClass="VocabularyTableView" customModule="engTube" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wxK-FQ-Lov"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Yf1-Al-aZN" firstAttribute="top" secondItem="wxK-FQ-Lov" secondAttribute="top" id="6JL-SR-wN9"/>
+                            <constraint firstAttribute="bottom" secondItem="Yf1-Al-aZN" secondAttribute="bottom" id="ZDc-UR-VIm"/>
+                            <constraint firstItem="wxK-FQ-Lov" firstAttribute="trailing" secondItem="Yf1-Al-aZN" secondAttribute="trailing" id="fYP-gG-7dz"/>
+                            <constraint firstItem="Yf1-Al-aZN" firstAttribute="leading" secondItem="rUM-B5-0yq" secondAttribute="leading" id="vir-x5-OcQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="wordsListView" destination="Yf1-Al-aZN" id="Slv-8L-mNH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0t-DM-iah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3504" y="820"/>
         </scene>
         <!--Settings-->
         <scene sceneID="IFL-jb-Ncb">
@@ -832,7 +899,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K2t-2s-ToA">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AutorizationTableViewCell" rowHeight="197" id="SZJ-fd-JIK" customClass="AutorizationTableViewCell" customModule="engTube" customModuleProvider="target">
@@ -1064,7 +1131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJ4-3h-8VX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2503" y="838"/>
+            <point key="canvasLocation" x="4899" y="874"/>
         </scene>
         <!--Level1 View Controller-->
         <scene sceneID="PMP-JO-SY9">
@@ -1089,8 +1156,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hY-iE-6H7">
-                                                    <rect key="frame" x="30" y="65.666666666666671" width="314" height="26"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="19"/>
+                                                    <rect key="frame" x="30" y="67" width="314" height="23"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1160,7 +1227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DTS-n8-rfQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3270" y="838"/>
+            <point key="canvasLocation" x="5667" y="874"/>
         </scene>
         <!--Level2 View Controller-->
         <scene sceneID="r8H-7C-jqX">
@@ -1231,7 +1298,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="198.33333333333337" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="слово" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zr-c1-9aO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="слово" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="8Zr-c1-9aO">
                                                     <rect key="frame" x="24" y="10" width="150.33333333333334" height="24"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="20"/>
                                                     <nil key="textColor"/>
@@ -1298,7 +1365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wAJ-dI-XCF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4048" y="838"/>
+            <point key="canvasLocation" x="6443" y="874"/>
         </scene>
         <!--Level3 View Controller-->
         <scene sceneID="W3p-gf-9Wo">
@@ -1407,7 +1474,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fo8-4f-RyE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4833" y="838"/>
+            <point key="canvasLocation" x="7228" y="874"/>
         </scene>
         <!--Level4 View Controller-->
         <scene sceneID="iO6-92-LaR">
@@ -1460,7 +1527,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yEP-oZ-PZz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6428" y="838"/>
+            <point key="canvasLocation" x="8825" y="874"/>
         </scene>
         <!--Vocabulary-->
         <scene sceneID="v8c-Qq-ZYg">
@@ -1662,7 +1729,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDa-AO-aJz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7228" y="838"/>
+            <point key="canvasLocation" x="9625" y="874"/>
         </scene>
         <!--Learned Words Box View Controller-->
         <scene sceneID="3u1-hx-GPK">
@@ -1863,7 +1930,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6V8-i7-xv5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5610" y="838"/>
+            <point key="canvasLocation" x="8004" y="874"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="CAu-Qm-qAk">
@@ -2126,6 +2193,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E41-4E-W4d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-810" y="2188"/>
+        </scene>
+        <!--Dictionary-->
+        <scene sceneID="RPy-OE-cp9">
+            <objects>
+                <viewController id="vbC-oB-NpZ" customClass="VocabulariesViewController" customModule="engTube" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JHN-pd-k8m">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nsP-GJ-1YG" customClass="VocabularyTableView" customModule="engTube" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="86" width="414" height="726"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g0P-FR-tNE">
+                                <rect key="frame" x="0.0" y="44" width="414" height="43"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="NAH-Gq-krS"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Learn"/>
+                                    <segment title="Recall"/>
+                                    <segment title="Learned"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F63-Np-2Ly">
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="i4n-1B-u8J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="21"/>
+                                <state key="normal" title="Learn words">
+                                    <color key="titleColor" red="0.14117647059999999" green="0.44705882349999998" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="controlButtonAction" destination="vbC-oB-NpZ" eventType="touchUpInside" id="iE7-FG-eJ8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Vfk-So-DgG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Vfk-So-DgG" firstAttribute="bottom" secondItem="F63-Np-2Ly" secondAttribute="bottom" id="4lE-DN-d2K"/>
+                            <constraint firstItem="Vfk-So-DgG" firstAttribute="trailing" secondItem="g0P-FR-tNE" secondAttribute="trailing" id="Dtu-8w-YFf"/>
+                            <constraint firstItem="nsP-GJ-1YG" firstAttribute="leading" secondItem="Vfk-So-DgG" secondAttribute="leading" id="FHd-e9-cgl"/>
+                            <constraint firstItem="F63-Np-2Ly" firstAttribute="centerX" secondItem="JHN-pd-k8m" secondAttribute="centerX" id="IyI-ND-ASn"/>
+                            <constraint firstItem="Vfk-So-DgG" firstAttribute="trailing" secondItem="nsP-GJ-1YG" secondAttribute="trailing" id="LXE-jx-Jzp"/>
+                            <constraint firstItem="F63-Np-2Ly" firstAttribute="top" secondItem="nsP-GJ-1YG" secondAttribute="bottom" id="a1D-jW-p3N"/>
+                            <constraint firstItem="g0P-FR-tNE" firstAttribute="top" secondItem="Vfk-So-DgG" secondAttribute="top" id="eW7-d4-Vyt"/>
+                            <constraint firstItem="nsP-GJ-1YG" firstAttribute="top" secondItem="g0P-FR-tNE" secondAttribute="bottom" id="rfZ-ZB-fEN"/>
+                            <constraint firstItem="F63-Np-2Ly" firstAttribute="leading" secondItem="JHN-pd-k8m" secondAttribute="leading" id="sc4-cf-2sp"/>
+                            <constraint firstItem="g0P-FR-tNE" firstAttribute="leading" secondItem="Vfk-So-DgG" secondAttribute="leading" id="yt8-xf-2Qf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Dictionary" id="Ljl-Pj-m7Y">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="cZK-zI-7qi">
+                                <connections>
+                                    <action selector="addNewWords" destination="vbC-oB-NpZ" id="kjJ-wX-s6X"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Notify" id="tKs-HV-Qlg">
+                                <connections>
+                                    <action selector="startNotifying" destination="vbC-oB-NpZ" id="0Bn-ee-2aa"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonHeightConstraint" destination="i4n-1B-u8J" id="AHn-Ar-OZY"/>
+                        <outlet property="controlButton" destination="F63-Np-2Ly" id="WO2-32-z3E"/>
+                        <outlet property="segmentedControl" destination="g0P-FR-tNE" id="v75-Zh-Im2"/>
+                        <outlet property="wordsListView" destination="nsP-GJ-1YG" id="Xuz-KZ-6p9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ueI-JK-suq" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3184" y="1528"/>
         </scene>
     </scenes>
     <resources>
