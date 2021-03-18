@@ -46,7 +46,7 @@ class VocabularyNotificationViewController: UIViewController {
         
         wordsList.tableView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.09281630743)
         wordsList.layer.cornerRadius = 16
-        tableHeightConstraint.constant = 360
+        tableHeightConstraint.constant = 330
         messageView.isHidden = true
         
         let f = UserDefaults.standard.integer(forKey: "notificationFrequency")
