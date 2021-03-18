@@ -8,7 +8,6 @@
 
 import UIKit
 import AVFoundation
-import UserNotifications
 
 enum VocabularyState: Int {
     case new = 0
@@ -32,8 +31,6 @@ class VocabulariesViewController: UIViewController {
     var wordsForLearning = [Word]()
     var wordsForRecall = [Word]()
     var learnedWords = [Word]()
-    
-    let userNotificationCenter = UNUserNotificationCenter.current()
     
     
     override func viewDidLoad() {
@@ -137,7 +134,7 @@ class VocabulariesViewController: UIViewController {
             vc.words = DictionaryManager.shared.getWordsFor(level: level)
             vc.dissmisCompletion = {
                 self.reloadWords()
-                self.reloadViews() 
+                self.reloadViews()
             }
             self.present(vc, animated: true, completion: nil)
         }
@@ -254,40 +251,14 @@ class VocabularyCollectionViewCell: UICollectionViewCell {
 //MARK: - LocalNotifications
 extension VocabulariesViewController {
     @IBAction func startNotifying() {
-        requestNotificationAuthorization()
-        
-        if wordsForLearning.count >= 6 {
-            for i in 0..<6 {
-                self.sendNotification(wordsForLearning[i], TimeInterval((i * 45) + 15))
-            }
-        } else {
+        let vc = storyboard?.instantiateViewController(identifier: "VocabularyNotificationViewController") as! VocabularyNotificationViewController
+        if wordsForLearning.count < 6 {
             showAlert()
+            return
         }
-    }
-    
-    func requestNotificationAuthorization() {
-        let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
         
-        self.userNotificationCenter.requestAuthorization(options: authOptions) { (success, error) in
-            if let error = error {
-                print("Error: ", error)
-            }
-        }
-    }
-
-    func sendNotification(_ word: Word, _ timeInterval: TimeInterval) {
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "4/6" + word.original.trimmingCharacters(in: .whitespacesAndNewlines)
-        notificationContent.body = word.translation.trimmingCharacters(in: .whitespacesAndNewlines)
-        notificationContent.badge = NSNumber(value: 0)
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
-        let request = UNNotificationRequest(identifier: "word \(timeInterval)", content: notificationContent, trigger: trigger)
-        userNotificationCenter.add(request) { (error) in
-            if let error = error {
-                print("Notification Error: ", error)
-            }
-        }
+        vc.words = Array(wordsForLearning[0..<6])
+        self.present(vc, animated: true, completion: nil)
     }
 }
 

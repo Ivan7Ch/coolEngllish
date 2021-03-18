@@ -78,5 +78,9 @@ extension VocabularyTableView: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
         didSelectHandler()
     }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        0
+    }
 }
 
