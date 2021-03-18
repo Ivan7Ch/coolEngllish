@@ -137,7 +137,7 @@ class VocabulariesViewController: UIViewController {
             vc.words = DictionaryManager.shared.getWordsFor(level: level)
             vc.dissmisCompletion = {
                 self.reloadWords()
-                self.reloadViews()
+                self.reloadViews() 
             }
             self.present(vc, animated: true, completion: nil)
         }
