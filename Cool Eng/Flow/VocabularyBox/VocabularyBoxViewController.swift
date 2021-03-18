@@ -13,7 +13,6 @@ import AVFoundation
 class VocabularyBoxViewController: UIViewController {
     
     @IBOutlet weak var mainButton: UIButton!
-    @IBOutlet weak var loadMoreButton: UIButton!
     @IBOutlet weak var buttonContainer: UIView!
     @IBOutlet weak var selectedCountLabel: UILabel!
     @IBOutlet weak var selectAllLabel: UILabel!
@@ -122,26 +121,6 @@ extension VocabularyBoxViewController {
             selectAllLabelText = "deselect all"
         }
         selectAllLabel.text = selectAllLabelText
-        wordsListView.tableView.reloadData()
-        reloadViews()
-    }
-    
-    @IBAction func loadMoreWords() {
-        var c = 0
-        for word in words {
-            visibleWords.append(word)
-            c += 1
-            if c == wordsPackCount { break }
-        }
-        
-        if c < wordsPackCount {
-            loadMoreButton.setTitle("", for: .normal)
-        }
-        
-        for _ in 0..<c {
-            words.remove(at: 0)
-        }
-        
         wordsListView.tableView.reloadData()
         reloadViews()
     }

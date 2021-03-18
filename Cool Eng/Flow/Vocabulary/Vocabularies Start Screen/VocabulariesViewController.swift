@@ -47,9 +47,7 @@ class VocabulariesViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: false)
-        wordsForLearning = DictionaryManager.shared.getWordsForStudy()
-        wordsForRecall = DictionaryManager.shared.getWordsForRecall()
-        learnedWords = DictionaryManager.shared.getLearnedWords()
+        reloadWords()
         reloadViews()
         setupViews()
     }
@@ -69,6 +67,13 @@ class VocabulariesViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default , handler: nil))
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func reloadWords() {
+        wordsForLearning = DictionaryManager.shared.getWordsForStudy()
+        wordsForRecall = DictionaryManager.shared.getWordsForRecall()
+        learnedWords = DictionaryManager.shared.getLearnedWords()
     }
     
     
@@ -97,6 +102,7 @@ class VocabulariesViewController: UIViewController {
             self.collectionView.isPagingEnabled = false
             self.collectionView.scrollToItem(at: IndexPath(item: self.state.rawValue, section: 0), at: .right, animated: true)
             self.collectionView.isPagingEnabled = true
+            self.collectionView.reloadData()
         }
     }
     
@@ -129,7 +135,10 @@ class VocabulariesViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
             vc.words = DictionaryManager.shared.getWordsFor(level: level)
-            vc.dissmisCompletion = { self.reloadViews() }
+            vc.dissmisCompletion = {
+                self.reloadWords()
+                self.reloadViews()
+            }
             self.present(vc, animated: true, completion: nil)
         }
     }
@@ -160,8 +169,6 @@ class VocabulariesViewController: UIViewController {
         default:
             state = .learned
         }
-        
-        NotificationCenter.default.post(name: Notification.Name("VocabularyStateChanged"), object: nil)
     }
     
     
