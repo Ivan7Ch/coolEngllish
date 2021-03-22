@@ -59,6 +59,8 @@
 		F5CE9EC52444958C009EB618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CE9EC32444958C009EB618 /* LaunchScreen.storyboard */; };
 		F5CE9ECE2444997C009EB618 /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9ECD2444997C009EB618 /* PlaylistsViewController.swift */; };
 		F5CE9ED024449D70009EB618 /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE9ECF24449D70009EB618 /* PlaylistViewModel.swift */; };
+		F5D5FC6F26091CD900B632BC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D5FC6E26091CD900B632BC /* MenuView.swift */; };
+		F5D5FC7226091CE100B632BC /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5D5FC7126091CE000B632BC /* MenuView.xib */; };
 		F5D7A81425F791E30097FFF1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7A81325F791E30097FFF1 /* SettingsViewController.swift */; };
 		F5E86C1B2486C3AE0077E82E /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E86C1A2486C3AE0077E82E /* TableViewExtension.swift */; };
 		F5E86C1D2486C3DD0077E82E /* YoutubePlayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E86C1C2486C3DD0077E82E /* YoutubePlayerExtension.swift */; };
@@ -129,6 +131,8 @@
 		F5CE9EC62444958C009EB618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5CE9ECD2444997C009EB618 /* PlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
 		F5CE9ECF24449D70009EB618 /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
+		F5D5FC6E26091CD900B632BC /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		F5D5FC7126091CE000B632BC /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		F5D7A81325F791E30097FFF1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F5E86C1A2486C3AE0077E82E /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		F5E86C1C2486C3DD0077E82E /* YoutubePlayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayerExtension.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 		F50C385125E13EDC00ED12A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F5D5FC6926091C7400B632BC /* MenuView */,
 				F5210766248A8890008408D2 /* VocabulariesTableViewCell.swift */,
 				F56BEB5A25E1883300C8F60A /* Cells */,
 				F5A8875025E166B30040C817 /* VocabulariesTableView */,
@@ -416,6 +421,15 @@
 			path = Playlists;
 			sourceTree = "<group>";
 		};
+		F5D5FC6926091C7400B632BC /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				F5D5FC6E26091CD900B632BC /* MenuView.swift */,
+				F5D5FC7126091CE000B632BC /* MenuView.xib */,
+			);
+			path = MenuView;
+			sourceTree = "<group>";
+		};
 		F5D7A81225F791BF0097FFF1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,6 +541,7 @@
 				F5360F15246F087100550559 /* GoogleService-Info.plist in Resources */,
 				F53FBD8124A65FDB00F8B0E8 /* rSwipe.json in Resources */,
 				F541A64524D49FD800FA452C /* dictionary.txt in Resources */,
+				F5D5FC7226091CE100B632BC /* MenuView.xib in Resources */,
 				F5CE9EC22444958C009EB618 /* Assets.xcassets in Resources */,
 				F5A8876425E16BC00040C817 /* VocabularyTableViewCell.xib in Resources */,
 				F5CE9EBD2444958B009EB618 /* Main.storyboard in Resources */,
@@ -632,6 +647,7 @@
 				F5210762248A7AAC008408D2 /* VocabulariesViewController.swift in Sources */,
 				F59D9B64252A5118003B0ADB /* ActiveType.swift in Sources */,
 				F5210769248A88C9008408D2 /* BlurView.swift in Sources */,
+				F5D5FC6F26091CD900B632BC /* MenuView.swift in Sources */,
 				F5CE9EC02444958B009EB618 /* Cool_Eng.xcdatamodeld in Sources */,
 				F53E16072490F68700EA594A /* RecallViewController.swift in Sources */,
 				F5E86C202486C51E0077E82E /* AdvertHelperExtension.swift in Sources */,

@@ -140,6 +140,34 @@ class VocabulariesViewController: UIViewController {
         }
     }
     
+    private func addNewWordsc() {
+        let alert = UIAlertController(title: "English Level", message: "Select your english level", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Beginer", style: .default , handler:{ (UIAlertAction) in
+            UserDefaults.standard.set(EnglishLevel.beginer.rawValue, forKey: "englishLevel")
+            self.showAddNewWordsViewController(.beginer)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Intermediate", style: .default , handler:{ (UIAlertAction) in
+            UserDefaults.standard.set(EnglishLevel.intermediate.rawValue, forKey: "englishLevel")
+            self.showAddNewWordsViewController(.intermediate)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Advanced", style: .default , handler:{ (UIAlertAction) in
+            UserDefaults.standard.set(EnglishLevel.advanced.rawValue, forKey: "englishLevel")
+            self.showAddNewWordsViewController(.advanced)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Native", style: .default , handler:{ (UIAlertAction) in
+            UserDefaults.standard.set(EnglishLevel.native.rawValue, forKey: "englishLevel")
+            self.showAddNewWordsViewController(.native)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     @IBAction func controlButtonAction() {
         switch segmentedControl.selectedSegmentIndex {
@@ -169,33 +197,19 @@ class VocabulariesViewController: UIViewController {
     }
     
     
-    @IBAction func addNewWords() {
-        
-        let alert = UIAlertController(title: "English Level", message: "Select your english level", preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Beginer", style: .default , handler:{ (UIAlertAction) in
-            UserDefaults.standard.set(EnglishLevel.beginer.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController(.beginer)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Intermediate", style: .default , handler:{ (UIAlertAction) in
-            UserDefaults.standard.set(EnglishLevel.intermediate.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController(.intermediate)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Advanced", style: .default , handler:{ (UIAlertAction) in
-            UserDefaults.standard.set(EnglishLevel.advanced.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController(.advanced)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Native", style: .default , handler:{ (UIAlertAction) in
-            UserDefaults.standard.set(EnglishLevel.native.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController(.native)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
+    @IBAction func menuButtonAction() {
+        let menuView = MenuView()
+        menuView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(menuView)
+
+        menuView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        menuView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 175 + 20).isActive = true
+        menuView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40).isActive = true
+        menuView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        UIView.animate(withDuration: 2) {
+            
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -262,3 +276,9 @@ extension VocabulariesViewController {
     }
 }
 
+
+extension UIViewController{
+   var navigationBarHeight: CGFloat {
+       return self.navigationController?.navigationBar.frame.height ?? 0.0
+   }
+}
