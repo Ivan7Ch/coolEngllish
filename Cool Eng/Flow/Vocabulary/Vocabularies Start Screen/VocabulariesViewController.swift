@@ -17,11 +17,12 @@ enum VocabularyState: Int {
 
 class VocabulariesViewController: UIViewController {
     
-    @IBOutlet weak var wordsListView: VocabularyTableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var controlButton: UIButton!
     @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     
     var state = VocabularyState.new {
         didSet {
@@ -32,11 +33,26 @@ class VocabulariesViewController: UIViewController {
     var wordsForRecall = [Word]()
     var learnedWords = [Word]()
     
+    let menuView = MenuView()
+    var menuIsShown = false
+    var isSelectable = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = false
         title = "Vocabulary"
+        
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        if #available(iOS 14.0, *) {
+            button.menu = createMenu()
+            button.showsMenuAsPrimaryAction = true
+        } else {
+            button.addTarget(self, action: #selector(showDefaultMenu), for: .touchUpInside)
+        }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     
     
@@ -140,7 +156,7 @@ class VocabulariesViewController: UIViewController {
         }
     }
     
-    private func addNewWordsc() {
+    private func addNewWords() {
         let alert = UIAlertController(title: "English Level", message: "Select your english level", preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "Beginer", style: .default , handler:{ (UIAlertAction) in
@@ -166,6 +182,11 @@ class VocabulariesViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    private func editAction() {
+        
     }
     
     
@@ -196,19 +217,63 @@ class VocabulariesViewController: UIViewController {
         }
     }
     
+    private func createMenu() -> UIMenu {
+      
+      let action1 = UIAction(title: "Add new words", image: UIImage(systemName: "plus.circle")) { (_) in
+        self.addNewWords()
+      }
+      
+      let action2 = UIAction(title: "Notify words", image: UIImage(systemName: "message.circle")) { (_) in
+        self.startNotifying()
+      }
+      
+      let action3 = UIAction(title: "Edit", image: UIImage(systemName: "pencil.circle")) { (_) in
+        self.editAction()
+      }
+      
+      let menuActions = [action1, action2, action3]
+      
+      let addNewMenu = UIMenu(title: "", children: menuActions)
+      
+      return addNewMenu
+    }
+    
+    @objc func showDefaultMenu() {
+        let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Add new words", style: .default , handler:{ (UIAlertAction) in
+            self.addNewWords()
+        }))
+        alert.addAction(UIAlertAction(title: "Notify words", style: .default , handler:{ (UIAlertAction) in
+            self.startNotifying()
+        }))
+        alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction) in
+            self.editAction()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     @IBAction func menuButtonAction() {
-        let menuView = MenuView()
-        menuView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(menuView)
-
-        menuView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        menuView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 175 + 20).isActive = true
-        menuView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40).isActive = true
-        menuView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        UIView.animate(withDuration: 2) {
+        if #available(iOS 14.0, *) {
+            menuButton.menu = createMenu()
+        } else {
+            let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Add new words", style: .default , handler:{ (UIAlertAction) in
+                self.addNewWords()
+            }))
+            alert.addAction(UIAlertAction(title: "Notify words", style: .default , handler:{ (UIAlertAction) in
+                self.startNotifying()
+            }))
+            alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction) in
+                self.editAction()
+            }))
             
-            self.view.layoutIfNeeded()
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
@@ -223,11 +288,11 @@ extension VocabulariesViewController: UICollectionViewDataSource, UICollectionVi
         
         switch indexPath.row {
         case 0:
-            cell.setup(wordsForLearning)
+            cell.setup(wordsForLearning, isSelectable)
         case 1:
-            cell.setup(wordsForRecall)
+            cell.setup(wordsForRecall, isSelectable)
         case 2:
-            cell.setup(learnedWords)
+            cell.setup(learnedWords, isSelectable)
         default: break
         }
         
@@ -252,11 +317,12 @@ extension VocabulariesViewController: UICollectionViewDataSource, UICollectionVi
 
 
 class VocabularyCollectionViewCell: UICollectionViewCell {
-    
     @IBOutlet weak var wordsListView: VocabularyTableView!
+    var isSelectable: Bool = false
     
-    func setup(_ words: [Word]) {
+    func setup(_ words: [Word], _ isSelectable: Bool = false) {
         wordsListView.source = words
+        wordsListView.isSelectable = isSelectable
         wordsListView.tableView.reloadData()
     }
 }
@@ -274,11 +340,4 @@ extension VocabulariesViewController {
         vc.words = Array(wordsForLearning[0..<6])
         self.present(vc, animated: true, completion: nil)
     }
-}
-
-
-extension UIViewController{
-   var navigationBarHeight: CGFloat {
-       return self.navigationController?.navigationBar.frame.height ?? 0.0
-   }
 }
