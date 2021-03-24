@@ -143,53 +143,6 @@ class VocabulariesViewController: UIViewController {
     }
     
     
-    private func showAddNewWordsViewController(_ level: EnglishLevel) {
-        DispatchQueue.main.async {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
-            vc.words = DictionaryManager.shared.getWordsFor(level: level)
-            vc.dissmisCompletion = {
-                self.reloadWords()
-                self.reloadViews()
-            }
-            self.present(vc, animated: true, completion: nil)
-        }
-    }
-    
-    private func addNewWords() {
-        let alert = UIAlertController(title: "English Level", message: "Select your english level", preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Beginer", style: .default , handler:{ (UIAlertAction) in
-            UserDefaults.standard.set(EnglishLevel.beginer.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController(.beginer)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Intermediate", style: .default , handler:{ (UIAlertAction) in
-            UserDefaults.standard.set(EnglishLevel.intermediate.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController(.intermediate)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Advanced", style: .default , handler:{ (UIAlertAction) in
-            UserDefaults.standard.set(EnglishLevel.advanced.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController(.advanced)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Native", style: .default , handler:{ (UIAlertAction) in
-            UserDefaults.standard.set(EnglishLevel.native.rawValue, forKey: "englishLevel")
-            self.showAddNewWordsViewController(.native)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    
-    private func editAction() {
-        
-    }
-    
-    
     @IBAction func controlButtonAction() {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
@@ -214,66 +167,6 @@ class VocabulariesViewController: UIViewController {
             state = .recall
         default:
             state = .learned
-        }
-    }
-    
-    private func createMenu() -> UIMenu {
-      
-      let action1 = UIAction(title: "Add new words", image: UIImage(systemName: "plus.circle")) { (_) in
-        self.addNewWords()
-      }
-      
-      let action2 = UIAction(title: "Notify words", image: UIImage(systemName: "message.circle")) { (_) in
-        self.startNotifying()
-      }
-      
-      let action3 = UIAction(title: "Edit", image: UIImage(systemName: "pencil.circle")) { (_) in
-        self.editAction()
-      }
-      
-      let menuActions = [action1, action2, action3]
-      
-      let addNewMenu = UIMenu(title: "", children: menuActions)
-      
-      return addNewMenu
-    }
-    
-    @objc func showDefaultMenu() {
-        let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Add new words", style: .default , handler:{ (UIAlertAction) in
-            self.addNewWords()
-        }))
-        alert.addAction(UIAlertAction(title: "Notify words", style: .default , handler:{ (UIAlertAction) in
-            self.startNotifying()
-        }))
-        alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction) in
-            self.editAction()
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func menuButtonAction() {
-        if #available(iOS 14.0, *) {
-            menuButton.menu = createMenu()
-        } else {
-            let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Add new words", style: .default , handler:{ (UIAlertAction) in
-                self.addNewWords()
-            }))
-            alert.addAction(UIAlertAction(title: "Notify words", style: .default , handler:{ (UIAlertAction) in
-                self.startNotifying()
-            }))
-            alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction) in
-                self.editAction()
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
         }
     }
 }
@@ -328,9 +221,108 @@ class VocabularyCollectionViewCell: UICollectionViewCell {
 }
 
 
-//MARK: - LocalNotifications
+//MARK: - Menu
 extension VocabulariesViewController {
-    @IBAction func startNotifying() {
+    @IBAction func menuButtonAction() {
+        if #available(iOS 14.0, *) {
+            menuButton.menu = createMenu()
+        } else {
+            let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Add new words", style: .default , handler:{ (UIAlertAction) in
+                self.addNewWords()
+            }))
+            alert.addAction(UIAlertAction(title: "Notify words", style: .default , handler:{ (UIAlertAction) in
+                self.startNotifying()
+            }))
+            alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction) in
+                self.editAction()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func showDefaultMenu() {
+        let alert = UIAlertController(title: "Menu", message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Add new words", style: .default , handler:{ (UIAlertAction) in
+            self.addNewWords()
+        }))
+        alert.addAction(UIAlertAction(title: "Notify words", style: .default , handler:{ (UIAlertAction) in
+            self.startNotifying()
+        }))
+        alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction) in
+            self.editAction()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func createMenu() -> UIMenu {
+      let action1 = UIAction(title: "Add new words", image: UIImage(systemName: "plus.circle")) { (_) in
+        self.addNewWords()
+      }
+      
+      let action2 = UIAction(title: "Notify words", image: UIImage(systemName: "message.circle")) { (_) in
+        self.startNotifying()
+      }
+      
+      let action3 = UIAction(title: "Edit", image: UIImage(systemName: "pencil.circle")) { (_) in
+        self.editAction()
+      }
+      
+      let menuActions = [action1, action2, action3]
+      
+      let addNewMenu = UIMenu(title: "", children: menuActions)
+      
+      return addNewMenu
+    }
+    
+    private func addNewWords() {
+        let alert = UIAlertController(title: "English Level", message: "Select your english level", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Beginer", style: .default , handler:{ (UIAlertAction) in
+            UserDefaults.standard.set(EnglishLevel.beginer.rawValue, forKey: "englishLevel")
+            self.showAddNewWordsViewController(.beginer)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Intermediate", style: .default , handler:{ (UIAlertAction) in
+            UserDefaults.standard.set(EnglishLevel.intermediate.rawValue, forKey: "englishLevel")
+            self.showAddNewWordsViewController(.intermediate)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Advanced", style: .default , handler:{ (UIAlertAction) in
+            UserDefaults.standard.set(EnglishLevel.advanced.rawValue, forKey: "englishLevel")
+            self.showAddNewWordsViewController(.advanced)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Native", style: .default , handler:{ (UIAlertAction) in
+            UserDefaults.standard.set(EnglishLevel.native.rawValue, forKey: "englishLevel")
+            self.showAddNewWordsViewController(.native)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // actions
+    private func showAddNewWordsViewController(_ level: EnglishLevel) {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "VocabularyBoxViewController") as! VocabularyBoxViewController
+            vc.words = DictionaryManager.shared.getWordsFor(level: level)
+            vc.dissmisCompletion = {
+                self.reloadWords()
+            }
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    private func startNotifying() {
         let vc = storyboard?.instantiateViewController(identifier: "VocabularyNotificationViewController") as! VocabularyNotificationViewController
         if wordsForLearning.count < 6 {
             showAlert()
@@ -339,5 +331,9 @@ extension VocabulariesViewController {
         
         vc.words = Array(wordsForLearning[0..<6])
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    private func editAction() {
+        
     }
 }
