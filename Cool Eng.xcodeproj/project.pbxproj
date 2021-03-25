@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F41E68F9C744D95FC53B34DD /* Pods_Cool_Eng.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76774B42A233CFA1A3671E34 /* Pods_Cool_Eng.framework */; };
+		F504E040260CD945000D4C8C /* EditactionsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F504E03F260CD945000D4C8C /* EditactionsContainerViewController.swift */; };
+		F504E043260CD954000D4C8C /* EditActionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F504E042260CD954000D4C8C /* EditActionsCollectionViewCell.swift */; };
 		F50C385325E13EF700ED12A3 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C385225E13EF700ED12A3 /* RadioButton.swift */; };
 		F50C385725E14F1A00ED12A3 /* VocabularyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C385625E14F1A00ED12A3 /* VocabularyTableView.swift */; };
 		F50EDCEC24C4464200A7ED1E /* EnglishLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50EDCEB24C4464200A7ED1E /* EnglishLevel.swift */; };
@@ -76,6 +78,8 @@
 		76774B42A233CFA1A3671E34 /* Pods_Cool_Eng.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cool_Eng.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		954F9B72E6749571AD310654 /* Pods-Cool Eng.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cool Eng.debug.xcconfig"; path = "Target Support Files/Pods-Cool Eng/Pods-Cool Eng.debug.xcconfig"; sourceTree = "<group>"; };
 		C9DC0C9F6A69511812593570 /* Pods-Cool Eng.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cool Eng.release.xcconfig"; path = "Target Support Files/Pods-Cool Eng/Pods-Cool Eng.release.xcconfig"; sourceTree = "<group>"; };
+		F504E03F260CD945000D4C8C /* EditactionsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditactionsContainerViewController.swift; sourceTree = "<group>"; };
+		F504E042260CD954000D4C8C /* EditActionsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		F50C385225E13EF700ED12A3 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		F50C385625E14F1A00ED12A3 /* VocabularyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyTableView.swift; sourceTree = "<group>"; };
 		F50EDCEB24C4464200A7ED1E /* EnglishLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishLevel.swift; sourceTree = "<group>"; };
@@ -174,6 +178,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F504E03E260CD928000D4C8C /* EditActions */ = {
+			isa = PBXGroup;
+			children = (
+				F504E03F260CD945000D4C8C /* EditactionsContainerViewController.swift */,
+				F504E042260CD954000D4C8C /* EditActionsCollectionViewCell.swift */,
+			);
+			path = EditActions;
+			sourceTree = "<group>";
+		};
 		F50C385125E13EDC00ED12A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +201,7 @@
 		F5210763248A883B008408D2 /* Vocabularies Start Screen */ = {
 			isa = PBXGroup;
 			children = (
+				F504E03E260CD928000D4C8C /* EditActions */,
 				F5210761248A7AAC008408D2 /* VocabulariesViewController.swift */,
 				F531A0D325FD286400177F50 /* EmbededVocabularyViewController.swift */,
 			);
@@ -597,6 +611,8 @@
 				F59D9B62252A5118003B0ADB /* RegexParser.swift in Sources */,
 				F5C99894247EC10C000D6716 /* Level4ViewController.swift in Sources */,
 				F548BBDC2444CA8900AE060C /* VideoFirebaseHelper.swift in Sources */,
+				F504E040260CD945000D4C8C /* EditactionsContainerViewController.swift in Sources */,
+				F504E043260CD954000D4C8C /* EditActionsCollectionViewCell.swift in Sources */,
 				F54AFF00260364B00027393A /* VocabularyNotificationViewController.swift in Sources */,
 				F53FC9BF24A24F0C0078025D /* IAPViewController.swift in Sources */,
 				F5B46A762444B67E0007E8E4 /* VideoModel.swift in Sources */,

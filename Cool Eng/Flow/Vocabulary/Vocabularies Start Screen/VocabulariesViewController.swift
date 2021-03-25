@@ -23,6 +23,8 @@ class VocabulariesViewController: UIViewController {
     @IBOutlet weak var segmentedControlHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var actionsContainerView: UIView!
+    @IBOutlet weak var actionsHeightConstraint: NSLayoutConstraint!
     
     
     var state = VocabularyState.new {
@@ -36,6 +38,8 @@ class VocabulariesViewController: UIViewController {
     
     var menuIsShown = false
     var isSelectable = false
+    
+    var actionsVC: EditActionsContainerViewController?
     
     
     override func viewDidLoad() {
@@ -53,6 +57,7 @@ class VocabulariesViewController: UIViewController {
         }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        hideActionsControl(true)
     }
     
     
@@ -63,6 +68,14 @@ class VocabulariesViewController: UIViewController {
         reloadWords()
         reloadViews()
         setupViews()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditActionsContainerViewController" {
+            if let childVC = segue.destination as? EditActionsContainerViewController {
+                actionsVC = childVC
+            }
+        }
     }
     
     
@@ -130,6 +143,14 @@ class VocabulariesViewController: UIViewController {
     
     private func hideSegmentedControl(_ hide: Bool) {
         self.segmentedControlHeightConstraint.constant = hide ? 0 : 42
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func hideActionsControl(_ hide: Bool) {
+        self.actionsHeightConstraint.constant = hide ? 0 : 42
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -245,9 +266,9 @@ extension VocabulariesViewController {
             alert.addAction(UIAlertAction(title: "Notify words", style: .default , handler:{ (UIAlertAction) in
                 self.startNotifying()
             }))
-            alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction) in
-                self.editAction()
-            }))
+//            alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction) in
+//                self.editAction()
+//            }))
             
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             
@@ -263,9 +284,9 @@ extension VocabulariesViewController {
         alert.addAction(UIAlertAction(title: "Notify words", style: .default , handler:{ (UIAlertAction) in
             self.startNotifying()
         }))
-        alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction) in
-            self.editAction()
-        }))
+//        alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction) in
+//            self.editAction()
+//        }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
@@ -285,7 +306,7 @@ extension VocabulariesViewController {
         self.editAction()
       }
       
-      let menuActions = [action1, action2, action3]
+      let menuActions = [action1, action2]
       
       let addNewMenu = UIMenu(title: "", children: menuActions)
       
@@ -348,10 +369,67 @@ extension VocabulariesViewController {
         isSelectable = true
         hideButton(true)
         hideSegmentedControl(true)
+        hideActionsControl(false)
         collectionView.isPagingEnabled = false
         collectionView.isScrollEnabled = false
         collectionView.reloadData()
+        actionsVC?.collectionView.reloadData()
+        actionsVC?.source = sourceForActions()
+        actionsVC?.didSelectCompletion = { ind in
+            self.didSelectCompletion(ind)
+        }
+    }
+    
+    private func sourceForActions() -> [String] {
+        switch state {
+        case .new:
+            return ["Add to recall", "Mark as learned", "Delete", "Cancel"]
+        case .recall:
+            return ["Add for learning", "Mark as learned", "Delete", "Cancel"]
+        case .learned:
+            return ["Add for learning", "Add to recall", "Delete", "Cancel"]
+        }
+    }
+    
+    private func didSelectCompletion(_ ind: Int) {
+        switch ind {
+        case 0:
+            state == .new ? recallAction() : learnAction()
+        case 1:
+            state == .learned ? recallAction() : learnedAction()
+        case 2:
+            deleteAction()
+        case 3:
+            cancelAction()
+        default:
+            cancelAction()
+        }
     }
     
     // MARK: Editing
+    private func cancelAction() {
+        isSelectable = false
+        hideButton(false)
+        hideSegmentedControl(false)
+        hideActionsControl(true)
+        collectionView.isPagingEnabled = true
+        collectionView.isScrollEnabled = true
+        collectionView.reloadData()
+    }
+    
+    private func deleteAction() {
+        print("delete")
+    }
+    
+    private func learnAction() {
+        print("add for learning")
+    }
+    
+    private func recallAction() {
+        print("add to recall")
+    }
+    
+    private func learnedAction() {
+        print("add to learned")
+    }
 }
