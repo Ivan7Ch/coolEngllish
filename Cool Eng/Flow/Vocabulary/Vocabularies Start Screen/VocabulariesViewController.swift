@@ -20,6 +20,7 @@ class VocabulariesViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var controlButton: UIButton!
     @IBOutlet weak var buttonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var segmentedControlHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -33,7 +34,6 @@ class VocabulariesViewController: UIViewController {
     var wordsForRecall = [Word]()
     var learnedWords = [Word]()
     
-    let menuView = MenuView()
     var menuIsShown = false
     var isSelectable = false
     
@@ -128,6 +128,14 @@ class VocabulariesViewController: UIViewController {
         }
     }
     
+    private func hideSegmentedControl(_ hide: Bool) {
+        self.segmentedControlHeightConstraint.constant = hide ? 0 : 42
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     
     private func showStudyViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -216,6 +224,9 @@ class VocabularyCollectionViewCell: UICollectionViewCell {
     func setup(_ words: [Word], _ isSelectable: Bool = false) {
         wordsListView.source = words
         wordsListView.isSelectable = isSelectable
+        wordsListView.didSelectHandler = {
+            print(self.wordsListView.selectedIndices)
+        }
         wordsListView.tableView.reloadData()
     }
 }
@@ -334,6 +345,13 @@ extension VocabulariesViewController {
     }
     
     private func editAction() {
-        
+        isSelectable = true
+        hideButton(true)
+        hideSegmentedControl(true)
+        collectionView.isPagingEnabled = false
+        collectionView.isScrollEnabled = false
+        collectionView.reloadData()
     }
+    
+    // MARK: Editing
 }

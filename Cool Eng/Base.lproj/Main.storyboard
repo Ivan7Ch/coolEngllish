@@ -831,6 +831,7 @@
                         <outlet property="controlButton" destination="f6Z-td-U9f" id="stx-en-3qq"/>
                         <outlet property="menuButton" destination="LlI-qr-lKq" id="VXi-U7-VCg"/>
                         <outlet property="segmentedControl" destination="P3s-aQ-osg" id="rro-mf-9r5"/>
+                        <outlet property="segmentedControlHeightConstraint" destination="zfN-dP-Xk9" id="v37-KL-lHd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoP-GH-goR" sceneMemberID="firstResponder"/>
