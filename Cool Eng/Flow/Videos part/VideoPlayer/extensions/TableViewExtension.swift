@@ -58,14 +58,17 @@ extension VideoPlayerViewController: UITableViewDataSource, UITableViewDelegate 
     
     
     func wordTapHandler(word: String) {
-        guard let w = DictionaryManager.shared.getWord(word.lowercased()) else { return }
+        var w = DictionaryManager.shared.getWord(word.lowercased())
+        if w == nil {
+            w = Word(id: 0, original: word)
+        }
         
         if toastMessageView != nil {
             toastMessageView.removeFromSuperview()
         }
         
         self.toastMessageView = ToastMessageView()
-        toastMessageView.setup(with: w)
+        toastMessageView.setup(with: w!)
         view.addSubview(toastMessageView)
     }
 }
