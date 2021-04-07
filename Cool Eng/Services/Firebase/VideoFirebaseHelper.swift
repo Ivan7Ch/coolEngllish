@@ -39,7 +39,7 @@ class VideoFirebaseHelper {
     private func parseVideoData(dict: [String: Any]) -> VideoModel? {
         guard let id = dict["id"] as? Double,
             let name = dict["name"] as? String,
-            let placeholder = dict["placeholder"] as? String,
+            var placeholder = dict["placeholder"] as? String,
             let playlist = dict["playlist"] as? Double,
             let url = dict["url"] as? String
         else { return nil }
@@ -53,6 +53,8 @@ class VideoFirebaseHelper {
         if let w = dict["words"] as? [String] {
             words = w
         }
+        
+        placeholder = placeholder.replacingOccurrences(of: "\r", with: "").replacingOccurrences(of: "\n", with: "")
         
         return VideoModel(id: Int(id), name: name, playlist: Int(playlist), placeholder: placeholder, url: url, duration: duration, words: words)
     }
