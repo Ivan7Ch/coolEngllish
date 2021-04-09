@@ -799,7 +799,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Cool Eng/Cool Eng.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = Z6SVM5W336;
 				INFOPLIST_FILE = "Cool Eng/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -807,7 +807,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.16;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inch70798.cool-eng";
 				PRODUCT_NAME = engTube;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -824,7 +824,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Cool Eng/Cool Eng.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = Z6SVM5W336;
 				INFOPLIST_FILE = "Cool Eng/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -832,7 +832,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.16;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inch70798.cool-eng";
 				PRODUCT_NAME = engTube;
 				SWIFT_VERSION = 5.0;
