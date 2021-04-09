@@ -109,8 +109,7 @@ class VocabulariesViewController: UIViewController {
             hideButton(false)
             controlButton.setTitle("Learn Words", for: .normal)
             if wordsForLearning.count == 0 {
-                hideButton(true)
-                controlButton.setTitle("", for: .normal)
+                controlButton.setTitle("Add new words", for: .normal)
             }
         case .recall:
             hideButton(false)
@@ -175,7 +174,9 @@ class VocabulariesViewController: UIViewController {
     @IBAction func controlButtonAction() {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            if wordsForLearning.count < 6 {
+            if wordsForLearning.isEmpty {
+                addNewWords()
+            } else if wordsForLearning.count < 6 {
                 showAlert()
             } else {
                 showStudyViewController()
